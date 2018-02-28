@@ -41,6 +41,7 @@ Amazon's trademarks and trade dress may not be used in
 + [Limits in AWS CodeStar](limits.md)
 + [Troubleshooting AWS CodeStar](troubleshooting.md)
 + [AWS CodeStar User Guide Release Notes](history.md)
+   + [February 22, 2018](history-2018-02-22.md)
    + [February 14, 2018](history-2018-02-14.md)
    + [December 20, 2017](history-2017-12-20.md)
    + [November 30, 2017](history-2017-11-30.md)
