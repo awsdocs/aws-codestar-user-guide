@@ -14,11 +14,8 @@ Each project in AWS CodeStar has three roles:
 | Owner | x | x | x | x | 
 | Contributor | x | x |  |  | 
 | Viewer | x |  |  |  | 
-
 + **Owner**: Can add and remove other team members, contribute code to a project repository if the code is stored in AWS CodeCommit, grant or deny other team members remote access to any Amazon EC2 instances running Linux associated with the project, configure the project dashboard, and delete the project\.
-
 + **Contributor**: Can add and remove dashboard resources such as a JIRA tile, contribute code to the project repository if the code is stored in AWS CodeCommit, and interact fully with the dashboard\. Cannot add or remove team members, grant or deny remote access to resources, or delete the project\. This is the role you should choose for most team members\.
-
 + **Viewer**: Can view the project dashboard, the code if is stored in AWS CodeCommit, and, on the dashboard tiles, the state of the project and its resources\.
 
 **Important**  
@@ -32,7 +29,7 @@ The following diagram shows the relationship between each role and an AWS CodeSt
 
 ![\[AWS CodeStar roles and their access to the project and its resources\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-whowhat.png)![\[AWS CodeStar roles and their access to the project and its resources\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
 
-
+**Topics**
 + [Add Team Members to an AWS CodeStar Project](how-to-add-team-member.md)
 + [Manage Permissions for AWS CodeStar Team Members](how-to-manage-team-permissions.md)
 + [Remove Team Members from an AWS CodeStar Project](how-to-remove-team-member.md)

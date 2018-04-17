@@ -2,7 +2,7 @@
 
 Before you can start using AWS CodeStar, you must complete the following steps\. The account you use to sign in to AWS must be configured to allow the following actions:
 
-
+**Topics**
 + [Step 1: Create an AWS Account](#setting-up-create-account)
 + [Step 2: Create the AWS CodeStar Service Role](#setting-up-create-service-role)
 + [Step 3: Create or Use an IAM User](#setting-up-create-iam-user)
@@ -38,11 +38,9 @@ To create IAM users, you must be logged in as an administrative user\.
 AWS CodeStar does not support federated users\. Using AWS CodeStar with a root account is not recommended\.
 
 After you have an IAM user, do one of the following:
-
 + If you want to create projects in AWS CodeStar, apply the **AWSCodeStarFullAccess** managed policy to your IAM user\. For more information, see [Working with Managed Policies](http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-using.html#attach-managed-policy-console)\. 
 
   Alternatively, you can create projects if you have an IAM administrative user with full permissions for all AWS services\. 
-
 + If your IAM user has already been added to one or more AWS CodeStar projects, it already has the policies and permissions required to access the service and resources for the projects you belong to\. To set up your local computer for working with AWS CodeStar projects, follow the steps in [Getting Started](getting-started.md#git-credentials)\. You can also [sign in to the AWS CodeStar console](https://console.aws.amazon.com/codestar/) and configure your user profile\. For more information, see [Manage Display Information for Your AWS CodeStar User Profile ](how-to-manage-user-pref.md) and [Add a Public Key to Your AWS CodeStar User Profile ](how-to-add-ec2-key.md)\.
 
 ## Step 4: Create an Amazon EC2 Key Pair for AWS CodeStar Projects<a name="setting-up-create-ec2-key"></a>

@@ -5,6 +5,6 @@ Your AWS CodeStar user profile is associated with your IAM user\. This profile c
 **Note**  
 The information in these topics covers only your AWS CodeStar user profile\. If your project uses resources outside of AWS, for example a GitHub repository or issues in Atlassian JIRA, those resource providers may use separate user profiles, which may have different settings\. For more information, see the resource provider's documentation\.
 
-
+**Topics**
 + [Manage Display Information for Your AWS CodeStar User Profile](how-to-manage-user-pref.md)
 + [Add a Public Key to Your AWS CodeStar User Profile](how-to-add-ec2-key.md)

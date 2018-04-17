@@ -2,7 +2,7 @@
 
 The following information might help you troubleshoot common issues in AWS CodeStar\.
 
-
+**Topics**
 + [Project creation failure: A project was not created](#troubleshooting-pc1)
 + [Project creation: I see an error when I try to edit Amazon EC2 configuration when creating a project](#troubleshooting-pc2)
 + [Project deletion: An AWS CodeStar project was deleted, but resources still exist](#troubleshooting-pd1)
@@ -19,13 +19,9 @@ The following information might help you troubleshoot common issues in AWS CodeS
 **Problem:** When you try to create a project, you see a message that the creation failed\.
 
 **Possible fixes:** The most common reasons for failure are:
-
 + A project with that ID already exists in your AWS account, possibly in a different region\.
-
 + The IAM user you used to sign in to the AWS Management Console does not have the permissions required to create a project\.
-
 + The AWS CodeStar service role is missing one or more required permissions\.
-
 + You have reached the maximum limit for one or more resources for a project \(such as the limit on customer managed policies in IAM, Amazon S3 buckets, or pipelines in AWS CodePipeline\)\.
 
 Before you create a project, verify that you have the **AWSCodeStarFullAccess** policy applied to your IAM user\. For more information, see [AWS CodeStar Access Permissions Reference](access-permissions.md)\.
@@ -39,11 +35,8 @@ To troubleshoot other issues, open the AWS CloudFormation console, choose the st
 **Problem:** When you edit the Amazon EC2 configuration options during project creation, you see an error message or greyed\-out option, and cannot continue with project creation\.
 
 **Possible fixes:** The most common reasons for an error message are:
-
 + The VPC in the AWS CodeStar project template \(either the default VPC, or the one used when the Amazon EC2 configuration was edited\) has dedicated instance tenancy, and the instance type is not supported for dedicated instances\. Either choose a different instance type or a different Amazon VPC\.
-
 + Your AWS account has no Amazon VPCs\. You might have deleted the default VPC, and not created any others\. Open the Amazon VPC console at [https://console\.aws\.amazon\.com/vpc/](https://console.aws.amazon.com/vpc/), choose **Your VPCs**, and make sure that you have at least one VPC configured\. If not, create one\. For more information, see [Amazon Virtual Private Cloud Overview](http://docs.aws.amazon.com/AmazonVPC/latest/GettingStartedGuide/ExerciseOverview.html) in the *Amazon VPC Getting Started Guide*\.
-
 + The Amazon VPC does not have any subnets\. Choose a different VPC, or create a subnet for that VPC\. For more information, see [VPC and Subnet Basics](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html#vpc-subnet-basics)\.
 
 ## Project deletion: An AWS CodeStar project was deleted, but resources still exist<a name="troubleshooting-pd1"></a>
@@ -53,43 +46,33 @@ To troubleshoot other issues, open the AWS CloudFormation console, choose the st
 **Possible fixes:** Open the [AWS CloudFormation console](https://console.aws.amazon.com//cloudformation) and find one or more of the AWS CloudFormation stacks used to create the project\. The stack names will start with `awscodestar-`, followed by the project ID\. The stacks might be under the **Deleted** filter view\. Review the events associated with the stack to discover the resources created for the project\. Open the console for each of those resources in the region where you created the AWS CodeStar project, and then manually delete the resources for that deleted project\. 
 
 Project resources that might remain include:
-
 + One or more project buckets in Amazon S3\. Unlike other project resources, project buckets in Amazon S3 are not deleted when the **Delete associated AWS resources along with AWS CodeStar project** check box is selected\.
 
   Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
-
 + A source repository for your project in AWS CodeCommit\.
 
   Open the AWS CodeCommit console at [https://console\.aws\.amazon\.com/codecommit/](https://console.aws.amazon.com/codecommit/)\.
-
 + A pipeline for your project in AWS CodePipeline\.
 
   Open the AWS CodePipeline console at [https://console\.aws\.amazon\.com/codepipeline/](https://console.aws.amazon.com/codepipeline/)\.
-
 + An application and associated deployment groups in AWS CodeDeploy\.
 
   Open the AWS CodeDeploy console at [https://console\.aws\.amazon\.com/codedeploy/](https://console.aws.amazon.com/codedeploy/)\.
-
 + An application and associated environments in AWS Elastic Beanstalk\.
 
   Open the Elastic Beanstalk console at [https://console\.aws\.amazon\.com/elasticbeanstalk/](https://console.aws.amazon.com/elasticbeanstalk/)\.
-
 + A function in AWS Lambda\.
 
   Open the AWS Lambda console at [https://console\.aws\.amazon\.com/lambda/](https://console.aws.amazon.com/lambda/)\.
-
 + One or more APIs in API Gateway\.
 
   Open the API Gateway console at [https://console\.aws\.amazon\.com/apigateway/](https://console.aws.amazon.com/apigateway/)\. 
-
 + One or more IAM policies or roles in IAM\. 
 
   Sign in to the AWS Management Console and open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
-
 + An instance in Amazon Elastic Compute Cloud \(Amazon EC2\)\. 
 
   Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
-
 + One or more development environments in AWS Cloud9\.
 
   To view, access, and manage development environments, open the AWS Cloud9 console at [https://console\.aws\.amazon\.com/cloud9/](https://console.aws.amazon.com/cloud9/)\.
@@ -153,9 +136,7 @@ For more information, see [Limitations on IAM Entities and Objects](http://docs.
 **Problem:** When you use the **Atlassian JIRA** extension to try to connect an AWS CodeStar project to a JIRA instance, the following message displays: "The URL is not a valid JIRA URL\. Verify that the URL is correct\."
 
 **Possible fixes:**
-
 + Make sure the JIRA URL is correct, and then try connecting again\.
-
 + Your self\-hosted JIRA instance may not be accessible from the public Internet\. Contact your network administrator to make sure your JIRA instance can be accessed from the public Internet, and then try connecting again\.
 
 ## GitHub: Can't access a repository's commit history, issues, or code<a name="troubleshooting-github-access"></a>
@@ -163,7 +144,5 @@ For more information, see [Limitations on IAM Entities and Objects](http://docs.
 **Problem:** In the dashboard for a project that stores its code in GitHub, the **Commit history** and **GitHub Issues** tiles display a connection error, or choosing **Open in GitHub** or **Create issue** in these tiles displays an error\.
 
 **Possible causes:**
-
 + The AWS CodeStar project may no longer have access to the GitHub repository\.
-
 + The repository may have been deleted or renamed in GitHub\.

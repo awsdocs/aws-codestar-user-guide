@@ -7,7 +7,7 @@ You can only manage your own user profile in the AWS CodeStar console\. If you h
 **Note**  
 The information in this topic covers only your AWS CodeStar user profile\. If your project uses resources outside of AWS, for example a GitHub repository or issues in Atlassian JIRA, those resource providers may use separate user profiles, which may have different settings\. For more information, see the resource provider's documentation\.
 
-
+**Topics**
 + [Manage Your User Profile Using the AWS CodeStar Console](#how-to-manage-user-pref-console)
 + [Manage User Profiles Using the AWS CLI](#how-to-manage-user-pref-cli)
 

@@ -10,7 +10,7 @@ Changing a team member's role for a project does not automatically allow or prev
 
 You can also grant permissions for users to remotely access any Amazon EC2 instances running Linux associated with the project\. After you grant this permission, the user must upload an SSH public key that will be associated with their AWS CodeStar user profile across all team projects\. To successfully connect to the Linux instances associated with the project, the user must have SSH configured and the private key on the local computer\.
 
-
+**Topics**
 + [Manage Team Permissions Using the AWS CodeStar Console](#how-to-manage-team-permissions-console)
 + [Manage Team Permissions Using the AWS CLI](#how-to-manage-team-permissions-cli)
 

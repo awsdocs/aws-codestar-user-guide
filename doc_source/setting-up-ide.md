@@ -4,7 +4,7 @@ When you integrate an integrated development environment \(IDE\) with AWS CodeSt
 
 ![\[Pushing a change to an AWS CodeStar project in Eclipse\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-ide-eclipse2.png)
 
-
+**Topics**
 + [Use AWS Cloud9 with AWS CodeStar](setting-up-ide-cloud9.md)
 + [Use Eclipse with AWS CodeStar](setting-up-ide-ec.md)
 + [Use Visual Studio with AWS CodeStar](setting-up-ide-vs.md)

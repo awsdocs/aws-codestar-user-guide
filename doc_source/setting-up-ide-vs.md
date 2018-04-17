@@ -8,11 +8,8 @@ The information in this topic applies only to AWS CodeStar projects that store t
 If the AWS CodeStar project stores its source code in AWS CodeCommit, to use Visual Studio to edit code in the source repository for an AWS CodeStar project, you must install a version of the AWS Toolkit for Visual Studio that supports AWS CodeStar\. You must be a member of the AWS CodeStar project team with the Owner or Contributor role\.
 
 To use Visual Studio, you'll also need:
-
 + An IAM user that has been added to an AWS CodeStar project as a team member\.
-
 + If the AWS CodeStar project stores its source code in AWS CodeCommit, AWS credentials for your IAM user, for example your access key and secret key\.
-
 + Sufficient permissions to install Visual Studio and the AWS Toolkit for Visual Studio on your local computer\.
 
 The Toolkit for Visual Studio is a software package you can add to Visual Studio\. It is installed and managed in the same way as other software packages in Visual Studio\. 

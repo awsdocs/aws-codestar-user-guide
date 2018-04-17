@@ -9,7 +9,7 @@ Removing a team member from a project does not automatically delete that team me
 
 To remove a team member from a project, you must have the AWS CodeStar Owner role for that project or have the **AWSCodeStarFullAccess** policy applied to your account\.
 
-
+**Topics**
 + [Remove Team Members Using the Console](#how-to-remove-team-member-console)
 + [Remove Team Members Using the AWS CLI](#how-to-remove-team-member-cli)
 

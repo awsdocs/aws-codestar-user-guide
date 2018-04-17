@@ -1,25 +1,19 @@
 # Getting Started with AWS CodeStar<a name="getting-started"></a>
 
-In this walkthrough, you'll use AWS CodeStar to create a web application\. This project includes sample code in a source repository, a continuous deployment toolchain, and a project dashboard where you can view and monitor your project\. 
+In this walkthrough, you'll use AWS CodeStar to create a web application\. This project includes sample code in a source repository, a continuous deployment toolchain, and a project dashboard where you can view and monitor your project\.
 
 By following the steps, you will:
-
 + Create a project in AWS CodeStar\.
-
 + Explore the project\.
-
 + Commit a code change\.
-
 + See your code change deployed automatically\.
-
 + Add other people to work on your project\.
-
 + Clean up project resources when they're no longer needed\.
 
 **Note**  
 If you haven't already, complete the steps in [Setting Up AWS CodeStar](setting-up.md) before you start this walkthrough, including [Step 2: Create the AWS CodeStar Service Role](setting-up.md#setting-up-create-service-role) while logged in with an account that is an administrative user in IAM\. To create a project, you must sign in to the AWS Management Console using an IAM user that has the **AWSCodeStarFullAccess** policy\. 
 
-
+**Topics**
 + [Step 1: Create an AWS CodeStar Project](#getting-started-create)
 + [Step 2: Add Display Information for Your AWS CodeStar User Profile](#getting-started-add-owner)
 + [Step 3: View Your Project](#getting-started-view)
@@ -27,6 +21,7 @@ If you haven't already, complete the steps in [Setting Up AWS CodeStar](setting-
 + [Step 5: Commit a Change](#getting-started-commit)
 + [Step 6: Add More Team Members](#getting-started-add-team-member)
 + [Step 7: Clean Up](#getting-started-clean)
++ [Step 8: Ready Your Project for a Production Environment](#getting-started-production-ready)
 + [Next Steps](#getting-started-next-steps)
 + [Tutorial: Creating and Managing a Serverless Project in AWS CodeStar](sam-tutorial.md)
 
@@ -113,9 +108,7 @@ For more information, see [What Is Amazon VPC?](http://docs.aws.amazon.com/Amazo
 ## Step 2: Add Display Information for Your AWS CodeStar User Profile<a name="getting-started-add-owner"></a>
 
 When you create a project, you're added to the project team as an owner\. If this is the first time you've used AWS CodeStar, you'll be asked to provide additional information, such as:
-
 + Your display name to show to other users\.
-
 + The email address to show to other users\.
 
 This information is used in your AWS CodeStar user profile\. User profiles are not project\-specific, but are limited to an AWS region\. If you belong to projects in more than one region, you'll have to create a user profile in each region\. Each regional profile can contain different information, if you prefer\.
@@ -134,29 +127,22 @@ Your AWS CodeStar project dashboard is where you and your team view the status o
 You can change where each tile appears on your dashboard by dragging and dropping it to a new location\. You can also use the ellipsis menu on each tile to remove that tile from the display\. To add a tile, choose **Add tile** in the dashboard, and choose any tile that is not already present\.
 
 In your new project, you'll see the following tiles:
-
 + The **Welcome** tile contains links to actions you might want to perform\. Unlike other tiles, you cannot move this tile to another location, or add it back after closing it\.   
 ![\[The Welcome tile displayed after you create a project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-welcome-tile.png)
-
 + The **Continuous deployment** tile displays a summary view of the continuous delivery pipeline for your project\. The pipeline deploys the web application code when there is a change in your repository\. Because your project is new, the pipeline immediately starts deploying the sample code\. You can see the processing and completion of each stage as your web application is deployed\. For a deployment stage, choose **Endpoint** to view a link to that endpoint \(if you chose the project template suggested at the start of this walkthrough, it's an Amazon EC2 instance where your sample web application is deployed and running\)\.  
 
   You can also see if a stage has a problem or requires approval\. To see details about the state of the pipeline, its stages, and its actions, or to make changes such as adding or editing a stage, choose **AWS CodePipeline details**\.  
 ![\[Continuous deployment tile\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-cdtile.png)
-
 + The **Application endpoints** tile displays links to the endpoints where you can view your software\. This is the same link you saw in the **Continuous deployment** tile\. Choose the link to view your application or service\.  
 ![\[Application endpoints tile\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-aetile.png)
-
 + The **Commit history** tile displays the recent commit history of the repository\. When you first create a project, the most recent commit is the one made by AWS CodeStar\. This commit started running the sample code through the pipeline\. When you make another commit, that will appear in the history, too\. That code change will start running through the pipeline automatically\. To view the commits of a different branch, use the branch selector button\. To view all commits or other details about the commits or the repository, choose **AWS CodeCommit details** \(if the code is stored in AWS CodeCommit\) or **Open in GitHub** \(if the source code is stored in GitHub\)\.  
 ![\[Commit history tile\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-cctile.png)
-
 + The **Application activity** tile displays Amazon CloudWatch metrics for your project\. For example, it displays the CPU utilization of any Amazon EC2 instances deployed to by AWS Elastic Beanstalk or AWS CodeDeploy resources in your pipeline\. In projects that use AWS Lambda, it displays invocation and error metrics for the Lambda function\. This information is displayed by the hour\. If you used the suggested AWS CodeStar project template for this walkthrough, you should see a noticeable spike in activity as your application is first deployed to those instances\. You can refresh monitoring to see changes in your instance health, which can help you identify problems or the need for more resources\.   
 ![\[Application activity tile\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-aatile.png)
 **Note**  
 If your AWS CodeStar project includes more than one metric, you can filter the display by choosing a particular metric in the tile\.
-
 + The **JIRA** tile is for integrating your AWS CodeStar project with an existing Atlassian JIRA project\. Configuring this tile will enable you and your project team to track JIRA issues from the project dashboard\. To configure this tile, choose **Connect** and follow the instructions\.  
 ![\[Configured JIRA tile\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-jiratile.png)
-
 + There is also a **Team wiki tile**\. You can customize the contents of this tile to store team notes, link to useful resources for your team project, provide samples, and so on\. You'll customize this tile in the next step\.
 
 ## Step 4: Customize the Team Wiki Tile and the Project Dashboard<a name="getting-started-custom"></a>
@@ -192,19 +178,12 @@ First, take a look at the sample code that was included in your project, and see
 If you'd like to look at the code itself, in the navigation bar, choose **Code**\. Your project's repository opens in a new tab or window\. Read the contents of the repository's readme file \(`README.md`\), and browse the content of those files\.
 
 In this step, you will make a change to the code and then push that change to your repository\. You can do this in one of several ways: 
-
 + If the project's code is stored in an AWS CodeCommit or GitHub repository, you can use AWS Cloud9 to work with the code directly from your web browser, without installing any additional tools\. For more information, see [Create an AWS Cloud9 Environment for a Project](setting-up-ide-cloud9.md#setting-up-ide-cloud9-create)\.
-
 + If the project's code is stored in an AWS CodeCommit repository, and you have Visual Studio or Eclipse installed, you can use the AWS Toolkit for Visual Studio or AWS Toolkit for Eclipse to more easily connect to the code\. For more information, see [Use an IDE with AWS CodeStar](setting-up-ide.md)\. If you don't have Visual Studio or Eclipse installed, then install a Git client, and follow the instructions later in this step\.
-
 + If the project's code is stored in a GitHub repository, you can use your IDE's tools for connecting to GitHub\. For example:
-
   + For Visual Studio, you can use a tools such as the GitHub Extension for Visual Studio\. For more information, see the [Overview](https://visualstudio.github.com/index.html) page on the GitHub Extension for Visual Studio website and [Getting Started with GitHub for Visual Studio](https://github.com/github/VisualStudio/blob/master/docs/getting-started/index.md) on the GitHub website\.
-
   + For Eclipse, you can use a tool such as EGit for Eclipse\. For more information, see the [EGit](http://www.eclipse.org/egit/) website and [EGit Documentation](http://www.eclipse.org/egit/documentation/) on the EGit website\.
-
   + For other IDEs, consult your IDE's documentation\.
-
 + For other types of code repositories, see the repository provider's documentation\. 
 
 The following instructions show how to make a basic change to the sample\. <a name="git-credentials"></a><a name="getting-started-git-credentials"></a>
@@ -279,11 +258,8 @@ For other issues, see [Troubleshooting AWS CodeStar](troubleshooting.md)\.
 ## Step 6: Add More Team Members<a name="getting-started-add-team-member"></a>
 
 One of the benefits of an AWS CodeStar project is the simplified process for adding users and giving them access to project resources\. Every AWS CodeStar project comes preconfigured with three different AWS CodeStar roles\. Each role provides its own level of access to the project and its resources:
-
 + **Owner**: Can add and remove team members, change the project dashboard, and delete the project\.
-
 + **Contributor**: Can change the project dashboard and contribute code if the code is stored in AWS CodeCommit, but cannot add or remove team members or delete the project\. This is the role you should choose for most team members in an AWS CodeStar project\.
-
 + **Viewer**: Can view the project dashboard, project code if the code is stored in AWS CodeCommit, and the state of the project, but cannot move, add, or remove tiles from the project dashboard\.
 
 **Important**  
@@ -304,7 +280,6 @@ For more information about teams and project roles, see [Working with AWS CodeSt
 1. On the **Team members** page, choose **Add team member**\.
 
 1. In **Choose user**, do one of the following: 
-
    + If an IAM user already exists for the person you want to add, choose the IAM user name from the list\. 
 **Note**  
 Users who have already been added to another AWS CodeStar project will appear in the **AWS CodeStar users from other projects** list\.
@@ -315,7 +290,6 @@ You cannot provide or change the display name or email information for an IAM us
 
      Choose **Add**\.  
 ![\[Adding an existing IAM user to the team for a project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-add.png)
-
    + If an IAM user does not exist for the person you want to add to the project, choose **Create new IAM user**\. Fill in the IAM user name, AWS CodeStar display name, email address, and project role you want to apply to this new user, and choose **Create**\.   
 ![\[Creating a new IAM user to add to the team for a project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-add-new.png)
 
@@ -324,13 +298,9 @@ You cannot provide or change the display name or email information for an IAM us
 For ease of management, at least one user should have the **Owner** role for the project\.
 
 1. Send the new team member the following information:
-
    + Connection information for your AWS CodeStar project\.
-
    + If the source code is stored in AWS CodeCommit, [Instructions for setting up access with Git credentials](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) to the AWS CodeCommit repository from their local computers\.
-
    + Information about how the user can manage their display name, email address, and public Amazon EC2 SSH key, as described in [Working with Your AWS CodeStar User Profile ](working-with-user-info.md)\.
-
    + One\-time password and connection information, if the user is new to AWS and you created an IAM user for that person\. The password will expire the first time the user logs on\. The user must choose a new password\.
 
 ## Step 7: Clean Up<a name="getting-started-clean"></a>
@@ -352,14 +322,16 @@ Congratulations\! You've finished the Getting Started walkthrough for AWS CodeSt
 By default, when you delete a project, all resources listed under **Project resources** are deleted\. If you clear the check box, the project resources will be retained\. For more information, go [here](how-to-delete-project.md#adh-keep-resources)\.   
 If your project uses resources outside of AWS, for example a GitHub repository or issues in Atlassian JIRA, those resources are not deleted, even if the check box is selected\.
 
+## Step 8: Ready Your Project for a Production Environment<a name="getting-started-production-ready"></a>
+
+After you have created your project, you are ready to create, test, and deploy code\. Review the following considerations for maintaining your project in a production environment:
++ You should regularly apply available patches and review security best practices for the dependencies used by your application\. For a list of guidelines, see [Security Best Practices for AWS CodeStar Resources](best-practices.md#best-practices-security)\.
++ You should regularly monitor the environment settings suggested by the programming language specific to your project\.
+
 ## Next Steps<a name="getting-started-next-steps"></a>
 
 We suggest continuing to learn about AWS CodeStar by using the following resources:
-
 + The [Tutorial: Creating and Managing a Serverless Project in AWS CodeStar](sam-tutorial.md) uses a project that creates and deploys a web service using logic in AWS Lambda and can be called by an API in Amazon API Gateway\.
-
 + [AWS CodeStar Project Templates](templates.md) describes other types of projects you can create\.
-
 + [Customize an AWS CodeStar Dashboard](how-to-customize.md) provides more information about customizing your projects' dashboards, integrating with JIRA, and more\.
-
 + [Working with AWS CodeStar Teams](working-with-teams.md) provides more information about enabling others to help you work on your projects\.

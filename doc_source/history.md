@@ -2,7 +2,7 @@
 
 The following is summary information about significant updates to the *AWS CodeStar User Guide*\.
 
-
+**Contents**
 + [February 22, 2018](history-2018-02-22.md)
 + [February 14, 2018](history-2018-02-14.md)
 + [December 20, 2017](history-2017-12-20.md)

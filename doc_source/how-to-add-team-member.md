@@ -3,13 +3,9 @@
 If you have the Owner role in an AWS CodeStar project or have the **AWSCodeStarFullAccess** policy applied to your IAM user, you can add other IAM users to the project team\. This is a simple process that applies an AWS CodeStar role \(Owner, Contributor, and Viewer\) to the user\. These roles are per\-project and customized\. For example, a Contributor team member in ProjectA might have permissions to resources that are different from those of a Contributor team member in ProjectB\. A team member can have only one role in a project\. After you've added a team member, he or she can interact immediately with your project at the level defined by the role\. 
 
 Benefits of AWS CodeStar roles and team membership include:
-
 + You do not have to manually configure permissions in IAM for your team members\. 
-
 + You can easily change a team member's level of access to a project\.
-
 + Users can access project dashboards in the AWS CodeStar console only if they are team members\. 
-
 + User access to a project is defined by the role in that project\. A user can have a different role in another project\.
 
 For more information about teams and AWS CodeStar roles, see [Working with AWS CodeStar Teams](working-with-teams.md) and [Working with Your AWS CodeStar User Profile ](working-with-user-info.md)\.
@@ -21,7 +17,7 @@ Adding a team member does not affect that team member's access to any resources 
 Anyone who has access to an AWS CodeStar project may be able to use the AWS CodeStar console to access resources that are outside of AWS but are related to that project\.  
 Adding a team member to a project does not automatically allow that member to participate in any related AWS Cloud9 development environments for the project\. To allow a team member to participate in a shared environment, see [Share an AWS Cloud9 Environment with a Project Team Member](setting-up-ide-cloud9.md#setting-up-ide-cloud9-share)\.
 
-
+**Topics**
 + [Add a Team Member Using the AWS CodeStar Console](#how-to-add-team-member-console)
 + [Add and View Team Members Using the AWS CLI](#how-to-add-team-member-cli)
 
@@ -40,7 +36,6 @@ You can add a team member to your project in the AWS CodeStar console\. If an IA
 1. On the **Team members** page, choose **Add team member**\.
 
 1. In **Choose user**, do one of the following: 
-
    + If an IAM user already exists for the person you want to add, choose the IAM user name from the list\. 
 **Note**  
 Users who have already been added to another AWS CodeStar project will appear in the **AWS CodeStar users from other projects** list\.
@@ -51,7 +46,6 @@ You cannot provide or change the display name or email information for an IAM us
 
      Choose **Add**\.  
 ![\[Adding an existing IAM user to the team for a project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-add.png)
-
    + If an IAM user does not exist for the person you want to add to the project, choose **Create new IAM user**\. Fill in the IAM user name, AWS CodeStar display name, email address, and project role you want to apply to this new user, and choose **Create**\.   
 ![\[Creating a new IAM user to add to the team for a project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-add-new.png)
 
@@ -60,13 +54,9 @@ You cannot provide or change the display name or email information for an IAM us
 For ease of management, at least one user should have the **Owner** role for the project\.
 
 1. Send the new team member the following information:
-
    + Connection information for your AWS CodeStar project\.
-
    + If the source code is stored in AWS CodeCommit, [Instructions for setting up access with Git credentials](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) to the AWS CodeCommit repository from their local computers\.
-
    + Information about how the user can manage their display name, email address, and public Amazon EC2 SSH key, as described in [Working with Your AWS CodeStar User Profile ](working-with-user-info.md)\.
-
    + One\-time password and connection information, if the user is new to AWS and you created an IAM user for that person\. The password will expire the first time the user logs on\. The user must choose a new password\.
 
 ## Add and View Team Members Using the AWS CLI<a name="how-to-add-team-member-cli"></a>
@@ -92,7 +82,7 @@ You can add team members to your project team using the AWS CLI\. You can also v
 1. Run the list\-team\-members command, including the `--project-id`\. For example:
 
    ```
-   aws codestar associate-team-member --project-id my-first-projec
+   aws codestar list-team-members --project-id my-first-projec
    ```
 
    This command returns output similar to the following:

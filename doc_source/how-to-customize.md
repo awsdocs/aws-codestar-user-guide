@@ -4,7 +4,7 @@ You can customize your project dashboard by adding, removing, and moving tiles\.
 
 ![\[A customized project dashboard in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-customized-dashboard.png)
 
-
+**Topics**
 + [Add, Remove, or Move Tiles on Your Dashboard](#how-to-customize-order)
 + [Add a Project Extension to Your Dashboard](#how-to-customize-extensions)
 + [Customize the Team Wiki Tile](#how-to-customize-tile)
@@ -14,11 +14,8 @@ You can customize your project dashboard by adding, removing, and moving tiles\.
 You can change the appearance of your project dashboard by adding tiles, removing tiles, or changing the order and position of tiles on your dashboard\.
 
 To change the appearance of your project dashboard, do one or more of the following:
-
 + To add a tile, on the project dashboard, choose **Add tile** and choose the tile from the list\. You can only add one of each type of tile\.
-
 + To remove a tile, on the project dashboard, choose the ellipsis menu on the tile, and then choose **Remove from dashboard**\.
-
 + To change the position of a tile on the dashboard, drag it to the position where you want it to appear\.
 
 ## Add a Project Extension to Your Dashboard<a name="how-to-customize-extensions"></a>
@@ -30,15 +27,12 @@ To add a project extension to your dashboard, on the navigation bar for your pro
 To set up an extension that is displayed on your dashboard, choose the connect button or command on the extension\. Then follow the on\-screen instructions to complete setup\.
 
 To remove an extension that is displayed on your dashboard, do one of the following:
-
 + Choose the ellipsis menu on the extension you want to remove, and then choose **Remove from Dashboard**\.
-
 + On the navigation bar for your project, choose **Extensions**\. Then choose **Hide from dashboard** next to the extension you want to remove\.
 
 ## Customize the Team Wiki Tile<a name="how-to-customize-tile"></a>
 
 Each AWS CodeStar project includes a customizable team wiki tile\. You can change the name of this tile as well as its contents\. You can use this customizable tile to share links to team resources or highlight code samples\. Every project team member can view this tile, but only team members who are assigned a Contributor or Owner role can modify its contents\. This tile supports both plain text and [CommonMark](http://commonmark.org/help/) content, with the following differences:
-
 + You can highlight programming language syntax in code blocks\. To do this, specify the language, followed by the code\. For example, for JavaScript:
 
   ```
@@ -48,7 +42,6 @@ Each AWS CodeStar project includes a customizable team wiki tile\. You can chang
   }
   ```
   ```
-
 + Inline embedding of images is not supported\.
 
 **Note**  

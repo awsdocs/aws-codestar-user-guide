@@ -17,7 +17,7 @@ Any AWS Cloud9 development environments created with the AWS CodeStar console\. 
 To delete all project resources along with the project, select the **Delete associated resources along with AWS CodeStar project** check box\. If you clear this option, the project will be deleted in AWS CodeStar, and the project roles that enabled access to those resources will be deleted in IAM, but all other resources will be retained\. You might continue to incur charges for these resources in AWS\. If you decide you no longer want one or more of these resources, you must manually delete them\. For more information about manually deleting resources after a project has been deleted, see [Project deletion: An AWS CodeStar project was deleted, but resources still exist](troubleshooting.md#troubleshooting-pd1)\.  
 If you decide to keep resources when deleting a project, as a best practice, copy the list of resources from the project details page before you delete an AWS CodeStar project\. This way, you will have a record of all resources that you have kept, even though the project no longer exists\.
 
-
+**Topics**
 + [Delete a Project in AWS CodeStar Using the Console](#how-to-delete-project-console)
 + [Delete a Project in AWS CodeStar Using the AWS CLI](#how-to-delete-project-cli)
 

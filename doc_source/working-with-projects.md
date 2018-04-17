@@ -1,13 +1,9 @@
 # Working with Projects in AWS CodeStar<a name="working-with-projects"></a>
 
  When you use an AWS CodeStar project template, you can quickly create a project that is already configured with the resources you need, including: 
-
 + Source repository\.
-
 + Build environment\.
-
 + Deployment and hosting resources\.
-
 + Programming language\.
 
 The template even includes sample source code so you can start working with your project right away\. 

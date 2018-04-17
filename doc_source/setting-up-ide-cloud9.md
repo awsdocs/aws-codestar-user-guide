@@ -4,7 +4,7 @@ You can use AWS Cloud9 to make code changes and develop software in an AWS CodeS
 
 You can use the AWS CodeStar console or AWS Cloud9 console to create AWS Cloud9 development environments for projects that store their code in AWS CodeCommit\. For AWS CodeStar projects that store their code in GitHub, you can only use the AWS Cloud9 console\. This topic describes how to use both consoles\.
 
-
+**Topics**
 + [Create an AWS Cloud9 Environment for a Project](#setting-up-ide-cloud9-create)
 + [Open an AWS Cloud9 Environment for a Project](#setting-up-ide-cloud9-open)
 + [Share an AWS Cloud9 Environment with a Project Team Member](#setting-up-ide-cloud9-share)
@@ -17,12 +17,10 @@ You can use the AWS CodeStar console or AWS Cloud9 console to create AWS Cloud9 
 You can create an AWS Cloud9 development environment for an existing or new project in AWS CodeStar, as follows: 
 
 1. Do one of the following:
-
    + If you have an existing project, open the project in the AWS CodeStar console\. On the side navigation bar, choose **IDE**\. Choose **Create new environment**, and then skip ahead to step 2 in this procedure\.
 **Important**  
 If the project's source code is stored in GitHub, you won't see **IDE** on the side navigation bar\. However, you can use the AWS Cloud9 console to create a development environment, open the new environment, and then connect it to the existing project's GitHub repository\. To do this, skip the rest of this procedure and see [Use GitHub with AWS Cloud9](#setting-up-ide-cloud9-github)\.  
 If the project is in an AWS Region where AWS Cloud9 isn't supported, you won't see **IDE** on the side navigation bar\. However, you can use the AWS Cloud9 console to create a development environment, open the new environment, and then connect it to the existing project's AWS CodeCommit repository\. To do this, skip the rest of this procedure and see [Creating an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/create-environment.html), [Opening an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/open-environment.html), and the [AWS CodeCommit Sample](http://docs.aws.amazon.com/cloud9/latest/user-guide/sample-codecommit.html) in the *AWS Cloud9 User Guide*\. See also the list of supported AWS Regions for [AWS Cloud9](http://docs.aws.amazon.com/general/latest/gr/rande.html#cloud9_region) in the *Amazon Web Services General Reference*\.
-
    + If you have not yet created a project, follow the steps in [Create a Project](how-to-create-project.md)\. When the create project wizard gets to the **Set up tools** page, for **Pick how you want to edit your code**, choose **Cloud9**\. Choose **Next**, and then skip ahead to step 2 in this procedure\.
 **Important**  
 If you choose to store the project's source code in GitHub, on the **Set up tools** page, you will see **Connect to your source repository** instead of **Pick how you want to edit your code**, and there are no options here to choose AWS Cloud9\. However, after AWS CodeStar creates the project, you can use the AWS Cloud9 console to create a development environment, open the new environment, and then connect it to the new project's GitHub repository\. To do this, skip the rest of this procedure and see [Use GitHub with AWS Cloud9](#setting-up-ide-cloud9-github)\.  
@@ -106,11 +104,7 @@ To keep Git from asking for your GitHub user name and password every time you pu
 ## Additional Resources<a name="setting-up-ide-cloud9-more"></a>
 
 For more information about using AWS Cloud9, see the following in the *AWS Cloud9 User Guide*:
-
 + [Tutorial](http://docs.aws.amazon.com/cloud9/latest/user-guide/tutorial.html)
-
 + [Working with Environments](http://docs.aws.amazon.com/cloud9/latest/user-guide/environments.html)
-
 + [Working with the IDE](http://docs.aws.amazon.com/cloud9/latest/user-guide/ide.html)
-
 + [Samples](http://docs.aws.amazon.com/cloud9/latest/user-guide/samples.html)

@@ -8,14 +8,11 @@ The information in this topic applies only to AWS CodeStar projects that store t
 If the AWS CodeStar project stores its source code in AWS CodeCommit, you must install a version of the AWS Toolkit for Eclipse that supports AWS CodeStar\. You must also be a member of the AWS CodeStar project team with the owner or contributor role\.
 
 To use Eclipse, you'll also need:
-
 + An IAM user that has been added to an AWS CodeStar project as a team member\.
-
 + If the AWS CodeStar project stores its source code in AWS CodeCommit, [Git credentials](getting-started.md#git-credentials) \(user name and password\) for the IAM user\.
-
 + Sufficient permissions to install Eclipse and the AWS Toolkit for Eclipse on your local computer\.
 
-
+**Topics**
 + [Step 1: Install AWS Toolkit for Eclipse](#setting-up-ide-ec-install)
 + [Step 2: Import Your AWS CodeStar Project to Eclipse](#setting-up-ide-ec-config)
 + [Step 3: Edit AWS CodeStar Project Code in Eclipse](#setting-up-ide-ec-edit)

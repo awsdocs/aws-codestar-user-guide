@@ -38,7 +38,7 @@ In the [Setting Up AWS CodeStar](setting-up.md) instructions, you attached a pol
 
  This policy statement allows the IAM user to perform all available actions in AWS CodeStar with all available AWS CodeStar resources associated with the AWS account\. This includes creating and deleting projects\. You might not want to give all IAM users this much access\. Instead, you can add IAM users to AWS CodeStar project roles\. The roles grant specific levels of access to AWS CodeStar projects\.
 
-
+**Topics**
 + [AWS CodeStar Project\-Level Policies and Permissions](#access-permissions-proj)
 + [AWS CodeStar Service Role Policy and Permissions](#access-permissions-service-role)
 + [Attach a Policy to an IAM User](#access-permissions-user)
@@ -47,11 +47,8 @@ In the [Setting Up AWS CodeStar](setting-up.md) instructions, you attached a pol
 ## AWS CodeStar Project\-Level Policies and Permissions<a name="access-permissions-proj"></a>
 
 There are three roles in AWS CodeStar projects: Owner, Contributor, and Viewer\. Each role is specific to a project and defined by an IAM managed policy, where *project\-id* is the ID of the AWS CodeStar project \(for example, *my\-first\-projec*\): 
-
 + CodeStar\_*project\-id*\_Owner
-
 + CodeStar\_*project\-id*\_Contributor
-
 + CodeStar\_*project\-id*\_Viewer
 
 **Important**  
@@ -452,7 +449,7 @@ The following specifies any AWS CodeStar project that begins with the name `my-p
 arn:aws:codestar:us-east-2:111111111111:project/my-proj*
 ```
 
-
+**Topics**
 + [Resource Scoping in AWS CodeStar](#access-permissions-resource-scoping)
 + [Projects](#access-permissions-syntax-projects)
 + [Resources](#access-permissions-syntax-resources)
@@ -464,21 +461,15 @@ arn:aws:codestar:us-east-2:111111111111:project/my-proj*
 Some of the permissions in AWS CodeStar cannot be scoped to a resource, but instead must be scoped to all, or the action will fail\. 
 
 The following action cannot be scoped\. It must be set to \*:
-
 + ListProjects
 
 ### Projects<a name="access-permissions-syntax-projects"></a>
 
 Allowed actions include: 
-
 + `CreateProject` to create an AWS CodeStar project\. 
-
 + `DeleteProject` to delete an AWS CodeStar project\.
-
 + `DescribeProject` to describe the attributes of an AWS CodeStar project\.
-
 + `ListProjects` to list all the AWS CodeStar projects\. 
-
 + `UpdateProject` to update the attributes of an AWS CodeStar project\.
 
 The following example allows a specified IAM user to edit the attributes of an AWS CodeStar project, such as its project description:
@@ -501,7 +492,6 @@ The following example allows a specified IAM user to edit the attributes of an A
 ### Resources<a name="access-permissions-syntax-resources"></a>
 
 Allowed actions include:
-
 + `ListResources` to list all the resources for an AWS CodeStar project\.
 
 The following example allows an IAM user who has this policy attached to list resources for a project with the ID *my\-first\-projec*:
@@ -524,13 +514,9 @@ The following example allows an IAM user who has this policy attached to list re
 ### Teams<a name="access-permissions-syntax-teams"></a>
 
 Allowed actions include:
-
 + `AssociateTeamMember` to add a user to an AWS CodeStar project\.
-
 + `DisassociateTeamMember` to remove a user from an AWS CodeStar project\.
-
 + `ListTeamMembers` to list all the users in an AWS CodeStar project\.
-
 + `UpdateTeamMember` to change the team member's attributes in a AWS CodeStar project \(for example, the user's project role\)\. 
 
 The following example allows an IAM user who has this policy attached to add team members to an AWS CodeStar project with the project ID *my\-first\-projec*, but explicitly denies that user the ability to remove team members:
@@ -562,15 +548,10 @@ The following example allows an IAM user who has this policy attached to add tea
 ### Users<a name="access-permissions-syntax-users"></a>
 
 Allowed actions include:
-
 + `CreateUserProfile` to create a user profile in AWS CodeStar\. This profile contains data associated with the user, such as a display name, that appears across all AWS CodeStar projects\.
-
 + `DeleteUserProfile` to delete an AWS CodeStar user profile\.
-
 + `DescribeUserProfile` to retrieve information about an AWS CodeStar user profile\.
-
 + `ListUserProfiles` to list all AWS CodeStar user profiles for an AWS account\.
-
 + `UpdateUserProfile` to update an AWS CodeStar profile for a user\.
 
 The following example allows an IAM user who has this policy attached to list all AWS CodeStar user profiles associated with an AWS account:

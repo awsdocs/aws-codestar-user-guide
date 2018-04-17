@@ -6,7 +6,7 @@ You can upload a public SSH key as part of the public/private key pair you creat
 An AWS CodeStar project owner can grant project owners, contributors, and viewers SSH access to Amazon EC2 instances for the project\. However, only the individual owner, contributor, or viewer can set their own SSH key\. To do this, they must be signed in as the individual owner, contributor, or viewer\.   
 AWS CodeStar does not manage SSH keys for AWS Cloud9 environments\.
 
-
+**Topics**
 + [Manage Your Public Key Using the AWS CodeStar Console](#how-to-add-ec2-key-console)
 + [Manage Your Public Key Using the AWS CLI](#how-to-add-ec2-key-cli)
 + [Connect to Amazon EC2 Instance with Your Private Key](#how-to-add-ec2-key-connect)
@@ -81,9 +81,6 @@ Make sure you have already created an Amazon EC2 key pair\. Then add your key pa
    For the username, use `ubuntu` for projects based on the ASP\.NET Core project template, as those instances use Ubuntu\. For all other projects, use `ec2-user` for the username, as those instances use Amazon Linux\. If you use the wrong username, you will not be able to connect to the instance\.
 
 For more information, see the following resources in the *Amazon EC2 User Guide for Linux Instances*\.
-
 + [Connecting to Your Linux Instance Using SSH](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)
-
 + [Connecting to Your Linux Instance from Windows Using PuTTY](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html)
-
 + [Connecting to Your Linux Instance Using MindTerm](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mindterm.html)
