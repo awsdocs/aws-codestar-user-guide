@@ -37,8 +37,9 @@ Use the AWS CodeStar console to delete a project\.<a name="adh-delete-project"><
 
    Deleting a project can take several minutes\. After it's deleted, the project no longer appears in the list of projects in the AWS CodeStar console\. 
 **Important**  
-By default, when you delete a project, all resources listed under **Project resources** are deleted\. If you clear the check box, the project resources will be retained\. For more information, go [here](#adh-keep-resources)\.   
-If your project uses resources outside of AWS, for example a GitHub repository or issues in Atlassian JIRA, those resources are not deleted, even if the check box is selected\.
+By default, when you delete a project, all resources listed under **Project resources** are deleted\. If you clear the check box, the project resources are retained\. For more information, go [here](#adh-keep-resources)\.   
+If your project uses resources outside of AWS \(for example, a GitHub repository or issues in Atlassian JIRA\), those resources are not deleted, even if you select the check box\.  
+Your project cannot be deleted if any AWS CodeStar managed policies have been manually attached to roles that are not IAM users\. If you have attached your project's managed policies to a federated user's role, you must detach the policy before you can delete the project\. For more information, see [Detach an AWS CodeStar Managed Policy from the Federated User's Role](access-permissions.md#access-permissions-federated-detach-CodeStar)\.
 
 ## Delete a Project in AWS CodeStar Using the AWS CLI<a name="how-to-delete-project-cli"></a>
 

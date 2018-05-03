@@ -7,6 +7,9 @@ The following information might help you troubleshoot common issues in AWS CodeS
 + [Project creation: I see an error when I try to edit Amazon EC2 configuration when creating a project](#troubleshooting-pc2)
 + [Project deletion: An AWS CodeStar project was deleted, but resources still exist](#troubleshooting-pd1)
 + [Team management failure: An IAM user could not be added to a team in an AWS CodeStar project](#troubleshooting-team1)
++ [Access failure: A federated user cannot access an AWS CodeStar project](#troubleshooting-federated1)
++ [Access failure: A federated user cannot access or create an AWS Cloud9 environment](#troubleshooting-federated2)
++ [Access failure: A federated user can create an AWS CodeStar project, but cannot view project resources](#troubleshooting-federated3)
 + [Service role issue: The service role could not be created](#troubleshooting-sr1)
 + [Service role issue: The service role is not valid or missing](#troubleshooting-sr2)
 + [Project role issue: AWS Elastic Beanstalk health status checks fail for instances in an AWS CodeStar project](#troubleshooting-eb-roles)
@@ -91,6 +94,30 @@ To troubleshoot other issues, open the IAM console, choose the user you tried to
 
 For more information, see [Limitations on IAM Entities and Objects](http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html)\. For limits that can be changed, see [AWS Service Limits](http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)\.
 
+## Access failure: A federated user cannot access an AWS CodeStar project<a name="troubleshooting-federated1"></a>
+
+**Problem:** A federated user is unable to see projects in the AWS CodeStar console\.
+
+**Possible fixes:** If you are signed in as a federated user, make sure you have the appropriate managed policy attached to the role you assume to sign in\. For more information, see [Attach Your Project's AWS CodeStar Viewer/Contributor/Owner Managed Policy to the Federated User's Role](access-permissions.md#access-permissions-federated-attach-CodeStar)\.
+
+Add federated users to your AWS Cloud9 environment by manually attaching policies\. See [Attach an AWS Cloud9 Managed Policy to the Federated User's Role](access-permissions.md#access-permissions-federated-attach-Cloud9)\.
+
+## Access failure: A federated user cannot access or create an AWS Cloud9 environment<a name="troubleshooting-federated2"></a>
+
+**Problem:** A federated user is unable to see or create an AWS Cloud9 environment in the AWS Cloud9 console\.
+
+**Possible fixes:** If you are signed in as a federated user, make sure you have the appropriate managed policy attached to the federated user's role\.
+
+You add federated users to your AWS Cloud9 environment by manually attaching policies to the federated user's role\. See [Attach an AWS Cloud9 Managed Policy to the Federated User's Role](access-permissions.md#access-permissions-federated-attach-Cloud9)\.
+
+## Access failure: A federated user can create an AWS CodeStar project, but cannot view project resources<a name="troubleshooting-federated3"></a>
+
+**Problem:** A federated user was able to create a project, but cannot view project resources, such as the project pipeline\.
+
+**Possible fixes:** If you have attached the **AWSCodeStarFullAccess** managed policy, you have permissions to create a project in AWS CodeStar\. However, to access all project resources, you must attach the Owner managed policy\.
+
+After AWS CodeStar creates the project resources, project permissions to all project resources are available in the Owner, Contributer, and Viewer managed policies\. You must manually attach the Owner policy to your role to access all of the resources\. See [Configure Permissions for Federated Users](setting-up.md#setting-up-create-federated-user)\.
+
 ## Service role issue: The service role could not be created<a name="troubleshooting-sr1"></a>
 
 **Problem:** When you try to create a project in AWS CodeStar, you see a message prompting you to create the service role\. When you choose the option to create it, you see an error\.
@@ -119,7 +146,7 @@ For more information, see [Limitations on IAM Entities and Objects](http://docs.
 
 1. On the **Permissions** tab, choose **Attach Policy**\.
 
-1. In the list of policies, select **AWSElasticBeanstalkEnhancedHealth** and **AWSElasticBeanstalkService**\. \(If you cannot easily find a policy in the list, type some or all of the policy's name in the **Search** box\.\)
+1. In the list of policies, select **AWSElasticBeanstalkEnhancedHealth** and **AWSElasticBeanstalkService**\. \(If you cannot easily find a policy in the list, type some or all of the policy's name in the search box\.\)
 
 1. Choose **Attach Policy**\.
 

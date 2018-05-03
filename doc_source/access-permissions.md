@@ -1,6 +1,6 @@
 # AWS CodeStar Access Permissions Reference<a name="access-permissions"></a>
 
- AWS CodeStar uses IAM to control which users have access to AWS CodeStar projects and their resources on your behalf\. When you add an IAM user to a project in a project role, policies and roles are applied to that user\. These policies and roles grant permissions and access to that user based on the project role\. You can use the IAM console to create other policies that assign AWS CodeStar and other permissions to an IAM user\. 
+ You can use AWS CodeStar as an IAM user, a federated user, the root user, or an assumed role\. All user types with the appropriate permissions can manage project permissions to their AWS resources, but AWS CodeStar manages project permissions automatically for IAM users\. IAM policies and roles grant permissions and access to that user based on the project role\. You can use the IAM console to create other policies that assign AWS CodeStar and other permissions to an IAM user\. 
 
 For example, you might want to allow a user to view but not change an AWS CodeStar project\. In this case, you add the IAM user to an AWS CodeStar project with the Viewer role\. Every AWS CodeStar project has a set of policies that help you control access to the project\. In addition, you can control which users have access to AWS CodeStar\.
 
@@ -36,12 +36,29 @@ In the [Setting Up AWS CodeStar](setting-up.md) instructions, you attached a pol
 }
 ```
 
- This policy statement allows the IAM user to perform all available actions in AWS CodeStar with all available AWS CodeStar resources associated with the AWS account\. This includes creating and deleting projects\. You might not want to give all IAM users this much access\. Instead, you can add IAM users to AWS CodeStar project roles\. The roles grant specific levels of access to AWS CodeStar projects\.
+ This policy statement allows the user to perform all available actions in AWS CodeStar with all available AWS CodeStar resources associated with the AWS account\. This includes creating and deleting projects\. You might not want to give all users this much access\. Instead, you can add project\-level permissions using project roles managed by AWS CodeStar\. The roles grant specific levels of access to AWS CodeStar projects and are named as follows: 
++ Owner
++ Contributor
++ Viewer
+
+AWS CodeStar access is handled differently for IAM users and federated users\. Only IAM users can be added to teams\. To grant IAM users permissions to projects, you add the user to the project role by adding them to the team\. To grant federated users permissions to projects, you manually attach the AWS CodeStar project role's managed policy to the federated user's role\. This table summarizes the tools available for each type of access\.
+
+
+****  
+
+| Permissions feature | IAM user | Federated user | Root user | 
+| --- | --- | --- | --- | 
+| SSH key management for remote access for EC2 and Elastic Beanstalk projects | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-checkmark.png) |  |  | 
+| AWS CodeCommit SSH access | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-checkmark.png) |  |  | 
+|  IAM user permissions managed by AWS CodeStar  | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-checkmark.png) |  |  | 
+|  Project permissions managed manually  |  | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-checkmark.png) | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-checkmark.png) | 
+| Users can be added to project as team members | ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-checkmark.png) |  |  | 
 
 **Topics**
 + [AWS CodeStar Project\-Level Policies and Permissions](#access-permissions-proj)
++ [IAM User Access to AWS CodeStar](#access-permissions-user)
++ [Federated User Access to AWS CodeStar](#access-permissions-federated)
 + [AWS CodeStar Service Role Policy and Permissions](#access-permissions-service-role)
-+ [Attach a Policy to an IAM User](#access-permissions-user)
 + [Action and Resource Syntax](#access-permissions-syntax)
 
 ## AWS CodeStar Project\-Level Policies and Permissions<a name="access-permissions-proj"></a>
@@ -199,6 +216,173 @@ The CodeStar\_*project\-id*\_Viewer managed policy allows a user to view a proje
 }
 ...
 ```
+
+## IAM User Access to AWS CodeStar<a name="access-permissions-user"></a>
+
+When you add an IAM user to a project and choose a role for the user, AWS CodeStar applies the appropriate policy to the IAM user automatically\. For IAM users, you don't need to directly attach or manage policies or permissions in IAM\. 
+
+### Add an IAM User to Your AWS CodeStar Project<a name="access-permissions-user-add-CodeStar"></a>
+
+After you create your AWS CodeStar project, grant IAM users access to your project\. As an IAM user with the Owner role in an AWS CodeStar project or the **AWSCodeStarFullAccess** policy applied to your IAM user, you can add other IAM users to the project team\. When you select the project\-level role for the team member, AWS CodeStar attaches the appropriate managed policy to the IAM user based on the role you choose:
++ Owner
++ Contributor
++ Viewer
+
+### Remove an IAM User from Your AWS CodeStar Project<a name="access-permissions-user-remove-CodeStar"></a>
+
+When you delete a project, AWS CodeStar removes the policies that were applied automatically to IAM users that you added as team members\. For IAM users, you don't need to directly detach or manage policies or permissions in IAM\.
+
+### Attach an Inline Policy to an IAM User<a name="access-permissions-user"></a>
+
+When you add a user to a project, AWS CodeStar automatically attaches the managed policy for the project that matches the user's role\. You should not manually attach an AWS CodeStar managed policy for a project to an IAM user\. With the exception of AWSCodeStarFullAccess, we do not recommend that you attach policies that change an IAM user's permissions in an AWS CodeStar project\. If you decide to create and attach your own policies, do the following:
+
+1. Sign in to the AWS Management Console and open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
+
+1. In the IAM console, in the navigation pane, choose **Users**, and then choose the user to which you want to attach additional policies\.
+
+1. On the **Permissions** tab, choose **Add permissions**\. Choose **Attach existing policies directly**, select the policy you want to apply, and then choose **Attach Policy**\.
+
+   For example, if you want to add your own customized policy to a user, choose the policy name from the list of policies\.
+
+1. If you do not want to attach an existing policy but instead want to create your own custom policy, on the **Permissions** tab, choose **Add inline policy**\. Choose **Custom Policy**, and then choose **Select**\.
+
+   In **Policy Name**, type a name for this policy\. In the **Policy Document** box, type a policy that follows this format, and then choose **Apply Policy**:
+
+   ```
+   {
+     "Version": "2012-10-17",
+     "Statement" : [
+       {
+         "Effect" : "Allow",
+         "Action" : [
+           "action-statement"
+         ],
+         "Resource" : [
+           "resource-statement"
+         ]
+       },
+       {
+         "Effect" : "Allow",
+         "Action" : [
+           "action-statement"
+         ],
+         "Resource" : [
+           "resource-statement"
+         ]
+       }
+     ]
+   }
+   ```
+
+   In the preceding statement, for *action\-statement* and *resource\-statement*, specify the AWS CodeStar actions and resources the IAM user is allowed to perform or access\. \(By default, the IAM user does not have permissions unless a corresponding `Allow` statement is explicitly stated\. If you want to specifically deny a permission granted by another policy, such as the policy for an AWS CodeStar role, choose `Deny` instead of Allow\.\) You can add statements as needed\. The following sections describe the format of allowed actions and resources for AWS CodeStar\. Syntax examples are provided in these sections\.
+
+## Federated User Access to AWS CodeStar<a name="access-permissions-federated"></a>
+
+Instead of creating an IAM user or using the root user, you can use user identities from AWS Directory Service, your enterprise user directory, a web identity provider, or IAM users assuming roles\. These are known as *federated users*\.
+
+Grant federated users access to your AWS CodeStar project by manually attaching the managed policies described in [AWS CodeStar Project\-Level Policies and Permissions](#access-permissions-proj) to the user's IAM role\. You wait to attach the Owner, Contributor, or Viewer policy until after AWS CodeStar creates your project resources and IAM roles\. 
+
+**Prerequisites: **
++ You must have set up an identity provider\. For more information, see [Creating IAM Identity Providers](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create)\. For example, have a SAML identity provider set up and AWS authentication set up through the provider\. For more information about SAML federation, see [About SAML 2\.0\-based Federation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml)\.
++ You must have created a role for a federated user to assume when access is requested through an [identity provider](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers)\. An STS trust policy must be attached to the role that allows federated users to assume the role\. For more information, see [Federated Users and Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_access-management#intro-access-roles) in the *IAM User Guide*\.
++ You must have created your AWS CodeStar project and know the project ID\.
+
+For more information about creating a role for identity providers, see [Creating a Role for a Third\-Party Identity Provider \(Federation\)](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp)\.
+
+### Attach the `AWSCodeStarFullAccess` Managed Policy to the Federated User's Role<a name="access-permissions-federated-attach-FullAccess"></a>
+
+Grant a federated user permissions to create a project by attaching the `AWSCodeStarFullAccess` managed policy\. To perform these steps, you must have signed in to the console either as a root user, an IAM administrator user in the account, or an IAM user or federated user with the associated AdministratorAccess managed policy or equivalent\.
+
+**Note**  
+After you create the project, your project Owner permissions are not applied automatically\. Using a role with administrative permissions for your account, attach the Owner managed policy as detailed in [Attach Your Project's AWS CodeStar Viewer/Contributor/Owner Managed Policy to the Federated User's Role](#access-permissions-federated-attach-CodeStar)\.
+
+1. Open the IAM console\. In the navigation pane, choose **Policies**\.
+
+1. Enter `AWSCodeStarFullAccess` in the search field\. The policy name is displayed, with a policy type of **AWS managed**\. You can expand the policy to see the permissions in the policy statement\.
+
+1. Select the circle next to the policy, and then under **Policy actions**, choose **Attach**\.
+
+1. On the **Summary** page, choose the **Attached entities** tab\. Choose **Attach**\.
+
+1. On the **Attach Policy** page, filter for the federated user's role in the search field\. Select the box next to the name of the role and then choose **Attach policy**\. The **Attached entities** tab shows the new attachment\.
+
+### Attach Your Project's AWS CodeStar Viewer/Contributor/Owner Managed Policy to the Federated User's Role<a name="access-permissions-federated-attach-CodeStar"></a>
+
+Grant federated users access to your project by attaching the appropriate Owner, Contributor, or Viewer managed policy to the user's role\. The managed policy gives the appropriate level of permissions\. Unlike IAM users, you need to manually attach and detach managed policies for federated users\. This is equivalent to assigning project permissions to team members in AWS CodeStar\. To perform these steps, you must have signed in to the console either as a root user, an IAM administrator user in the account, or an IAM user or federated user with the associated AdministratorAccess managed policy or equivalent\.
+
+**Prerequisities:**
++ You must have created a role or have an existing role that your federated user assumes\.
++ You must know which level of permissions you want to grant\. The managed policies attached to the Owner, Contributor, and Viewer roles provide role\-based permissions for your project\.
++ Your AWS CodeStar project must have been created\. The managed policy is not available in IAM until the project is created\.
+
+1. Open the IAM console\. In the navigation pane, choose **Policies**\.
+
+1. Enter your project ID in the search field\. The policy name matching your project is displayed, with a policy type of **Customer managed**\. You can expand the policy to see the permissions in the policy statement\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codestar-mgdpolicy-listing.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+
+1. Choose one of these managed policies\. This example attaches a Viewer managed policy\. Select the circle next to the policy, and then under **Policy actions**, choose **Attach**\.
+
+1. On the **Summary** page, choose the **Attached entities** tab\. Choose **Attach**\.
+
+1. On the **Attach Policy** page, filter for the federated user's role in the search field\. Select the box next to the name of the role and then choose **Attach policy**\. The **Attached entities** tab shows the new attachment\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codestar-mgdpolicy-attached-entities.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+
+### Detach an AWS CodeStar Managed Policy from the Federated User's Role<a name="access-permissions-federated-detach-CodeStar"></a>
+
+Before you delete your AWS CodeStar project, you must manually detach any managed policies you attached to a federated user's role\. To perform these steps, you must have signed in to the console either as a root user, an IAM administrator user in the account, or an IAM user or federated user with the associated AdministratorAccess managed policy or equivalent\.
+
+1. Open the IAM console\. In the navigation pane of the console, choose **Policies**\.
+
+1. Enter your project ID in the search field\.
+
+1. Select the circle next to the policy, and then under **Policy actions**, choose **Attach**\.
+
+1. On the **Summary** page, choose the **Attached entities** tab\.
+
+1. Filter for the federated user's role in the search field\. Choose **Detach**\.
+
+### Attach an AWS Cloud9 Managed Policy to the Federated User's Role<a name="access-permissions-federated-attach-Cloud9"></a>
+
+Grant federated users access to your AWS Cloud9 environment by attaching the `AWSCloud9User` managed policy to the user's role\. Unlike IAM users, you must manually attach and detach managed policies for federated users\. To perform these steps, you must have signed in to the console either as a root user, an IAM administrator user in the account, or an IAM user or federated user with the associated AdministratorAccess managed policy or equivalent\.
+
+**Prerequisities:**
++ You must have created a role or have an existing role that your federated user assumes\.
++ You must know which level of permissions you want to grant:
+  + The `AWSCloud9User` managed policy allows the user to do the following:
+    + Create their own AWS Cloud9 development environments\.
+    + Get information about their own environments\.
+    + Change the settings for their own environments\.
+  + The `AWSCloud9Administrator` managed policy allows the user to do the following:
+    + Create environments for themselves or others\.
+    + Get information about environments for themselves or others\.
+    + Delete environments for themselves or others\.
+    + Change the settings of environments for themselves or others\.
+
+1. Open the IAM console\. In the navigation pane of the console, choose **Policies**\.
+
+1. Enter the policy name in the search field\. This example searches for the `AWSCloud9User` managed policy\. The managed policy is displayed, with a policy type of **AWS managed**\. You can expand the policy to see the permissions in the policy statement\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-cloud9-mgdpolicy-listing.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+
+1. Choose one of these managed policies\. This example attaches the `AWSCloud9User` managed policy\. Select the circle next to the policy, and then under **Policy actions**, choose **Attach**\.
+
+1. On the **Summary** page, choose the **Attached entities** tab\. Choose **Attach**\.
+
+1. On the **Attach Policy** page, filter for the federated user's role in the search field\. Choose the box next to the name of the role and then choose **Attach policy**\. The **Attached entities** tab shows the new attachment\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-cloud9-mgdpolicy-attached-entities.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+
+### Detach an AWS Cloud9 Managed Policy from the Federated User's Role<a name="access-permissions-federated-detach-Cloud9"></a>
+
+To remove a federated user's AWS Cloud9 permissions, detach the policy\. To perform these steps, you must have signed in to the console either as a root user, an IAM administrator user in the account, or an IAM user or federated user with the associated AdministratorAccess managed policy or equivalent\.
+
+1. Open the IAM console\. In the navigation pane of the console, choose **Policies**\.
+
+1. Enter your project name in the search field\.
+
+1. Select the circle next to the policy and then under **Policy actions**, choose **Attach**\.
+
+1. On the **Summary** page, choose the **Attached entities** tab\.
+
+1. Filter for the federated user's role in the search field\. Choose **Detach**\.
 
 ## AWS CodeStar Service Role Policy and Permissions<a name="access-permissions-service-role"></a>
 
@@ -372,50 +556,6 @@ This role is created for you the first time you create a project in AWS CodeStar
   ]
 }
 ```
-
-## Attach a Policy to an IAM User<a name="access-permissions-user"></a>
-
-When you add a user to a project, AWS CodeStar automatically attaches the managed policy for the project that matches the user's role\. You should not manually attach an AWS CodeStar managed policy for a project to an IAM user\. With the exception of AWSCodeStarFullAccess, we do not recommend that you attach policies that change an IAM user's permissions in an AWS CodeStar project\. If you decide to create and attach your own policies, do the following:
-
-1. Sign in to the AWS Management Console and open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
-
-1. In the IAM console, in the navigation pane, choose **Users**, and then choose the user to which you want to attach additional policies\.
-
-1. On the **Permissions** tab, choose **Add permissions**\. Choose **Attach existing policies directly**, select the policy you want to apply, and then choose **Attach Policy**\.
-
-   For example, if you want to add your own customized policy to a user, choose the policy name from the list of policies\.
-
-1. If you do not want to attach an existing policy but instead want to create your own custom policy, on the **Permissions** tab, choose **Add inline policy**\. Choose **Custom Policy**, and then choose **Select**\.
-
-   In **Policy Name**, type a name for this policy\. In the **Policy Document** box, type a policy that follows this format, and then choose **Apply Policy**:
-
-   ```
-   {
-     "Version": "2012-10-17",
-     "Statement" : [
-       {
-         "Effect" : "Allow",
-         "Action" : [
-           "action-statement"
-         ],
-         "Resource" : [
-           "resource-statement"
-         ]
-       },
-       {
-         "Effect" : "Allow",
-         "Action" : [
-           "action-statement"
-         ],
-         "Resource" : [
-           "resource-statement"
-         ]
-       }
-     ]
-   }
-   ```
-
-   In the preceding statement, for *action\-statement* and *resource\-statement*, specify the AWS CodeStar actions and resources the IAM user is allowed to perform or access\. \(By default, the IAM user does not have permissions unless a corresponding `Allow` statement is explicitly stated\. If you want to specifically deny a permission granted by another policy, such as the policy for an AWS CodeStar role, choose `Deny` instead of Allow\.\) You can add statements as needed\. The following sections describe the format of allowed actions and resources for AWS CodeStar\. Syntax examples are provided in these sections\.
 
 ## Action and Resource Syntax<a name="access-permissions-syntax"></a>
 

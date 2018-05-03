@@ -13,5 +13,5 @@ The following table describes limits in AWS CodeStar\. AWS CodeStar depends on o
 | Team members in an AWS CodeStar project | 100 | 
 | Display name in a user profile | Any combination of characters between 1 and 100 characters in length\. Display names must include at least one character\. That character cannot be a space\. Display names cannot begin or end with a space\. | 
 | Email address in a user profile | The email address must include an @ and end in a valid domain extension\. | 
-| Federated access, root account access, or temporary access to AWS CodeStar | AWS CodeStar only supports IAM users\. AWS CodeStar does not support federated users or temporary access credentials\. Using AWS CodeStar with a root account is not recommended\. | 
+| Federated access, root account access, or temporary access to AWS CodeStar | AWS CodeStar supports federated users and use of temporary access credentials\. Using AWS CodeStar with a root account is not recommended\. | 
 | IAM roles | A maximum of 5,120 characters in any managed policy that is attached to an IAM role\. | 

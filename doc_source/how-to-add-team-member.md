@@ -15,7 +15,8 @@ To add a team member to a project, you must either have the AWS CodeStar Owner r
 **Important**  
 Adding a team member does not affect that team member's access to any resources that are outside of AWS, for example a GitHub repository or issues in Atlassian JIRA\. Those access permissions are controlled by the resource provider, not AWS CodeStar\. For more information, consult the resource provider's documentation\.  
 Anyone who has access to an AWS CodeStar project may be able to use the AWS CodeStar console to access resources that are outside of AWS but are related to that project\.  
-Adding a team member to a project does not automatically allow that member to participate in any related AWS Cloud9 development environments for the project\. To allow a team member to participate in a shared environment, see [Share an AWS Cloud9 Environment with a Project Team Member](setting-up-ide-cloud9.md#setting-up-ide-cloud9-share)\.
+Adding a team member to a project does not automatically allow that member to participate in any related AWS Cloud9 development environments for the project\. To allow a team member to participate in a shared environment, see [Share an AWS Cloud9 Environment with a Project Team Member](setting-up-ide-cloud9.md#setting-up-ide-cloud9-share)\.  
+Granting federated user access to a project involves manually attaching the AWS CodeStar Owner, Contributor, or Viewer managed policy to the role assumed by the federated user\. For more information, see [Federated User Access to AWS CodeStar](access-permissions.md#access-permissions-federated)\.
 
 **Topics**
 + [Add a Team Member Using the AWS CodeStar Console](#how-to-add-team-member-console)

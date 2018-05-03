@@ -9,15 +9,28 @@ AWS CodeDeploy has three deployment options that allow you to shift traffic to v
 + **Linear: **Traffic is shifted in equal increments with an equal number of minutes between each increment\. You can choose from predefined linear options that specify the percentage of traffic shifted in each incrememnt and the number of minutes between each increment\. Traffic is shifted in equal increments with an equal number of minutes between each increment\. You can choose from predefined linear options that specify the percentage of traffic shifted in each increment and the number of minutes between each increment\.
 + **All\-at\-once: **All traffic is shifted from the original Lambda function to the updated Lambda function version at once\.
 
-**Prerequisites: **
 
-You can start with an existing serverless project in AWS CodeStar, or you can create a new serverless project in AWS CodeStar and then complete these steps\. To create a serverless project, when selecting the template in AWS CodeStar, select any template with the Lambda compute platform\.
+****  
 
-In this section, you modify an existing AWS CodeStar serverless project by editing the AWS Serverless Application Model \(AWS SAM\) template to create an updated Lambda function version and shift traffic to your updated Lambda function version\. In this section, you also add the required permissions for your AWS CodeStar Worker role to create the AWS CodeDeploy service role and deployment resources\.
+| Deployment Preference Type | 
+| --- | 
+| Canary10Percent30Minutes | 
+| Canary10Percent5Minutes | 
+| Canary10Percent10Minutes | 
+| Canary10Percent15Minutes | 
+| Linear10PercentEvery10Minutes | 
+| Linear10PercentEvery1Minute | 
+| Linear10PercentEvery2Minutes | 
+| Linear10PercentEvery3Minutes | 
+| AllAtOnce | 
 
 For more information about AWS CodeDeploy deployments on an AWS Lambda compute platform, see [Deployments on an AWS Lambda Compute Platform](http://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-steps.html#deployment-steps-lambda)\.
 
 For more information about AWS SAM, see [AWS Serverless Application Model \(AWS SAM\)](https://github.com/awslabs/serverless-application-model) on GitHub\.
+
+**Prerequisites: **
+
+You can start with an existing serverless project in AWS CodeStar, or you can create a new serverless project in AWS CodeStar and then complete these steps\. To create a serverless project, when selecting the template in AWS CodeStar, select any template with the Lambda compute platform\.
 
 **Topics**
 
@@ -27,15 +40,15 @@ For more information about AWS SAM, see [AWS Serverless Application Model \(AWS 
 
 1. Choose your existing serverless project and then open the **Code** page\. In the top level of your repository, note the location of the SAM template named `template.yml` to be modified\.
 
-1. Open the `template.yml` file in your IDE or local repository\. Add a new `Globals` section by copying this text\. The sample text in this tutorial chooses the AllAtOnce option\.
+1. Open the `template.yml` file in your IDE or local repository\. Add a new `Globals` section by copying this text\. The sample text in this tutorial chooses the Canary10Percent5Minutes option\.
 
    ```
    Globals:
      Function:
-       AutoPublishAlias: Live
+       AutoPublishAlias: live
        DeploymentPreference: 
-         Enabled: True
-         Type: AllAtOnce
+         Enabled: true
+         Type: Canary10Percent5Minutes
    ```
 
    This example shows a modified template after the `Globals` section has been added:  
@@ -62,106 +75,106 @@ Your service role has this name: `CodeStarWorkerCloudFormationRolePolicy`\.
 1. Add the following policy statements in the **JSON** box within the `Statement` element\. Replace the *region* and *id* placeholders with your region and account ID\.
 
    ```
-           {
-   			"Action": [
-   				"s3:GetObject",
-   				"s3:GetObjectVersion",
-   				"s3:GetBucketVersioning"
-   			],
-   			"Resource": "*",
-   			"Effect": "Allow"
-   		},
-   		{
-   			"Action": [
-   				"s3:PutObject"
-   			],
-   			"Resource": [
-   				"arn:aws:s3:::codepipeline*"
-   			],
-   			"Effect": "Allow"
-   		},
-   		{
-   			"Action": [
-   				"lambda:*"
-   			],
-   			"Resource": [
-   				"arn:aws:lambda:region:id:function:*"
-   			],
-   			"Effect": "Allow"
-   		},
-   		{
-   			"Action": [
-   				"apigateway:*"
-   			],
-   			"Resource": [
-   				"arn:aws:apigateway:region::*"
-   			],
-   			"Effect": "Allow"
-   		},
-   		{
-   			"Action": [
-   				"iam:GetRole",
-   				"iam:CreateRole",
-   				"iam:DeleteRole",
-   				"iam:PutRolePolicy"
-   			],
-   			"Resource": [
-   				"arn:aws:iam::id:role/*"
-   			],
-   			"Effect": "Allow"
-   		},
-   		{
-   			"Action": [
-   				"iam:AttachRolePolicy",
-   				"iam:DeleteRolePolicy",
-   				"iam:DetachRolePolicy"
-   			],
-   			"Resource": [
-   				"arn:aws:iam::id:role/*"
-   			],
-   			"Effect": "Allow"
-   		},
-   		{
-   			"Action": [
-   				"iam:PassRole"
-   			],
-   			"Resource": [
-   				"*"
-   			],
-   			"Effect": "Allow"
-   		},
-   		{
-   			"Action": [
-   				"codedeploy:CreateApplication",
-   				"codedeploy:DeleteApplication",
-   				"codedeploy:RegisterApplicationRevision"
-   			],
-   			"Resource": [
-   				"arn:aws:codedeploy:region:id:application:*"
-   			],
-   			"Effect": "Allow"
-   		},
-   		{
-   			"Action": [
-   				"codedeploy:CreateDeploymentGroup",
-   				"codedeploy:CreateDeployment",
-                             "codedeploy:DeleteDeploymentGroup",
-   				"codedeploy:GetDeployment"
-   			],
-   			"Resource": [
-   				"arn:aws:codedeploy:region:id:deploymentgroup:*"
-   			],
-   			"Effect": "Allow"
-   		},
-   		{
-   			"Action": [
-   				"codedeploy:GetDeploymentConfig"
-   			],
-   			"Resource": [
-   				"arn:aws:codedeploy:region:id:deploymentconfig:*"
-   			],
-   			"Effect": "Allow"
-   		}
+   {
+     "Action": [
+       "s3:GetObject",
+       "s3:GetObjectVersion",
+       "s3:GetBucketVersioning"
+     ],
+     "Resource": "*",
+     "Effect": "Allow"
+   },
+   {
+     "Action": [
+       "s3:PutObject"
+     ],
+     "Resource": [
+       "arn:aws:s3:::codepipeline*"
+     ],
+     "Effect": "Allow"
+   },
+   {
+     "Action": [
+       "lambda:*"
+     ],
+     "Resource": [
+       "arn:aws:lambda:region:id:function:*"
+     ],
+     "Effect": "Allow"
+   },
+   {
+     "Action": [
+       "apigateway:*"
+     ],
+     "Resource": [
+       "arn:aws:apigateway:region::*"
+     ],
+     "Effect": "Allow"
+   },
+   {
+     "Action": [
+       "iam:GetRole",
+       "iam:CreateRole",
+       "iam:DeleteRole",
+       "iam:PutRolePolicy"
+     ],
+     "Resource": [
+       "arn:aws:iam::id:role/*"
+     ],
+     "Effect": "Allow"
+   },
+   {
+     "Action": [
+       "iam:AttachRolePolicy",
+       "iam:DeleteRolePolicy",
+       "iam:DetachRolePolicy"
+     ],
+     "Resource": [
+       "arn:aws:iam::id:role/*"
+     ],
+     "Effect": "Allow"
+   },
+   {
+     "Action": [
+       "iam:PassRole"
+     ],
+     "Resource": [
+       "*"
+     ],
+     "Effect": "Allow"
+   },
+   {
+     "Action": [
+       "codedeploy:CreateApplication",
+       "codedeploy:DeleteApplication",
+       "codedeploy:RegisterApplicationRevision"
+     ],
+     "Resource": [
+       "arn:aws:codedeploy:region:id:application:*"
+     ],
+     "Effect": "Allow"
+   },
+   {
+     "Action": [
+       "codedeploy:CreateDeploymentGroup",
+       "codedeploy:CreateDeployment",
+       "codedeploy:DeleteDeploymentGroup",
+       "codedeploy:GetDeployment"
+     ],
+     "Resource": [
+       "arn:aws:codedeploy:region:id:deploymentgroup:*"
+     ],
+     "Effect": "Allow"
+   },
+   {
+     "Action": [
+       "codedeploy:GetDeploymentConfig"
+     ],
+     "Resource": [
+       "arn:aws:codedeploy:region:id:deploymentconfig:*"
+     ],
+     "Effect": "Allow"
+   }
    ```
 
 1. Choose **Review policy** to ensure the policy contains no errors\. When the policy is error\-free, choose **Save changes**\.
@@ -185,7 +198,7 @@ This will start your pipeline\. If you commit the changes before updating IAM pe
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codedeploy-codestar-resources.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codedeploy-codestar-CDservicerole.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
 
-1. In the **Project Resources ** list on the **Project** page in AWS CodeStar, choose the link to the AWS CodeDeploy deployment to view the status of the traffic shifting to the new version\.  
+1. Make a change in your Lambda function in your repository to create a new version\. The new deployment starts and shifts traffic according to the deployment type indicated in the SAM template\. You can view the status of the deployment\. In the **Project Resources ** list on the **Project** page in AWS CodeStar, choose the link to the AWS CodeDeploy deployment to view the status of the traffic shifting to the new version\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codedeploy-shifting-status.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
 
 1. Choose the link to the AWS CodeDeploy deployment group to view details on each revision under **Revisions**\.  

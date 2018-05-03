@@ -188,7 +188,7 @@ In this step, you will make a change to the code and then push that change to yo
 
 The following instructions show how to make a basic change to the sample\. <a name="git-credentials"></a><a name="getting-started-git-credentials"></a>
 
-**To set up your computer to commit changes**
+**To set up your computer to commit changes \(IAM User\)**
 **Note**  
 This procedure assumes that your project's code is stored in an AWS CodeCommit repository\. For other types of code repositories, see the repository provider's documentation, and then skip ahead to the next procedure, "[To clone the project repository and make a change](#clone-repo)\."  
 If the code is stored in AWS CodeCommit, and you are already using AWS CodeCommit or you used the AWS CodeStar console to create an AWS Cloud9 development environment for the project, you don't need more configuration\. Skip ahead to the next procedure, "[To clone the project repository and make a change](#clone-repo)\."
@@ -211,9 +211,28 @@ You cannot choose your own user name or password for Git credentials\. For more 
 
    After you have saved your credentials, choose **Close**\.
 **Important**  
-This is your only chance to save the user name and password\. If you do not save them, you can copy the user name from the IAM console, but you cannot look up the password\. You must reset the password and then save it\.<a name="clone-repo"></a><a name="getting-started-clone-repo"></a>
+This is your only chance to save the user name and password\. If you do not save them, you can copy the user name from the IAM console, but you cannot look up the password\. You must reset the password and then save it\.
 
-**To clone the project repository and make a change**
+**To set up your computer to commit changes \(Federated User\)**
+
+You can use the console to upload files to your repository, or you can connect from your local computer using Git\. If you are using federated access, follow these steps to connect to and clone your repository from your local computer using Git\.
+**Note**  
+This procedure assumes that your project's code is stored in an AWS CodeCommit repository\. For other types of code repositories, see the repository provider's documentation, and then skip ahead to the next procedure, "[To clone the project repository and make a change](#clone-repo)\."
+
+1. [Install Git](https://git-scm.com/downloads) on your local computer\.
+
+1. [Install the AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)\.
+
+1. Configure your temporary security credentials for a federated user\. To learn how to do this, see [Temporary Access to AWS CodeCommit Repositories](http://docs.aws.amazon.com/codecommit/latest/userguide/temporary-access.html)\. For more information about temporary credentials, see [Permissions for GetFederationToken](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_getfederationtoken.html)\. Temporary credentials consist of the following:
+   + AWS access key
+   + AWS secret key
+   + Session token
+
+1. Connect to your repository using the AWS CLI credential helper\. For information, see [Setup Steps for HTTPS Connections to AWS CodeCommit Repositories on Linux, macOS, or Unix with the AWS CLI Credential Helper](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html) or [Setup Steps for HTTPS Connections to AWS CodeCommit Repositories on Windows with the AWS CLI Credential Helper](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-windows.html) 
+
+1. The following example provides the steps to connect to an AWS CodeCommit repository and push a commit to it\.<a name="clone-repo"></a><a name="getting-started-clone-repo"></a>
+
+**Example: To clone the project repository and make a change**
 **Note**  
 This procedure shows how to clone the project's code repository to your computer, make a change to the project's `index.html` file, and then push your change to the remote repository\. This procedure assumes that your project's code is stored in an AWS CodeCommit repository and that you're using a Git client from the command line\. For other types of code repositories or tools, see the provider's documentation for how to clone the repository, change the file, and then push the code\.
 
@@ -319,8 +338,9 @@ Congratulations\! You've finished the Getting Started walkthrough for AWS CodeSt
 
    Deleting a project can take several minutes\. After it's deleted, the project no longer appears in the list of projects in the AWS CodeStar console\. 
 **Important**  
-By default, when you delete a project, all resources listed under **Project resources** are deleted\. If you clear the check box, the project resources will be retained\. For more information, go [here](how-to-delete-project.md#adh-keep-resources)\.   
-If your project uses resources outside of AWS, for example a GitHub repository or issues in Atlassian JIRA, those resources are not deleted, even if the check box is selected\.
+By default, when you delete a project, all resources listed under **Project resources** are deleted\. If you clear the check box, the project resources are retained\. For more information, go [here](how-to-delete-project.md#adh-keep-resources)\.   
+If your project uses resources outside of AWS \(for example, a GitHub repository or issues in Atlassian JIRA\), those resources are not deleted, even if you select the check box\.  
+Your project cannot be deleted if any AWS CodeStar managed policies have been manually attached to roles that are not IAM users\. If you have attached your project's managed policies to a federated user's role, you must detach the policy before you can delete the project\. For more information, see [Detach an AWS CodeStar Managed Policy from the Federated User's Role](access-permissions.md#access-permissions-federated-detach-CodeStar)\.
 
 ## Step 8: Ready Your Project for a Production Environment<a name="getting-started-production-ready"></a>
 
