@@ -283,11 +283,11 @@ Instead of creating an IAM user or using the root user, you can use user identit
 Grant federated users access to your AWS CodeStar project by manually attaching the managed policies described in [AWS CodeStar Project\-Level Policies and Permissions](#access-permissions-proj) to the user's IAM role\. You wait to attach the Owner, Contributor, or Viewer policy until after AWS CodeStar creates your project resources and IAM roles\. 
 
 **Prerequisites: **
-+ You must have set up an identity provider\. For more information, see [Creating IAM Identity Providers](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create)\. For example, have a SAML identity provider set up and AWS authentication set up through the provider\. For more information about SAML federation, see [About SAML 2\.0\-based Federation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml)\.
-+ You must have created a role for a federated user to assume when access is requested through an [identity provider](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers)\. An STS trust policy must be attached to the role that allows federated users to assume the role\. For more information, see [Federated Users and Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_access-management#intro-access-roles) in the *IAM User Guide*\.
++ You must have set up an identity provider\. For more information, see [Creating IAM Identity Providers](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create.html)\. For example, have a SAML identity provider set up and AWS authentication set up through the provider\. For more information about SAML federation, see [About SAML 2\.0\-based Federation](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html)\.
++ You must have created a role for a federated user to assume when access is requested through an [identity provider](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html)\. An STS trust policy must be attached to the role that allows federated users to assume the role\. For more information, see [Federated Users and Roles](http://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_access-management.html#intro-access-roles) in the *IAM User Guide*\.
 + You must have created your AWS CodeStar project and know the project ID\.
 
-For more information about creating a role for identity providers, see [Creating a Role for a Third\-Party Identity Provider \(Federation\)](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp)\.
+For more information about creating a role for identity providers, see [Creating a Role for a Third\-Party Identity Provider \(Federation\)](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp.html)\.
 
 ### Attach the `AWSCodeStarFullAccess` Managed Policy to the Federated User's Role<a name="access-permissions-federated-attach-FullAccess"></a>
 

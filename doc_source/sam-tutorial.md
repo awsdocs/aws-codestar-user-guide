@@ -350,12 +350,12 @@ In this step, you use your local workstation to add a test that AWS CodeStar run
    
      build:
        commands:
-         - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.json
+         - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.yml
    
    artifacts:
      type: zip
      files:
-       - template-export.json
+       - template-export.yml
    ```
 
    This build specification instructs AWS CodeBuild to install pytest, the Python test framework, into its build environment\. AWS CodeBuild uses pytest to run the unit test\. The rest of the build specification is the same as before\.
