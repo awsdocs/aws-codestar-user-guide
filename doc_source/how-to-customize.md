@@ -11,28 +11,28 @@ You can customize your project dashboard by adding, removing, and moving tiles\.
 
 ## Add, Remove, or Move Tiles on Your Dashboard<a name="how-to-customize-order"></a>
 
-You can change the appearance of your project dashboard by adding tiles, removing tiles, or changing the order and position of tiles on your dashboard\.
+You can change the appearance of your project dashboard by adding, removing, or changing the order and position of tiles on your dashboard\.
 
-To change the appearance of your project dashboard, do one or more of the following:
-+ To add a tile, on the project dashboard, choose **Add tile** and choose the tile from the list\. You can only add one of each type of tile\.
-+ To remove a tile, on the project dashboard, choose the ellipsis menu on the tile, and then choose **Remove from dashboard**\.
+To change the appearance of your project dashboard:
++ To add a tile, on the project dashboard, choose **Add tile** and choose the tile from the list\. You can add only one of each type of tile\.
++ To remove a tile, on the project dashboard, choose the ellipsis \(**…**\) on the tile, and then choose **Remove from dashboard**\.
 + To change the position of a tile on the dashboard, drag it to the position where you want it to appear\.
 
 ## Add a Project Extension to Your Dashboard<a name="how-to-customize-extensions"></a>
 
 AWS CodeStar includes extensions that add tiles and functionality to your dashboard\. For example, you can configure the JIRA extension to add and configure a JIRA tile for your project dashboard\. 
 
-To add a project extension to your dashboard, on the navigation bar for your project, choose **Extensions**\. Then choose **Show on dashboard** next to the extension you want to add\.
+To add a project extension to your dashboard, on the navigation bar for your project, choose **Extensions**\. Next to the extension you want to add, choose **Show on dashboard**\.
 
-To set up an extension that is displayed on your dashboard, choose the connect button or command on the extension\. Then follow the on\-screen instructions to complete setup\.
+To set up an extension that is displayed on your dashboard, choose the connect button or command on the extension, and then follow instructions to complete setup\.
 
-To remove an extension that is displayed on your dashboard, do one of the following:
-+ Choose the ellipsis menu on the extension you want to remove, and then choose **Remove from Dashboard**\.
-+ On the navigation bar for your project, choose **Extensions**\. Then choose **Hide from dashboard** next to the extension you want to remove\.
+To remove an extension that is displayed on your dashboard:
++ Choose the ellipsis \(**…**\) on the extension you want to remove, and then choose **Remove from Dashboard**\.
++ On the navigation bar for your project, choose **Extensions**\. Next to the extension you want to remove, choose **Hide from dashboard**\.
 
 ## Customize the Team Wiki Tile<a name="how-to-customize-tile"></a>
 
-Each AWS CodeStar project includes a customizable team wiki tile\. You can change the name of this tile as well as its contents\. You can use this customizable tile to share links to team resources or highlight code samples\. Every project team member can view this tile, but only team members who are assigned a Contributor or Owner role can modify its contents\. This tile supports both plain text and [CommonMark](http://commonmark.org/help/) content, with the following differences:
+Each AWS CodeStar project includes a customizable team wiki tile\. You can change the name and contents of this tile\. You can use this customizable tile to share links to team resources or highlight code samples\. Every project team member can view this tile, but only team members who are assigned a contributor or owner role can modify its contents\. This tile supports both plain text and [CommonMark](http://commonmark.org/help/) content, with the following differences:
 + You can highlight programming language syntax in code blocks\. To do this, specify the language, followed by the code\. For example, for JavaScript:
 
   ```
@@ -51,11 +51,11 @@ Do not use this tile to store confidential data\.
 
 1. Open the AWS CodeStar console at [https://console\.aws\.amazon\.com/codestar/](https://console.aws.amazon.com/codestar/)\.
 
-   Choose the project from the list of projects\.
+   Choose the project\.
 
-1. In the project dashboard, choose the ellipsis button for the project information tile, and then choose **Edit**\. 
+1. In the project dashboard, choose the ellipsis \(**…**\) for the project information tile, and then choose **Edit**\. 
 
-1. In **Markdown Editor**, enter the new tile name in **Title**\. In **Markdown content**, add plain text or [CommonMark](http://commonmark.org/help/) content\. For example, you could add a link to your team project wiki or other content\.
+1. In **Markdown Editor**, in **Title**, enter a new tile name\. In **Markdown content**, add plain text or [CommonMark](http://commonmark.org/help/) content\. For example, you could add a link to your team project wiki or other content\.
 
    Choose **Save**\.
 

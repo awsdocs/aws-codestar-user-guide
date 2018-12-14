@@ -1,12 +1,12 @@
 # Working with Project Tags in AWS CodeStar<a name="working-with-project-tags"></a>
 
-You can associate tags with projects in AWS CodeStar\. Tags can help you manage your projects\. For example, you could add a tag with a key of `Release` and a value of `Beta` to any project your organization is working on for an upcoming beta release\.
+You can associate tags with projects in AWS CodeStar\. Tags can help you manage your projects\. For example, you might add a tag with a key of `Release` and a value of `Beta` to any project your organization is working on for a beta release\.
 
 ## Add a Tag to a Project<a name="working-with-project-tags-add"></a>
 
 1. With the project open in the AWS CodeStar console, in the navigation pane, choose **Project**\.
 
-1. In the **Tags** area, for **Create new tag**, type the tag's name in the **Key** box\. Then type the tag's value in the **Value** box\.
+1. For **Create new tag**, in **Key**, enter the tag's name\. In **Value**, enter the tag's value\.
 
 1. Choose **Add tag**\.
 
@@ -14,7 +14,7 @@ You can associate tags with projects in AWS CodeStar\. Tags can help you manage 
 
 1. With the project open in the AWS CodeStar console, in the navigation pane, choose **Project**\.
 
-1. In the **Tags** area, for **Current tags**, find the tag you want to remove\.
+1. In **Tags**, for **Current tags**, find the tag you want to remove\.
 
 1. In the **Options** column for that tag, choose **Remove**\.
 **Note**  
@@ -23,7 +23,7 @@ Otherwise, the tag is permanently deleted\.
 
 ## Get a List of Tags for a Project<a name="working-with-project-tags-list"></a>
 
-Use the AWS Command Line Interface \(AWS CLI\) to run the AWS CodeStar `list-tags-for-project` command, specifying the name of the project\. For example:
+Use the AWS CLI to run the AWS CodeStar list\-tags\-for\-project command, specifying the name of the project:
 
 ```
 aws codestar list-tags-for-project --id my-first-projec

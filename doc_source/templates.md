@@ -1,113 +1,117 @@
 # AWS CodeStar Project Templates<a name="templates"></a>
 
-You can use an AWS CodeStar project template to quickly configure AWS CodeStar to support your development project\. These preconfigured AWS CloudFormation templates create projects based on your choices\. They include support for development projects like websites, web services, microservices, Alexa skills, and more\. You can use the search box or the filter bar to find a template\.
+AWS CodeStar project templates allow you to start with a sample application and deploy it using AWS resources created to support your development project\. When you choose an AWS CodeStar project template, the application type, programming language, and compute platform are provisioned for you\. After you create projects with web applications, web services, Alexa skills, and static web pages, you can replace the sample application with your own\.
+
+After AWS CodeStar creates your project, you can modify the AWS resources that support delivery of your application\. AWS CodeStar works with AWS CloudFormation to allow you to use code to create support services and servers/serverless platforms in the cloud\. AWS CloudFormation allows you to model your entire infrastructure in a text file\. 
 
 **Topics**
-+ [How Do I Choose the Right Template?](#templates-choose)
-+ [Web Application](#templates-webapps)
-+ [Web Service](#templates-webservice)
-+ [Amazon Alexa Skill](#templates-alexa)
-+ [Use AWS CodeStar Templates with Built\-in Unit Testing](#templates-unit-testing)
++ [AWS CodeStar Project Files and Resources](#templates-whatis)
++ [Get Started: Choose a Project Template](#templates-choose-template)
++ [How to Make Changes to Your AWS CodeStar Project](#update-project)
 
-## How Do I Choose the Right Template?<a name="templates-choose"></a>
+## AWS CodeStar Project Files and Resources<a name="templates-whatis"></a>
 
-Each AWS CodeStar project template includes the supported programming language in its title and description\. The template name also indicates whether your project is hosted on servers in the cloud \(Amazon EC2, either in a managed application environment \(AWS Elastic Beanstalk\) or that you manage yourself \) or run serverless \(without Amazon EC2 instances, for example on AWS Lambda\)\. If you see two AWS CodeStar project templates that look the same, check the description and the service bar to determine the differences\. 
+An AWS CodeStar project is a combination of source code and the resources created to deploy the code\. The collection of resources that help you build, release, and deploy your code are called *toolchain resources*\. At project creation, an AWS CloudFormation template provisions your toolchain resources in a continuous integration/continuous deployment \(CI/CD\) pipeline\.
 
-After you choose an AWS CodeStar project template, the page displays a list of resources to be created for the project\. All of these resources are configured for you\. You do not have to perform any manual configuration to get started with your project\. If your project template includes Amazon EC2 instances, you can choose **Edit Amazon EC2 Configuration** to modify your configuration\. Some of these choices, such as instance type, might affect the cost of your project\. For more information, see [Create a Project in AWS CodeStar](how-to-create-project.md) and [Pricing](https://aws.amazon.com/codestar/pricing/)\.
+You can use AWS CodeStar to create projects in two ways, depending on your experience level with AWS resource creation: 
++ When you use the console to create a project, AWS CodeStar creates your toolchain resources, including your repository, and populates your repository with sample application code and project files\. Use the console to quickly set up sample projects based on a set of preconfigured project options\. 
++ When you use the CLI to create a project, you provide the AWS CloudFormation template that creates your toolchain resources, and you also provide the application source code\. Use the CLI to allow AWS CodeStar to create your project from your template and then populate your repository with your sample code\.
 
-![\[Editing the configuration details for a project before it's created\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-create-new2a.png)
+An AWS CodeStar project provides a single point of management\. You can use the **Create project** wizard in the console to set up a sample project\. You can then use it as a collaboration platform for managing permissions and resources for your team\. For more information, see [What Is AWS CodeStar?](welcome.md)\. When you use the console to create a project, your source code is provided as sample code, and your CI/CD toolchain resources are created for you 
 
-Many of the AWS CodeStar project templates allow you to choose from a variety of options to host your web application or service in the cloud\. All options offer high availability and scaling\. The option you choose is configured when the project is created\. You don't have to worry about configuring interoperation or setting permissions\. The following table can help you determine the best fit for your software project\.
+When you create a project in the console, AWS CodeStar provisions the following resources:
++ A code repository in GitHub or AWS CodeCommit\.
++ In the project repository, a `README.md` file that provides details of files and directories\.
++ In the project repository, a `template.yml` file that stores the deﬁnition for your application's runtime stack\. You use this file to add or modify project resources that are not toolchain resources, such as AWS resources used for notifications, database support, monitoring, and tracing\.
++ AWS services and resources created in connection with your pipeline, such as the Amazon S3 artifact bucket, Amazon CloudWatch Events, and related service roles\.
++ A working sample application with full source code and a public HTTP endpoint\.
++ An AWS compute resource, based on the AWS CodeStar project template type:
+  + A Lambda function\. 
+  + An Amazon EC2 instance\. 
+  + An AWS Elastic Beanstalk environment\. 
++ Starting December 6, 2018 PDT:
+  + A permissions boundary, which is a specialized IAM policy for controlling access to project resources\. The permissions boundary is attached by default to roles in the sample project\.  \. For more information, see [IAM Permissions Boundary for Worker Roles](access-permissions-proj.md#access-permissions-proj-pb-worker)\.
+  + An AWS CloudFormation IAM role for creating project resources using AWS CloudFormation that includes permissions for all AWS CloudFormation supported resources, including IAM roles\.
+  + A toolchain IAM role\.
+  + Execution roles for Lambda defined in the application stack, which you can modify\.
++ Before December 6, 2018 PDT:
+  + An AWS CloudFormation IAM role for creating project resources with support for a limited set of AWS CloudFormation resources\.
+  + An IAM role for creating an AWS CodePipeline resource\.
+  + An IAM role for creating an AWS CodeBuild resource\.
+  + An IAM role for creating an AWS CodeDeploy resource, if applicable to your project type\.
+  + An IAM role for creating the Amazon EC2 webapp, if applicable to your project type\.
+  + An IAM role for creating a CloudWatch Events resource\.
+  + An execution role for Lambda that is dynamically modified to include a partial set of resources\.
 
+The project also includes an interactive dashboard that shows status, links to team management, links to setup instructions for IDEs or your repository, and a commit history of source code changes in the repository\. You can also select tools for connecting to external issue tracking tools, such as Jira\.
 
-**Which hosting option is right for my AWS CodeStar project?**  
+## Get Started: Choose a Project Template<a name="templates-choose-template"></a>
 
-| [AWS Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/) | Amazon EC2 with [AWS CodeDeploy](https://aws.amazon.com/codedeploy/) | [AWS Lambda](https://aws.amazon.com/lambda/)  | 
-| --- | --- | --- | 
-| Automated deployments to Amazon EC2 instances\. | Automated deployments to Amazon EC2 instances\. | Serverless \(no servers or instances to manage or administer\)\. | 
-| Automated management of capacity and load balancing\. | Flexible deployment to any instance\. | AWS CodeBuild configured to build your artifacts automatically\. | 
-| Team member access to Amazon EC2 instances \(if your project owner allows it\)\. | Team member access to Amazon EC2 instances \(if your project owner allows it\)\. | Amazon API Gateway configured automatically as a Lambda proxy for GET and POST calls\. | 
-| End\-to\-end application management solution\. | Building block service focused on deploying and updating software\. | Code executed in response to events\. | 
+When you choose an AWS CodeStar project in the console, you are choosing from a set of preconfigured options with sample code and resources to get you started quickly\. These options are called *project templates*\. Each AWS CodeStar project template consists of an application type, programming language, and compute platform\. The combination you select determines the project template\.
 
-After your project is created, you can view the sample source code included in your project, including a readme file that provides details of files and directories\. This readme file also includes suggestions for how to get started with the sample code\. 
+### Choose a Template Application Type<a name="templates-choose-template-application"></a>
 
-## Web Application<a name="templates-webapps"></a>
+Each template configures one of the following application types:
++ **Web service**
 
-The AWS CodeStar project templates in this category support development in Ruby, Java, ASP\.NET, PHP, and more\. A source repository and continuous delivery pipeline is configured for you automatically, along with a sample application that you can use to evaluate the AWS CodeStar project\. You can choose AWS services to use for your application\.
+   A web service is used for tasks that run in the background, such as calling APIs\. After AWS CodeStar creates your sample web service project, you can choose the endpoint URL to see "Hello World" output, but the primary use of this application type is not as a user interface \(UI\)\. The AWS CodeStar project templates in this category supports development in Ruby, Java, ASP\.NET, PHP, Node\.js, and more\.
++ **Web application**
 
-All web application projects include the following resources:
-+ A source code repository in AWS CodeCommit or GitHub\.
-+ A continuous deployment pipeline in AWS CodePipeline\. 
-+ A CPU utilization monitor for Amazon EC2 instances \(Amazon EC2 and AWS Elastic Beanstalk projects\) or an Invocations and Errors monitor \(AWS Lambda projects\) in Amazon CloudWatch\.
-+ Project roles and associated policies in IAM\. Policies are applied automatically to IAM users when you add those users to your project team\.
-+ Sample code for your project, including a README\.md with details of the sample\.
+   A web application features a UI\. After AWS CodeStar creates your sample web application project, you can choose the endpoint URL to see an interactive web application\. The AWS CodeStar project templates in this category support development in Ruby, Java, ASP\.NET, PHP, Node\.js, and more\.
++ **Static web page **
 
-If you choose an AWS CodeStar project template that uses Lambda, your project also includes the following resources:
-+ A build server and environment in AWS CodeBuild\. 
-+ A sample function in Lambda\.
-+ A RESTful API that exposes the Lambda function in Amazon API Gateway\.
-+ Roles for job workers in IAM\.
+  Choose this template if you want a project for an HTML website\. The AWS CodeStar project templates in this category support development in HTML5\.
++ **Alexa skill: **
 
-If you chose to create a project with AWS Lambda, you can add resources to your AWS CodeStar project by editing the template\.yaml file that is included in the sample code for Lambda projects\. Configurable resources include:
-+ Applications and deployment groups in AWS CodeDeploy\.
-+ Applications and environments in AWS Elastic Beanstalk\.
-+ Stages and actions in a pipeline in AWS CodePipeline\.
-+ Events in Amazon CloudWatch\.
-+ Build projects in AWS CodeBuild\.
-
-## Web Service<a name="templates-webservice"></a>
-
-This template supports development in Ruby, Java, ASP\.NET, PHP, and more\. A source repository, build server, and continuous delivery pipeline are configured for you automatically, along with CloudWatch metrics\. This template also includes some sample code that you can use to help evaluate the AWS CodeStar project and its resources\. 
-
-All web service projects include the following resources:
-+ A source code repository in AWS CodeCommit or GitHub\.
-+ A continuous deployment pipeline in AWS CodePipeline\. 
-+ A CPU utilization monitor for Amazon EC2 instances \(Amazon EC2 and AWS Elastic Beanstalk projects\) or an Invocations and Errors monitor \(AWS Lambda projects\) in Amazon CloudWatch\.
-+ Sample code for your project, including a README\.md with details of the sample\.
-
-If you choose a AWS CodeStar project template that uses Lambda, your project also includes the following resources:
-+ A build server and environment in AWS CodeBuild \.
-+ A sample function in Lambda\.
-+ A RESTful API that exposes the Lambda function in Amazon API Gateway\.
-+ Roles for job workers in IAM\.
-
-To view application activity in an AWS CodeStar project template that uses Lambda, you must first invoke the function by choosing to visit the host\. The host link appears on the **Continuous deployment** tile of your project\.
-
-If you chose to create a project with AWS Lambda, you can add resources to your AWS CodeStar project by editing the template\.yaml file that is included in the sample code for Lambda projects\. Configurable resources include:
-+ Applications and deployment groups in AWS CodeDeploy\.
-+ Applications and environments in AWS Elastic Beanstalk\.
-+ Stages and actions in a pipeline in AWS CodePipeline\.
-+ Events in Amazon CloudWatch\.
-+ Build projects in AWS CodeBuild\.
-
-## Amazon Alexa Skill<a name="templates-alexa"></a>
-
-Choose this template if you want a project for a AWS Lambda function based on an Alexa skills blueprint for [Amazon Alexa](https://developer.amazon.com/alexa-skills-kit)\. The function returns an Amazon Resource Name \(ARN\) that you can use as a service endpoint for your Alexa skill when you configure it in the Alexa Developer Portal\. For more information, see [Creating an AWS Lambda Function for a Custom Skill](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/developing-an-alexa-skill-as-a-lambda-function)\.
-
+  Choose this template if you want a project for an AWS Lambda function based on an Alexa skills blueprint for Amazon Alexa\. When you configure your skill in the Alexa Developer Portal, the function returns an Amazon Resource Name \(ARN\) that you can use as a service endpoint\. For more information, see [Creating an AWS Lambda Function for a Custom Skill](https://developer.amazon.com/docs/custom-skills/host-a-custom-skill-as-an-aws-lambda-function.html)\.
 **Note**  
-Lambda functions for Alexa skills are supported in the US East \(N\. Virginia\) and EU \(Ireland\) Regions only\.
+Lambda functions for Alexa skills are supported in the US East \(N\. Virginia\), EU \(Ireland\), and Canada \(Central\) Regions only\.
++ **Config rule:**
 
-All Alexa skill projects include the following resources:
-+ A source code repository in AWS CodeCommit or GitHub\.
-+ A continuous deployment pipeline in AWS CodePipeline\. 
-+ An Invocations and Errors monitor in Amazon CloudWatch\.
-+ Sample code for your project, including a README\.md with details of the sample\.
-+ A build server and environment in AWS CodeBuild\.
-+ A sample function in Lambda\.
-+ A RESTful API that exposes the Lambda function in Amazon API Gateway\.
-+ Roles for job workers in IAM\.
+   Choose this template if you want a project for an AWS Config rule that lets you automate rules across AWS resources in your account\. The function returns an ARN that you can use as a service endpoint for your rule\.
 
-To view application activity in an AWS CodeStar project template that uses Lambda, you must first invoke the function by choosing to visit the host\. The host link appears on the **Continuous deployment** tile of your project\.
+### Choose a Template Programming Language<a name="templates-choose-template-language"></a>
 
-You can add resources to your AWS CodeStar project by editing the template\.yaml file that is included in the sample code for Lambda projects\. You can configure these resources:
-+ Applications and deployment groups in AWS CodeDeploy\.
-+ Applications and environments in AWS Elastic Beanstalk\.
-+ Stages and actions in a pipeline in AWS CodePipeline\.
-+ Events in Amazon CloudWatch\.
-+ Build projects in AWS CodeBuild\.
+When you choose a project template, you select a programming language, such as Ruby, Java, ASP\.NET, PHP, Node\.js, and more\.
 
-## Use AWS CodeStar Templates with Built\-in Unit Testing<a name="templates-unit-testing"></a>
+### Choose a Template Compute Platform<a name="templates-choose-template-platform"></a>
 
-Most AWS CodeStar project templates come preconfigured with a unit testing framework and sample unit tests \(in all but PHP, static HTML, and Alexa skill project templates\)\. This enables you to quickly include unit testing in your project's included build process\. Source code for these tests can be found in your project's source repository\. Unit testing details can be found in the README file for your selected template\.
+Each template configures one of the following compute platform types:
++ When you choose an AWS Elastic Beanstalk project, you deploy to an AWS Elastic Beanstalk environment on Amazon Elastic Compute Cloud instances in the cloud\.
++ When you choose an Amazon EC2 project, AWS CodeStar creates Linux EC2 instances to host your application in the cloud\. Your project team members can access the instances, and your team uses the key pair you provide to SSH into your Amazon EC2 instances\. AWS CodeStar also has a managed SSH that uses team member permissions to manage key pair connections\.
++ When you choose AWS Lambda, AWS CodeStar creates a serverless environment accessed through Amazon API Gateway, with no instances or servers to maintain\.
 
-You can also add unit testing manually by modifying the buildspec\.yml file in your project's source code repository\. For an example for the Python programming language, see [Step 7: Add a Unit Test to the Web Service](sam-tutorial.md#sam-tutorial-add-unit-tests)\.
+## How to Make Changes to Your AWS CodeStar Project<a name="update-project"></a>
+
+You can update your project by modifying: 
++ Sample code and programming language resources for your application\.
++ Resources that make up the infrastructure where your application is stored and deployed \(operating systems, support applications and services, deployment parameters, and the cloud compute platform\)\. You can modify application resources in the `template.yml` file\. This is the AWS CloudFormation file that models your application's runtime environment\.
+
+### Change Application Source Code and Push Changes<a name="update-project-application"></a>
+
+To modify sample source code, scripts, and other application source files, edit files in your source repository by:
++ Using the Edit mode in AWS CodeCommit or GitHub\.
++ Opening the project in an IDE, such as AWS Cloud9\.
++  Cloning the repository locally and then committing and pushing your changes\. For information, see [Step 5: Commit a Change](getting-started.md#getting-started-commit)\.
+
+### Change Application Resources with the template\.yml File<a name="update-project-application-template"></a>
+
+Instead of manually modifying an infrastructure resource, use AWS CloudFormation to model and deploy your application's runtime resources\.
+
+You can modify or add an application resource, such as a Lambda function, in your runtime stack by editing the `template.yml` file in your project repository\. You can add any resource that is available as a AWS CloudFormation resource\.
+
+To change the code or settings of an AWS Lambda function, see [Add a Resource to a Project](how-to-change-project.md#customize-project-template)\.
+
+Modify the `template.yml` file in your project's repository to add the type of AWS CloudFormation resources that are application resources\. When you add an application resource to the `Resources`section of the `template.yml` file, AWS CloudFormation and AWS CodeStar create the resource for you\. For a list of AWS CloudFormation resources and their required properties, see [AWS Resource Types Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)\. For more information, see this example in [Step 1: Edit the CloudFormation Worker Role in IAM](how-to-change-project.md#customize-project-template-sqs-2)\.
+
+AWS CodeStar allows you to implement best practices by configuring and modeling your application's runtime environment\.
+
+#### How to Manage Permissions to Change Application Resources<a name="update-project-application-permissions"></a>
+
+ When you use AWS CloudFormation to add runtime application resources, such as a Lambda function, the AWS CloudFormation worker role can use the permissions it already has\. For some runtime application resources, you must manually adjust the AWS CloudFormation worker role's permissions before you modify the `template.yml` file\.
+
+For an example of changing the AWS CloudFormation worker role's permissions, see [Step 5: Add Resource Permissions with an Inline Policy](how-to-change-project.md#customize-project-template-sqs-5)\.
+
+### <a name="update-project-toolchain-template"></a>
+
+#### <a name="update-project-toolchain-permissions"></a>
