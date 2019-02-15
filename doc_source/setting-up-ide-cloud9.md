@@ -2,11 +2,11 @@
 
 You can use AWS Cloud9 to make code changes and develop software in an AWS CodeStar project\. AWS Cloud9 is an online IDE, which you access through your web browser\. The IDE offers a rich code editing experience with support for several programming languages and runtime debuggers, as well as a built\-in terminal\. In the background, an Amazon EC2 instance hosts an AWS Cloud9 development environment\. This environment provides the AWS Cloud9 IDE and access to the AWS CodeStar project's code files\. For more information, see the *[AWS Cloud9 User Guide](http://docs.aws.amazon.com/cloud9/latest/user-guide/)*\.
 
-You can use the AWS CodeStar console or AWS Cloud9 console to create AWS Cloud9 development environments for projects that store their code in AWS CodeCommit\. For AWS CodeStar projects that store their code in GitHub, you can only use the AWS Cloud9 console\. This topic describes how to use both consoles\.
+You can use the AWS CodeStar console or AWS Cloud9 console to create AWS Cloud9 development environments for projects that store their code in CodeCommit\. For AWS CodeStar projects that store their code in GitHub, you can only use the AWS Cloud9 console\. This topic describes how to use both consoles\.
 
 To use AWS Cloud9, you need:
 + An IAM user that has been added as a team member to an AWS CodeStar project\.
-+ If the AWS CodeStar project stores its source code in AWS CodeCommit, AWS credentials for the IAM user \.
++ If the AWS CodeStar project stores its source code in CodeCommit, AWS credentials for the IAM user \.
 
 **Topics**
 + [Create an AWS Cloud9 Environment for a Project](#setting-up-ide-cloud9-create)

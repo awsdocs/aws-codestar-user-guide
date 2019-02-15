@@ -33,28 +33,28 @@ template.yml
 ```
 
 The following project elements are represented in your sample source code:
-+ `tests/`: Unit tests set up for this project's AWS CodeBuild project\. This folder is included in the sample code, but it is not required to create a project\.
++ `tests/`: Unit tests set up for this project's CodeBuild project\. This folder is included in the sample code, but it is not required to create a project\.
 + `app.js`: Application source code for your project\.
-+ `buildspec.yml`: The build instructions for your AWS CodeBuild resource's build stage\. This file is required for a toolchain template with an AWS CodeBuild resource\.
++ `buildspec.yml`: The build instructions for your CodeBuild resource's build stage\. This file is required for a toolchain template with an CodeBuild resource\.
 + `package.json`: The dependencies information for your application source code\.
 + `README.md`: The project readme file included in all AWS CodeStar projects\. This file is included in the sample code, but it is not required to create a project\.
 +  `template.yml`: The infrastructure template file or SAM template file included in all AWS CodeStar projects\. This is different from the toolchain template\.yml you upload later in this tutorial\. This file is included in the sample code, but it is not required to create a project\.
 
 ## Step 2: Download the Sample Toolchain Template<a name="cli-tutorial-toolchain-template"></a>
 
-The sample toolchain template provided for this tutorial creates a repository \(AWS CodeCommit\), pipeline \(AWS CodePipeline\), and build container \(AWS CodeBuild\) and uses AWS CloudFormation to deploy your source code to a Lambda platform\. In addition to these resources, there are also IAM roles that you can use to scope the permissions of your runtime environment, an Amazon S3 bucket that AWS CodePipeline uses to store your deployment artifacts, and an CloudWatch Events rule that is used to trigger pipeline deployments when you push code to your repository\. To align with [AWS IAM best practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege), scope down the policies of your toolchain roles defined in this example\.
+The sample toolchain template provided for this tutorial creates a repository \(CodeCommit\), pipeline \(CodePipeline\), and build container \(CodeBuild\) and uses AWS CloudFormation to deploy your source code to a Lambda platform\. In addition to these resources, there are also IAM roles that you can use to scope the permissions of your runtime environment, an Amazon S3 bucket that CodePipeline uses to store your deployment artifacts, and an CloudWatch Events rule that is used to trigger pipeline deployments when you push code to your repository\. To align with [AWS IAM best practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege), scope down the policies of your toolchain roles defined in this example\.
 
 Download and unzip the sample AWS CloudFormation template in [YAML](samples/toolchain.zip) format\.
 
 When you run the create\-project command later in the tutorial\. this template creates the following customized toolchain resources in AWS CloudFormation\. For more information about the resources created in this tutorial, see the following topics in the *AWS CloudFormation User Guide*:
-+ The [AWS::CodeCommit::Repository](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codecommit-repository.html) AWS CloudFormation resource creates an AWS CodeCommit repository\.
-+ The [AWS::CodeBuild::Project](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html) AWS CloudFormation resource creates an AWS CodeBuild build project\.
-+ The [AWS::CodeDeploy::Application](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-application.html) AWS CloudFormation resource creates an AWS CodeDeploy application\.
-+ The [AWS::CodePipeline::Pipeline](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html) AWS CloudFormation resource creates an AWS CodePipeline pipeline\.
++ The [AWS::CodeCommit::Repository](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codecommit-repository.html) AWS CloudFormation resource creates an CodeCommit repository\.
++ The [AWS::CodeBuild::Project](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html) AWS CloudFormation resource creates an CodeBuild build project\.
++ The [AWS::CodeDeploy::Application](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codedeploy-application.html) AWS CloudFormation resource creates an CodeDeploy application\.
++ The [AWS::CodePipeline::Pipeline](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-codepipeline-pipeline.html) AWS CloudFormation resource creates an CodePipeline pipeline\.
 + The [AWS::S3::Bucket](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-bucket.html) AWS CloudFormation resource creates your pipeline's artifact bucket\.
 + The [AWS::S3::BucketPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html) AWS CloudFormation resource creates the artifact bucket policy for your pipeline's artifact bucket\.
-+ The [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html) AWS CloudFormation resource creates the AWS CodeBuild IAM worker role that gives AWS CodeStar permissions to manage your AWS CodeBuild build project\.
-+ The [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html) AWS CloudFormation resource creates the AWS CodePipeline IAM worker role that gives AWS CodeStar permissions to create your pipeline\.
++ The [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html) AWS CloudFormation resource creates the CodeBuild IAM worker role that gives AWS CodeStar permissions to manage your CodeBuild build project\.
++ The [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html) AWS CloudFormation resource creates the CodePipeline IAM worker role that gives AWS CodeStar permissions to create your pipeline\.
 + The [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html) AWS CloudFormation resource creates the AWS CloudFormation IAM worker role that gives AWS CodeStar permissions to create your resource stack\.
 + The [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html) AWS CloudFormation resource creates the AWS CloudFormation IAM worker role that gives AWS CodeStar permissions to create your resource stack\.
 + The [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html) AWS CloudFormation resource creates the AWS CloudFormation IAM worker role that gives AWS CodeStar permissions to create your resource stack\.

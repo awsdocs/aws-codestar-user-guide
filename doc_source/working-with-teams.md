@@ -14,9 +14,9 @@ Each project in AWS CodeStar has three roles:
 | Owner | x | x | x | x | 
 | Contributor | x | x |  |  | 
 | Viewer | x |  |  |  | 
-+ **Owner**: Can add and remove other team members, contribute code to a project repository if the code is stored in AWS CodeCommit, grant or deny other team members remote access to any Amazon EC2 instances running Linux associated with the project, configure the project dashboard, and delete the project\.
-+ **Contributor**: Can add and remove dashboard resources such as a JIRA tile, contribute code to the project repository if the code is stored in AWS CodeCommit, and interact fully with the dashboard\. Cannot add or remove team members, grant or deny remote access to resources, or delete the project\. This is the role you should choose for most team members\.
-+ **Viewer**: Can view the project dashboard, the code if is stored in AWS CodeCommit, and, on the dashboard tiles, the state of the project and its resources\.
++ **Owner**: Can add and remove other team members, contribute code to a project repository if the code is stored in CodeCommit, grant or deny other team members remote access to any Amazon EC2 instances running Linux associated with the project, configure the project dashboard, and delete the project\.
++ **Contributor**: Can add and remove dashboard resources such as a JIRA tile, contribute code to the project repository if the code is stored in CodeCommit, and interact fully with the dashboard\. Cannot add or remove team members, grant or deny remote access to resources, or delete the project\. This is the role you should choose for most team members\.
++ **Viewer**: Can view the project dashboard, the code if is stored in CodeCommit, and, on the dashboard tiles, the state of the project and its resources\.
 
 **Important**  
 If your project uses resources outside of AWS \(for example, a GitHub repository or issues in Atlassian JIRA\), access to those resources is controlled by the resource provider, not AWS CodeStar\. For more information, see the resource provider's documentation\.  

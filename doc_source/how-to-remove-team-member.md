@@ -1,6 +1,6 @@
 # Remove Team Members from an AWS CodeStar Project<a name="how-to-remove-team-member"></a>
 
-After you remove a user from an AWS CodeStar project, the user still appears in the commit history for the project repository, but no longer has access to the AWS CodeCommit repository or any other project resources, such as the project pipeline\. \(The exception to this rule is an IAM user who has other policies that grant access to those resources\.\) The user cannot access the project dashboard, and the project no longer appears in the list of projects that user sees on the AWS CodeStar dashboard\. You can use the AWS CodeStar console or AWS CLI to remove team members from your project team\.
+After you remove a user from an AWS CodeStar project, the user still appears in the commit history for the project repository, but no longer has access to the CodeCommit repository or any other project resources, such as the project pipeline\. \(The exception to this rule is an IAM user who has other policies that grant access to those resources\.\) The user cannot access the project dashboard, and the project no longer appears in the list of projects that user sees on the AWS CodeStar dashboard\. You can use the AWS CodeStar console or AWS CLI to remove team members from your project team\.
 
 **Important**  
 Although removing a team member from a project denies remote access to project Amazon EC2 instances, it does not close any of the user's active SSH sessions\.  

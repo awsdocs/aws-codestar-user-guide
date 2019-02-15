@@ -3,13 +3,13 @@
 You can use Eclipse to make code changes and develop software in an AWS CodeStar project\. You can edit your AWS CodeStar project code with Eclipse and then commit and push your changes to the source repository for the AWS CodeStar project\.
 
 **Note**  
-The information in this topic applies only to AWS CodeStar projects that store their source code in AWS CodeCommit\. If your AWS CodeStar project stores its source code in GitHub, you can use a tool such as EGit for Eclipse\. For more information, see the [EGit Documentation](http://www.eclipse.org/egit/documentation/) on the EGit website\. 
+The information in this topic applies only to AWS CodeStar projects that store their source code in CodeCommit\. If your AWS CodeStar project stores its source code in GitHub, you can use a tool such as EGit for Eclipse\. For more information, see the [EGit Documentation](http://www.eclipse.org/egit/documentation/) on the EGit website\. 
 
-If the AWS CodeStar project stores its source code in AWS CodeCommit, you must install a version of the AWS Toolkit for Eclipse that supports AWS CodeStar\. You must also be a member of the AWS CodeStar project team with the owner or contributor role\.
+If the AWS CodeStar project stores its source code in CodeCommit, you must install a version of the AWS Toolkit for Eclipse that supports AWS CodeStar\. You must also be a member of the AWS CodeStar project team with the owner or contributor role\.
 
 To use Eclipse, you also need:
 + An IAM user that has been added to an AWS CodeStar project as a team member\.
-+ If the AWS CodeStar project stores its source code in AWS CodeCommit, [Git credentials](getting-started.md#git-credentials) \(user name and password\) for the IAM user\.
++ If the AWS CodeStar project stores its source code in CodeCommit, [Git credentials](getting-started.md#git-credentials) \(user name and password\) for the IAM user\.
 + Sufficient permissions to install Eclipse and the AWS Toolkit for Eclipse on your local computer\.
 
 **Topics**

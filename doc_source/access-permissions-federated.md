@@ -39,15 +39,13 @@ Grant federated users access to your project by attaching the appropriate owner,
 
 1. Open the IAM console\. In the navigation pane, choose **Policies**\.
 
-1. Enter your project ID in the search field\. The policy name matching your project is displayed, with a policy type of **Customer managed**\. You can expand the policy to see the permissions in the policy statement\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codestar-mgdpolicy-listing.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+1. Enter your project ID in the search field\. The policy name matching your project is displayed, with a policy type of **Customer managed**\. You can expand the policy to see the permissions in the policy statement\.
 
 1. Choose one of these managed policies\. This example attaches a viewer managed policy\. Select the circle next to the policy, and then under **Policy actions**, choose **Attach**\.
 
 1. On the **Summary** page, choose the **Attached entities** tab\. Choose **Attach**\.
 
-1. On the **Attach Policy** page, filter for the federated user's role in the search field\. Select the box next to the name of the role and then choose **Attach policy**\. The **Attached entities** tab shows the new attachment\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codestar-mgdpolicy-attached-entities.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+1. On the **Attach Policy** page, filter for the federated user's role in the search field\. Select the box next to the name of the role and then choose **Attach policy**\. The **Attached entities** tab shows the new attachment\.
 
 ## Detach an AWS CodeStar Managed Policy from the Federated User's Role<a name="access-permissions-federated-detach-CodeStar"></a>
 
@@ -82,15 +80,13 @@ Grant federated users access to your AWS Cloud9 environment by attaching the `AW
 
 1. Open the IAM console\. In the navigation pane, choose **Policies**\.
 
-1. Enter the policy name in the search field\. This example searches for the `AWSCloud9User` managed policy\. The managed policy is displayed, with a policy type of **AWS managed**\. You can expand the policy to see the permissions in the policy statement\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-cloud9-mgdpolicy-listing.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+1. Enter the policy name in the search field\. This example searches for the `AWSCloud9User` managed policy\. The managed policy is displayed, with a policy type of **AWS managed**\. You can expand the policy to see the permissions in the policy statement\.
 
 1. Choose one of these managed policies\. This example attaches the `AWSCloud9User` managed policy\. Select the circle next to the policy, and then under **Policy actions**, choose **Attach**\.
 
 1. On the **Summary** page, choose the **Attached entities** tab\. Choose **Attach**\.
 
-1. On the **Attach Policy** page, filter for the federated user's role in the search field\. Choose the box next to the name of the role and then choose **Attach policy**\. The **Attached entities** tab shows the new attachment\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-cloud9-mgdpolicy-attached-entities.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+1. On the **Attach Policy** page, filter for the federated user's role in the search field\. Choose the box next to the name of the role and then choose **Attach policy**\. The **Attached entities** tab shows the new attachment\.
 
 ## Detach an AWS Cloud9 Managed Policy from the Federated User's Role<a name="access-permissions-federated-detach-Cloud9"></a>
 

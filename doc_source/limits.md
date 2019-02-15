@@ -5,7 +5,7 @@ The following table describes limits in AWS CodeStar\. AWS CodeStar depends on o
 
 |  |  | 
 | --- |--- |
-| Number of projects | Maximum of 333 projects in an AWS account\. Actual limit varies, depending on the level of other service dependencies \(for example, the maximum number of pipelines in AWS CodePipeline allowed for your AWS account\)\. | 
+| Number of projects | Maximum of 333 projects in an AWS account\. Actual limit varies, depending on the level of other service dependencies \(for example, the maximum number of pipelines in CodePipeline allowed for your AWS account\)\. | 
 | Number of AWS CodeStar projects to which an IAM user can belong | Maximum of 10 per individual IAM user\. | 
 | Project IDs |  Project IDs must be unique in an AWS account\. Project IDs must be at least 2 characters and cannot exceed 15 characters\. Allowed characters include: Letters `a` through `z`, inclusive\. Numbers `0` through `9`, inclusive\. The special character `-` \(minus sign\)\. Any other characters, such as capital letters, spaces, `.` \(period\), `@` \(at sign\), or `_` \(underscore\), are not allowed\.   | 
 | Project names | Project names cannot exceed 100 characters in length, and cannot begin or end with an empty space\.   | 

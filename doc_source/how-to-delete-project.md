@@ -4,14 +4,14 @@ If you no longer need a project, you can delete it and its resources so that you
 
 **Important**  
 Deleting a project in AWS CodeStar cannot be undone\. By default all AWS resources for the project are deleted in your AWS account, including:  
-The AWS CodeCommit repository for the project along with anything stored in that repository\.
+The CodeCommit repository for the project along with anything stored in that repository\.
 The AWS CodeStar project roles and the associated IAM policies configured for the project and its resources\.
 Any Amazon EC2 instances created for the project\.
 The deployment application and associated resources, such as:  
-An AWS CodeDeploy application and associated deployment groups\.
+An CodeDeploy application and associated deployment groups\.
 An AWS Lambda function and associated API Gateway APIs\.
 An AWS Elastic Beanstalk application and associated environment\.
-The continuous deployment pipeline for the project in AWS CodePipeline\.
+The continuous deployment pipeline for the project in CodePipeline\.
 The AWS CloudFormation stacks associated with the project\.
 Any AWS Cloud9 development environments created with the AWS CodeStar console\. All uncommitted code changes in the environments are lost\. 
 To delete all project resources along with the project, select the **Delete associated resources along with AWS CodeStar project** check box\. If you clear this option, the project is deleted in AWS CodeStar, and the project roles that enabled access to those resources are deleted in IAM, but all other resources are retained\. You might continue to incur charges for these resources in AWS\. If you decide you no longer want one or more of these resources, you must manually delete them\. For more information, see [Project deletion: An AWS CodeStar project was deleted, but resources still exist](troubleshooting.md#troubleshooting-pd1)\.  

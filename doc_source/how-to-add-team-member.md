@@ -41,7 +41,7 @@ You can use the AWS CodeStar console to add a team member to your project\. If a
 **Note**  
 Users who have already been added to another AWS CodeStar project appear in the **AWS CodeStar users from other projects** list\.
 
-     On the **Add team member** tab, in **Project role**, choose the AWS CodeStar role \(Owner, Contributor, or Viewer\) for this user\. This is an AWS CodeStar project\-level role that can only be changed by an owner of the project\. When applied to an IAM user, the role provides all permissions required to access AWS CodeStar project resources\. It applies policies required for creating and managing Git credentials for code stored in AWS CodeCommit in IAM or uploading Amazon EC2 SSH keys for the user in IAM\. 
+     On the **Add team member** tab, in **Project role**, choose the AWS CodeStar role \(Owner, Contributor, or Viewer\) for this user\. This is an AWS CodeStar project\-level role that can only be changed by an owner of the project\. When applied to an IAM user, the role provides all permissions required to access AWS CodeStar project resources\. It applies policies required for creating and managing Git credentials for code stored in CodeCommit in IAM or uploading Amazon EC2 SSH keys for the user in IAM\. 
 **Important**  
 You cannot provide or change the display name or email information for an IAM user unless you are signed in to the console as that user\. For more information, see [Manage Display Information for Your AWS CodeStar User Profile ](how-to-manage-user-pref.md)\.
 
@@ -56,7 +56,7 @@ For ease of management, at least one user should be assigned the **Owner** role 
 
 1. Send the new team member the following information:
    + Connection information for your AWS CodeStar project\.
-   + If the source code is stored in AWS CodeCommit, [instructions for setting up access with Git credentials](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) to the AWS CodeCommit repository from their local computers\.
+   + If the source code is stored in CodeCommit, [instructions for setting up access with Git credentials](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) to the CodeCommit repository from their local computers\.
    + Information about how the user can manage their display name, email address, and public Amazon EC2 SSH key, as described in [Working with Your AWS CodeStar User Profile ](working-with-user-info.md)\.
    + One\-time password and connection information, if the user is new to AWS and you created an IAM user for that person\. The password expires the first time the user signs in\. The user must choose a new password\.
 

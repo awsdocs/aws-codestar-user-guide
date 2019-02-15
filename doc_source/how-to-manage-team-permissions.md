@@ -24,15 +24,13 @@ You can use the AWS CodeStar console to manage the roles of team members\. You c
 
    Choose the project\.
 
-1. In the navigation bar for the project, choose **Team**\.  
-![\[Team members in an AWS CodeStar project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-list.png)
+1. In the navigation bar for the project, choose **Team**\.
 
 1. On the **Team members** page, find the name of the team member, and then choose **Edit**\.
 
 1. In **Role**, choose the AWS CodeStar role \(owner, contributor, or viewer\) you want to grant this user\.
 
-   For more information about AWS CodeStar roles and their permissions, see [Working with AWS CodeStar Teams](working-with-teams.md)\.  
-![\[Changing the role for a user on the team for a project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-add2.png)
+   For more information about AWS CodeStar roles and their permissions, see [Working with AWS CodeStar Teams](working-with-teams.md)\.
 
    Choose **Save**\.
 
@@ -46,8 +44,7 @@ You can use the AWS CodeStar console to manage the roles of team members\. You c
 
 1. On the **Project team** page, find the name of the team member, and then choose **Edit**\.
 
-1. Select **Allow SSH access to project instances**, and then choose **Save**\.  
-![\[Granting remote access permissions to Amazon EC2 resources in an AWS CodeStar project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-allowaccess.png)
+1. Select **Allow SSH access to project instances**, and then choose **Save**\.
 
 1. \(Optional\) Notify the team members that they should upload an SSH public key for their AWS CodeStar users, if they have not already done so\. For more information, see [Add a Public Key to Your AWS CodeStar User Profile ](how-to-add-ec2-key.md)\.
 

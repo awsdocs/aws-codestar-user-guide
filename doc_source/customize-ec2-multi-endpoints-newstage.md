@@ -2,11 +2,9 @@
 
 Add a stage with the same set of deployment actions as your project's Deploy stage\. For example, the new Prod stage for an Amazon EC2 project should have the same actions as the Deploy stage created for the project\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codestar-add-prod-stage.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
-
 **To copy parameters and fields from the Deploy stage**
 
-1. From your AWS CodeStar project dashboard, choose **Pipeline Details** to open your pipeline in the AWS CodePipeline console\.
+1. From your AWS CodeStar project dashboard, choose **Pipeline Details** to open your pipeline in the CodePipeline console\.
 
 1. Choose **Edit**\.
 
@@ -133,7 +131,7 @@ Make sure to paste all of the parameters for the project, not just new parameter
 
 1. In the AWS CodePipeline pane, choose **Save pipeline change**, and then choose **Save change**\. View your updated pipeline\.
 
-**To create an AWS CodeDeploy Deploy action in your new Prod stage \(Amazon EC2 projects only\)**
+**To create an CodeDeploy Deploy action in your new Prod stage \(Amazon EC2 projects only\)**
 
 1. After the new actions in your Prod stage, choose **\+ Action**\.
 
@@ -141,9 +139,9 @@ Make sure to paste all of the parameters for the project, not just new parameter
 
 1. In **Action provider**, choose **AWS CodeDeploy**\.
 
-1. In **Application name**, choose the name of the new AWS CodeDeploy application you created in step 2\.
+1. In **Application name**, choose the name of the new CodeDeploy application you created in step 2\.
 
-1. In **Deployment group**, choose the name of the new AWS CodeDeploy deployment group you created in step 2\.
+1. In **Deployment group**, choose the name of the new CodeDeploy deployment group you created in step 2\.
 
 1. In **Input artifacts**, choose the same build artifact used in the existing stage\.
 

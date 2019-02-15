@@ -58,8 +58,7 @@ In this step, you use the AWS CodeStar console to create a project\.
 **Note**  
 You must sign in to the AWS Management Console using credentials associated with the IAM user you created or identified in [Setting Up AWS CodeStar](setting-up.md)\. This user must have the **`AWSCodeStarFullAccess`** managed policy attached\.
 
-1. Choose the AWS Region where you want to create the project and its resources\.   
-![\[Choosing the AWS Region where you create the project in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-region.png)
+1. Choose the AWS Region where you want to create the project and its resources\. 
 
     For information about AWS Regions where AWS CodeStar is available, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#codestar_region) in the *AWS General Reference*\.
 
@@ -87,61 +86,56 @@ You must sign in to the AWS Management Console using credentials associated with
 
 1. On **Choose how you want to edit your project code**, choose **Skip**\. You set up your local workstation to edit the project's code in a later step\.
 
-1. Wait while AWS CodeStar creates the project\. This might take several minutes\. Do not continue until you see **Welcome to My SAM Project\!**\.  
-![\[The AWS SAM project is ready to use\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-created.png)
+1. Wait while AWS CodeStar creates the project\. This might take several minutes\. Do not continue until you see **Welcome to My SAM Project\!**\.
 
 ## Step 2: Explore Project Resources<a name="sam-tutorial-explore-project"></a>
 
 In this step, you explore four of the project's AWS resources to understand how the project works: 
 + The AWS CodeCommit repository where the project's source code is stored\. AWS CodeStar gives the repository the name **my\-sam\-project**, where **my\-sam\-project** is the name of the project\.
-+ The AWS CodePipeline pipeline that uses AWS CodeBuild and AWS SAM to automate building and deploying the web service's Lambda function and API in API Gateway\. AWS CodeStar gives the pipeline the name **my\-sam\-project\-\-Pipeline**, where **my\-sam\-project** is the ID of the project\.
++ The AWS CodePipeline pipeline that uses CodeBuild and AWS SAM to automate building and deploying the web service's Lambda function and API in API Gateway\. AWS CodeStar gives the pipeline the name **my\-sam\-project\-\-Pipeline**, where **my\-sam\-project** is the ID of the project\.
 + The Lambda function that contains the logic of the web service\. AWS CodeStar gives the function the name **awscodestar\-my\-sam\-project\-lambda\-HelloWorld\-*RANDOM\_ID***, where:
   + **my\-sam\-project** is the ID of the project\.
   + **HelloWorld** is the function ID as specified in the `template.yaml` file in the AWS CodeCommit repository\. You explore this file later\.
   + *RANDOM\_ID* is a random ID that AWS SAM assigns to the function to help ensure uniqueness\.
 + The API in API Gateway that makes it easier to call the Lambda function\. AWS CodeStar gives the API the name **awscodestar\-my\-sam\-project\-\-lambda**, where **my\-sam\-project** is the ID of the project\.
 
-**To explore the source code repository in AWS CodeCommit**
+**To explore the source code repository in CodeCommit**
 
-1. With your project open in the AWS CodeStar console, on the side navigation bar, choose **Code**\.  
-![\[The Code button on the AWS CodeStar side navigation bar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-side-nav.png)
+1. With your project open in the AWS CodeStar console, on the side navigation bar, choose **Code**\.
 
-1. In the AWS CodeCommit console, on the **Code** page, the source code files for the project are displayed: 
-   + `buildspec.yml`, which AWS CodePipeline instructs AWS CodeBuild to use during the build phase, to package the web service using AWS SAM\.
+1. In the CodeCommit console, on the **Code** page, the source code files for the project are displayed: 
+   + `buildspec.yml`, which CodePipeline instructs CodeBuild to use during the build phase, to package the web service using AWS SAM\.
    + `index.py`, which contains the logic for the Lambda function\. This function simply outputs the string `Hello World` and a timestamp, in ISO format\.
    + `README.md`, which contains general information about the repository\.
    + `template.yml`, which AWS SAM uses to package the web service and create the API in API Gateway\.  
-![\[The project source code files in AWS CodeCommit\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-cc.png)
+![\[The project source code files in CodeCommit\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-cc.png)
 
    To view the contents of a file, choose it from the list\.
 
-   For more information about using the AWS CodeCommit console, see the [AWS CodeCommit User Guide](https://docs.aws.amazon.com/codecommit/latest/userguide/)\.
+   For more information about using the CodeCommit console, see the [AWS CodeCommit User Guide](https://docs.aws.amazon.com/codecommit/latest/userguide/)\.
 
-**To explore the pipeline in AWS CodePipeline**
+**To explore the pipeline in CodePipeline**
 
 1. To view information about the pipeline, with your project open in the AWS CodeStar console, on the side navigation bar, choose **Dashboard**\. On the **Continuous deployment** tile, you see the pipeline contains:
-   + A **Source** stage for getting the source code from AWS CodeCommit\.
-   + A **Build** stage for building the source code with AWS CodeBuild\.
-   + A **Deploy** stage for deploying the built source code and AWS resources with AWS SAM\.  
-![\[The Continuous deployment tile in the AWS CodeStar dashboard\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-cp.png)
+   + A **Source** stage for getting the source code from CodeCommit\.
+   + A **Build** stage for building the source code with CodeBuild\.
+   + A **Deploy** stage for deploying the built source code and AWS resources with AWS SAM\.
 
-1. To view more information about the pipeline, on the **Continuous deployment** tile, choose the **AWS CodePipeline details** link or, on the side navigation bar, choose **Pipeline** to open the pipeline in the AWS CodePipeline console\.
+1. To view more information about the pipeline, on the **Continuous deployment** tile, choose the **CodePipeline details** link or, on the side navigation bar, choose **Pipeline** to open the pipeline in the CodePipeline console\.
 
-For information about using the AWS CodePipeline console, see the [AWS CodePipeline User Guide](https://docs.aws.amazon.com/codepipeline/latest/userguide/)\.
+For information about using the CodePipeline console, see the [AWS CodePipeline User Guide](https://docs.aws.amazon.com/codepipeline/latest/userguide/)\.
 
 **To explore AWS service resources on the **Project** page**
 
 1. Open your project in the AWS CodeStar console and from the navigation bar, choose **Project**\.
 
-1.  Open the **Project Details **and **Project Resources** lists\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sample-resources-list.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+1.  Open the **Project Details **and **Project Resources** lists\.
 
 **To explore the function in Lambda**
 
 1. With your project open in the AWS CodeStar console, on the side navigation bar, choose **Project**\.
 
-1. In **Project Resources**, in the **ARN** column, choose the link for the Lambda function\.  
-![\[Opening the Lambda function from AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-lambda.png)
+1. In **Project Resources**, in the **ARN** column, choose the link for the Lambda function\.
 
    The function's code is displayed in the Lambda console\. 
 
@@ -163,8 +157,7 @@ In this step, you test the web service that AWS CodeStar just built and deployed
 
 1. With your project still open from the previous step, on the side navigation bar, choose **Dashboard**\.
 
-1. On the **Continuous deployment** tile, make sure **Succeeded** is displayed for the **Source**, **Build**, and **Deploy** stages before you continue\. This might take several minutes\.   
-![\[The AWS CodeStar dashboard showing that the pipeline has run successfully\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-cp-ok.png)
+1. On the **Continuous deployment** tile, make sure **Succeeded** is displayed for the **Source**, **Build**, and **Deploy** stages before you continue\. This might take several minutes\. 
 **Note**  
 If **Failed** is displayed for any of the stages, see the following for troubleshooting help:  
 For the **Source** stage, see [Troubleshooting AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/troubleshooting.html) in the *AWS CodeCommit User Guide*\.
@@ -190,7 +183,6 @@ In this step, you set up your local workstation to edit the source code in the A
 1. With your project still open from the previous step, do one of the following:
    + If **You must connect to your project's repository before you can start working on the code** is displayed, choose **Connect Tools**\.
    + In the side navigation pane, choose **Project**, and then choose **Connect tools**\.  
-![\[The AWS CodeStar dashboard showing the Connect tools button\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-connect-banner.png)  
 ![\[The AWS CodeStar Project page showing the Connect tools button\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-connect-page.png)
 
 1. Choose the **Command line tools** tile\.
@@ -209,7 +201,7 @@ In this step, you set up your local workstation to edit the source code in the A
 
    1. Use the IAM console to generate Git credentials for your IAM user\.
 
-   1. Clone the project's AWS CodeCommit repository onto your local workstation\.
+   1. Clone the project's CodeCommit repository onto your local workstation\.
 
 ## Step 5: Add Logic to the Web Service<a name="sam-tutorial-add-logic"></a>
 
@@ -266,7 +258,7 @@ If you are using Visual Studio or Eclipse instead of the command line, the instr
 **Note**  
 You might be prompted for the user name and password IAM generated for you earlier\. To keep from being prompted each time you interact with the remote repository, consider installing and configuring a Git credential manager\. For example, on macOS or Linux, you can run git config credential\.helper 'cache \-\-timeout 900' in the terminal to be prompted no sooner than every 15 minutes\. Or you can run git config credential\.helper 'store \-\-file \~/\.git\-credentials' to never be prompted again\. Git stores your credentials in clear text in a plain file in your home directory\. For more information, see [Git Tools \- Credential Storage](https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage) on the Git website\.
 
-After AWS CodeStar detects the push, it instructs AWS CodePipeline to use AWS CodeBuild and AWS SAM to rebuild and redeploy the web service\. 
+After AWS CodeStar detects the push, it instructs CodePipeline to use CodeBuild and AWS SAM to rebuild and redeploy the web service\. 
 
 AWS SAM gives the new function the name **awscodestar\-my\-sam\-project\-lambda\-Hello\-*RANDOM\_ID***, where:
 + **my\-sam\-project** is the ID of the project\.
@@ -365,7 +357,7 @@ In this step, you use your local workstation to add a test that AWS CodeStar run
        - template-export.yml
    ```
 
-   This build specification instructs AWS CodeBuild to install pytest, the Python test framework, into its build environment\. AWS CodeBuild uses pytest to run the unit test\. The rest of the build specification is the same as before\.
+   This build specification instructs CodeBuild to install pytest, the Python test framework, into its build environment\. CodeBuild uses pytest to run the unit test\. The rest of the build specification is the same as before\.
 
 1. Use Git to push these changes to the remote repository\.
 
@@ -387,14 +379,11 @@ In this step, you see whether the unit test succeeded or failed\.
 
    If the unit test was successful, **Succeeded** is displayed for the **Build** stage\. 
 
-1. To view the unit test result details, on the **Continuous deployment** tile, in the **Build** stage, choose the **CodeBuild** link\.  
-![\[Connecting to AWS CodeBuild from AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-cp-cb.png)
+1. To view the unit test result details, on the **Continuous deployment** tile, in the **Build** stage, choose the **CodeBuild** link\.
 
-1. In the AWS CodeBuild console, on the **Build Project: my\-sam\-project** page, in **Build history**, choose the link in the **Build run** column of the table\.  
-![\[Opening the build details page in AWS CodeBuild\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-cb-run.png)
+1. In the CodeBuild console, on the **Build Project: my\-sam\-project** page, in **Build history**, choose the link in the **Build run** column of the table\.
 
-1. On the **my\-sam\-project:*BUILD\_ID*** page, in **Build logs**, choose the **View entire log** link\.  
-![\[Opening the build details page in AWS CodeBuild\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-cb-log.png)
+1. On the **my\-sam\-project:*BUILD\_ID*** page, in **Build logs**, choose the **View entire log** link\.
 
 1. In the Amazon CloudWatch Logs console, look in the log output for a test result similar to the following\. In the following test result, the test passed:
 
@@ -429,7 +418,7 @@ If you clear this box, the project record is deleted from AWS CodeStar, but many
 
 If there is still an Amazon S3 bucket that AWS CodeStar created for this project, follow these steps to delete it\. :
 
-1. Open the AWS CodeCommit console, at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
+1. Open the CodeCommit console, at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
 
 1. In the list of buckets, choose the icon next to **aws\-codestar\-*REGION\_ID*\-*ACCOUNT\_ID*\-my\-sam\-project\-\-pipe**, where:
    + *REGION\_ID* is the ID of the AWS Region for the project you just deleted\.

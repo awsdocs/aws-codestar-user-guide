@@ -2,8 +2,6 @@
 
 You can customize your project dashboard by adding, removing, and moving tiles\. You can also customize the team wiki tile to show information about your project\.
 
-![\[A customized project dashboard in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-customized-dashboard.png)
-
 **Topics**
 + [Add, Remove, or Move Tiles on Your Dashboard](#how-to-customize-order)
 + [Add a Project Extension to Your Dashboard](#how-to-customize-extensions)

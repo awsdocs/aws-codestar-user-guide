@@ -24,11 +24,9 @@ To use the console to change the display information for a user, you must be sig
 
    Choose a project where you are a team member\.
 
-1. In the navigation bar for the project, choose **Team**\.  
-![\[Team members in an AWS CodeStar project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-list.png)
+1. In the navigation bar for the project, choose **Team**\.
 
-1. On the **Team members** page, find the name of your IAM user \(the team member that has your IAM name in parentheses and **\[You\]** in brackets next to the display name\), and then choose **Edit**\.  
-![\[Customizable information for your IAM user in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-displayinfo-limit.png)
+1. On the **Team members** page, find the name of your IAM user \(the team member that has your IAM name in parentheses and **\[You\]** in brackets next to the display name\), and then choose **Edit**\.
 
 1. Edit the display name, the email address, or both, and then choose **Save**\.
 **Note**  

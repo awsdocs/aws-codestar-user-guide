@@ -1,11 +1,11 @@
-# Step 1: Create an Application and Deployment Group in AWS CodeDeploy \(Amazon EC2 Projects Only\)<a name="customize-ec2-multi-endpoints-newdeployment"></a>
+# Step 1: Create an Application and Deployment Group in CodeDeploy \(Amazon EC2 Projects Only\)<a name="customize-ec2-multi-endpoints-newdeployment"></a>
 
-You choose your AWS CodeDeploy application and then add a new deployment group associated with the new instance\.
+You choose your CodeDeploy application and then add a new deployment group associated with the new instance\.
 
 **Note**  
 If your project is a Lambda or Elastic Beanstalk project, you can skip this step\.
 
-1. Open the AWS CodeDeploy console at [https://console\.aws\.amazon\.com/codedeploy](https://console.aws.amazon.com/codedeploy)\.
+1. Open the CodeDeploy console at [https://console\.aws\.amazon\.com/codedeploy](https://console.aws.amazon.com/codedeploy)\.
 
 1. Choose **Create application**\.
 

@@ -25,6 +25,7 @@ If you haven't already, first complete the steps in [Setting Up AWS CodeStar](se
 + [Next Steps](#getting-started-next-steps)
 + [Tutorial: Creating and Managing a Serverless Project in AWS CodeStar](sam-tutorial.md)
 + [Tutorial: Create a Project in AWS CodeStar with the AWS CLI](cli-tutorial.md)
++ [Tutorial: Create an Alexa Skill Project in AWS CodeStar](alexa-tutorial.md)
 
 ## Step 1: Create an AWS CodeStar Project<a name="getting-started-create"></a>
 
@@ -41,13 +42,11 @@ If you choose other options, your experience might not match what's documented i
 
 1. Sign in to the AWS Management Console, and then open the AWS CodeStar console at [https://console\.aws\.amazon\.com/codestar/](https://console.aws.amazon.com/codestar/)\.
 
-   Make sure that you are signed in to the AWS Region where you want to create the project and its resources\. For example, to create a project in US East \(Ohio\), make sure you have selected that AWS Region\. For information about AWS Regions where AWS CodeStar is available, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#codestar_region) in the *AWS General Reference* \.  
-![\[Choosing the region where you want to create the project in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-region.png)
+   Make sure that you are signed in to the AWS Region where you want to create the project and its resources\. For example, to create a project in US East \(Ohio\), make sure you have selected that AWS Region\. For information about AWS Regions where AWS CodeStar is available, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#codestar_region) in the *AWS General Reference* \.
 
 1. On the **AWS CodeStar** page, choose **Create a new project**\. \(If you are the first user to create a project, choose **Start a project**\.\)
 
-1. On the **Choose a project template** page, choose the project type from the list of AWS CodeStar project templates\. You can use the filter bar to narrow your choices\. For example, for a web application project written in Node\.js to be deployed to Amazon EC2 instances, select the **Web application**, **Node\.js**, and **Amazon EC2** check boxes\. Then choose from the templates available for that set of options\.  
-![\[Using the filter bar to help choose the project template\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-create-new1.png)
+1. On the **Choose a project template** page, choose the project type from the list of AWS CodeStar project templates\. You can use the filter bar to narrow your choices\. For example, for a web application project written in Node\.js to be deployed to Amazon EC2 instances, select the **Web application**, **Node\.js**, and **Amazon EC2** check boxes\. Then choose from the templates available for that set of options\.
 
    For more information, see [AWS CodeStar Project Templates](templates.md)\.
 
@@ -57,8 +56,7 @@ If you choose other options, your experience might not match what's documented i
 
    For information about the limits on project names and project IDs, see [Limits in AWS CodeStar](limits.md)\.
 **Note**  
-Project IDs must be unique for your AWS account in an AWS Region\.   
-![\[Providing a name and ID for your project in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-create-new2.png)
+Project IDs must be unique for your AWS account in an AWS Region\. 
 
 1. Choose the repository provider, **AWS CodeCommit** or **GitHub**\. 
 
@@ -86,8 +84,7 @@ To get permissions to authorize a GitHub organization that is in the list, but d
 **Note**  
 Depending on your GitHub account type, GitHub might not allow you to create a private repository\. For more information, see [GitHub Pricing](https://github.com/pricing) on the GitHub website\.
 
-   1. \(Optional\) For **Repository description**, enter a description for the GitHub repository\.  
-![\[Choosing GitHub repository settings for your project in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-create-project3.png)
+   1. \(Optional\) For **Repository description**, enter a description for the GitHub repository\.
 
 1. Choose **Next**\.
 
@@ -103,8 +100,7 @@ For more information, see [What Is Amazon VPC?](https://docs.aws.amazon.com/vpc/
 
 1. In **Choose an Amazon EC2 Key Pair**, choose the Amazon EC2 key pair you created in [Step 4: Create an Amazon EC2 Key Pair for AWS CodeStar Projects](setting-up.md#setting-up-create-ec2-key)\. Select **I acknowledge that I have access to the private key file for this key pair**, and then choose **Create project**\.
 
-1. It might take a few minutes to create the project \(including the repository\)\. After your project has a repository, you can use the **Set up tools** page to configure access to it, or you can choose **Skip** and configure access later\. After your project has been created, you can use the links on the **Welcome** tile to configure other items, such as your [user profile in AWS CodeStar](working-with-user-info.md)\.   
-![\[The Welcome tile displayed after you create a project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-welcome-tile.png)
+1. It might take a few minutes to create the project \(including the repository\)\. After your project has a repository, you can use the **Set up tools** page to configure access to it, or you can choose **Skip** and configure access later\. After your project has been created, you can use the links on the **Welcome** tile to configure other items, such as your [user profile in AWS CodeStar](working-with-user-info.md)\. 
 
 ## Step 2: Add Display Information for Your AWS CodeStar User Profile<a name="getting-started-add-owner"></a>
 
@@ -116,8 +112,6 @@ This information is used in your AWS CodeStar user profile\. User profiles are n
 
 Enter a user name and email address, and then choose **Next**\.
 
-![\[Adding user profile information as you create a project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-create-project-user-firstrun.png)
-
 **Note**  
 This user name and email address is used in your AWS CodeStar user profile\. If your project uses resources outside of AWS \(for example, a GitHub repository or issues in Atlassian JIRA\), those resource providers might have their own user profiles, with different user names and email addresses\. For more information, see the resource provider's documentation\.
 
@@ -128,22 +122,16 @@ Your AWS CodeStar project dashboard is where you and your team view the status o
 You can change where each tile appears on your dashboard by dragging and dropping it to a new location\. You can also use the ellipsis menu on each tile to remove that tile from the display\. To add a tile, in the dashboard, choose **Add tile**\.
 
 In your new project, you see the following tiles:
-+ The **Welcome** tile contains links to actions you might want to perform\. Unlike other tiles, you cannot move this tile to another location, or add it back after closing it\.   
-![\[The Welcome tile displayed after you create a project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-welcome-tile.png)
++ The **Welcome** tile contains links to actions you might want to perform\. Unlike other tiles, you cannot move this tile to another location, or add it back after closing it\. 
 + The **Continuous deployment** tile displays a summary view of the continuous delivery pipeline for your project\. The pipeline deploys the web application code when there is a change in your repository\. Because your project is new, the pipeline immediately starts deploying the sample code\. You can see the processing and completion of each stage as your web application is deployed\. For a deployment stage, choose **Endpoint** to view a link to the endpoint\. \(If you chose the project template suggested at the start of this tutorial, the endpoint is an Amazon EC2 instance\.\)  
 
-  You can also see if a stage has a problem or requires approval\. To see details about the state of the pipeline, its stages and actions, or to add or edit a stage, choose **AWS CodePipeline details**\.  
-![\[Continuous deployment tile\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-cdtile.png)
-+ The **Application endpoints** tile displays links to the endpoints where you can view your software\. This is the same link you saw in the **Continuous deployment** tile\. Choose the link to view your application or service\.  
-![\[Application endpoints tile\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-aetile.png)
-+ The **Commit history** tile displays the recent commit history of the repository\. When you first create a project, the most recent commit is the one made by AWS CodeStar\. This commit started running the sample code through the pipeline\. When you make another commit, it appears in the history, too\. That code change starts running through the pipeline automatically\. To view the commits of a different branch, use the branch selector button\. To view all commits or details about the commits or repository, choose **AWS CodeCommit details** \(if the code is stored in AWS CodeCommit\) or **Open in GitHub** \(if the source code is stored in GitHub\)\.  
-![\[Commit history tile\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-cctile.png)
-+ The **Application activity** tile displays Amazon CloudWatch metrics for your project\. For example, it displays the CPU utilization of any Amazon EC2 instances deployed to by AWS Elastic Beanstalk or AWS CodeDeploy resources in your pipeline\. In projects that use AWS Lambda, it displays invocation and error metrics for the Lambda function\. This information is displayed by the hour\. If you used the suggested AWS CodeStar project template for this tutorial, you should see a noticeable spike in activity as your application is first deployed to those instances\. You can refresh monitoring to see changes in your instance health, which can help you identify problems or the need for more resources\.   
-![\[Application activity tile\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-aatile.png)
+  You can also see if a stage has a problem or requires approval\. To see details about the state of the pipeline, its stages and actions, or to add or edit a stage, choose **CodePipeline details**\.
++ The **Application endpoints** tile displays links to the endpoints where you can view your software\. This is the same link you saw in the **Continuous deployment** tile\. Choose the link to view your application or service\.
++ The **Commit history** tile displays the recent commit history of the repository\. When you first create a project, the most recent commit is the one made by AWS CodeStar\. This commit started running the sample code through the pipeline\. When you make another commit, it appears in the history, too\. That code change starts running through the pipeline automatically\. To view the commits of a different branch, use the branch selector button\. To view all commits or details about the commits or repository, choose **CodeCommit details** \(if the code is stored in CodeCommit\) or **Open in GitHub** \(if the source code is stored in GitHub\)\.
++ The **Application activity** tile displays Amazon CloudWatch metrics for your project\. For example, it displays the CPU utilization of any Amazon EC2 instances deployed to by AWS Elastic Beanstalk or CodeDeploy resources in your pipeline\. In projects that use AWS Lambda, it displays invocation and error metrics for the Lambda function\. This information is displayed by the hour\. If you used the suggested AWS CodeStar project template for this tutorial, you should see a noticeable spike in activity as your application is first deployed to those instances\. You can refresh monitoring to see changes in your instance health, which can help you identify problems or the need for more resources\. 
 **Note**  
 If your AWS CodeStar project includes more than one metric, you can filter the display by choosing a metric in the tile\.
-+ The **JIRA** tile is for integrating your AWS CodeStar project with an Atlassian JIRA project\. Configuring this tile makes it possible for you and your project team to track JIRA issues from the project dashboard\. To configure this tile, choose **Connect**, and then follow the instructions\.  
-![\[Configured JIRA tile\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-jiratile.png)
++ The **JIRA** tile is for integrating your AWS CodeStar project with an Atlassian JIRA project\. Configuring this tile makes it possible for you and your project team to track JIRA issues from the project dashboard\. To configure this tile, choose **Connect**, and then follow the instructions\.
 + There is also a **Team wiki** tile\. You can customize the contents of this tile to store team notes, link to useful resources for your team project, provide samples, and so on\. You customize this tile in the next step\.
 
 ## Step 4: Customize the Team Wiki Tile and the Project Dashboard<a name="getting-started-custom"></a>
@@ -179,8 +167,8 @@ First, take a look at the sample code that was included in your project, and see
 If you'd like to look at the code, in the navigation bar, choose **Code**\. Your project's repository opens in a new tab or window\. Read the contents of the repository's readme file \(`README.md`\), and browse the content of those files\.
 
 In this step, you make a change to the code and then push the change to your repository\. You can do this in one of several ways: 
-+ If the project's code is stored in an AWS CodeCommit or GitHub repository, you can use AWS Cloud9 to work with the code directly from your web browser, without installing any tools\. For more information, see [Create an AWS Cloud9 Environment for a Project](setting-up-ide-cloud9.md#setting-up-ide-cloud9-create)\.
-+ If the project's code is stored in an AWS CodeCommit repository, and you have Visual Studio or Eclipse installed, you can use the AWS Toolkit for Visual Studio or AWS Toolkit for Eclipse to more easily connect to the code\. For more information, see [Use an IDE with AWS CodeStar](setting-up-ide.md)\. If you don't have Visual Studio or Eclipse, install a Git client, and follow the instructions later in this step\.
++ If the project's code is stored in an CodeCommit or GitHub repository, you can use AWS Cloud9 to work with the code directly from your web browser, without installing any tools\. For more information, see [Create an AWS Cloud9 Environment for a Project](setting-up-ide-cloud9.md#setting-up-ide-cloud9-create)\.
++ If the project's code is stored in an CodeCommit repository, and you have Visual Studio or Eclipse installed, you can use the AWS Toolkit for Visual Studio or AWS Toolkit for Eclipse to more easily connect to the code\. For more information, see [Use an IDE with AWS CodeStar](setting-up-ide.md)\. If you don't have Visual Studio or Eclipse, install a Git client, and follow the instructions later in this step\.
 + If the project's code is stored in a GitHub repository, you can use your IDE's tools for connecting to GitHub\.
   + For Visual Studio, you can use a tools such as the GitHub Extension for Visual Studio\. For more information, see the [Overview](https://visualstudio.github.com/index.html) page on the GitHub Extension for Visual Studio website and [Getting Started with GitHub for Visual Studio](https://github.com/github/VisualStudio/blob/master/docs/getting-started/index.md) on the GitHub website\.
   + For Eclipse, you can use a tool such as EGit for Eclipse\. For more information, see the [EGit Documentation](http://www.eclipse.org/egit/documentation/) on the EGit website\.
@@ -191,23 +179,23 @@ The following instructions show you how to make a minor change to the sample\. <
 
 **To set up your computer to commit changes \(IAM user\)**
 **Note**  
-In this procedure, we assume that your project's code is stored in an AWS CodeCommit repository\. For other types of code repositories, see the repository provider's documentation, and then skip ahead to the next procedure, [To clone the project repository and make a change](#clone-repo)\.  
-If the code is stored in AWS CodeCommit and you are already using AWS CodeCommit or you used the AWS CodeStar console to create an AWS Cloud9 development environment for the project, you don't need more configuration\. Skip ahead to the next procedure, [To clone the project repository and make a change](#clone-repo)\.
+In this procedure, we assume that your project's code is stored in an CodeCommit repository\. For other types of code repositories, see the repository provider's documentation, and then skip ahead to the next procedure, [To clone the project repository and make a change](#clone-repo)\.  
+If the code is stored in CodeCommit and you are already using CodeCommit or you used the AWS CodeStar console to create an AWS Cloud9 development environment for the project, you don't need more configuration\. Skip ahead to the next procedure, [To clone the project repository and make a change](#clone-repo)\.
 
 1. [Install Git](https://git-scm.com/downloads) on your local computer\.
 
 1. Sign in to the AWS Management Console and open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
 
-   Sign in as the IAM user who will use Git credentials for connections to your AWS CodeStar project repository in AWS CodeCommit\.
+   Sign in as the IAM user who will use Git credentials for connections to your AWS CodeStar project repository in CodeCommit\.
 
 1. In the IAM console, in the navigation pane, choose **Users**, and from the list of users, choose your IAM user\. 
 
-1. On the user details page, choose the **Security Credentials** tab, and in **HTTPS Git credentials for AWS CodeCommit**, choose **Generate**\.  
+1. On the user details page, choose the **Security Credentials** tab, and in **HTTPS Git credentials for CodeCommit**, choose **Generate**\.  
 ![\[Generating Git credentials in the IAM console\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/codecommit-iam-gc1.png)
 **Note**  
-You cannot choose your own user name or password for Git credentials\. For more information, see [Use Git Credentials and HTTPS with AWS CodeCommit](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_ssh-keys.html#git-credentials-code-commit)\.
+You cannot choose your own user name or password for Git credentials\. For more information, see [Use Git Credentials and HTTPS with CodeCommit](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_ssh-keys.html#git-credentials-code-commit)\.
 
-1. Copy the user name and password that IAM generated for you\. You can choose **Show** and then copy and paste this information into a secure file on your local computer, or you can choose **Download credentials** to download this information as a \.CSV file\. You need this information to connect to AWS CodeCommit\.  
+1. Copy the user name and password that IAM generated for you\. You can choose **Show** and then copy and paste this information into a secure file on your local computer, or you can choose **Download credentials** to download this information as a \.CSV file\. You need this information to connect to CodeCommit\.  
 ![\[Downloading Git credentials from the IAM console\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/codecommit-iam-gc2.png)
 
    After you have saved your credentials, choose **Close**\.
@@ -218,38 +206,38 @@ This is your only chance to save the user name and password\. If you do not save
 
 You can use the console to upload files to your repository, or you can use Git to connect from your local computer\. If you are using federated access, follow these steps to use Git to connect to and clone your repository from your local computer\.
 **Note**  
-In this procedure, we assume that your project's code is stored in an AWS CodeCommit repository\. For other types of code repositories, see the repository provider's documentation, and then skip ahead to the next procedure, [To clone the project repository and make a change](#clone-repo)\.
+In this procedure, we assume that your project's code is stored in an CodeCommit repository\. For other types of code repositories, see the repository provider's documentation, and then skip ahead to the next procedure, [To clone the project repository and make a change](#clone-repo)\.
 
 1. [Install Git](https://git-scm.com/downloads) on your local computer\.
 
 1. [Install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/installing.html)\.
 
-1. Configure your temporary security credentials for a federated user\. For information, see [Temporary Access to AWS CodeCommit Repositories](https://docs.aws.amazon.com/codecommit/latest/userguide/temporary-access.html)\. Temporary credentials consist of:
+1. Configure your temporary security credentials for a federated user\. For information, see [Temporary Access to CodeCommit Repositories](https://docs.aws.amazon.com/codecommit/latest/userguide/temporary-access.html)\. Temporary credentials consist of:
    + AWS access key
    + AWS secret key
    + Session token
 
    For more information about temporary credentials, see [Permissions for GetFederationToken](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_getfederationtoken.html)\.
 
-1. Connect to your repository using the AWS CLI credential helper\. For information, see [Setup Steps for HTTPS Connections to AWS CodeCommit Repositories on Linux, macOS, or Unix with the AWS CLI Credential Helper](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html) or [Setup Steps for HTTPS Connections to AWS CodeCommit Repositories on Windows with the AWS CLI Credential Helper](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-windows.html) 
+1. Connect to your repository using the AWS CLI credential helper\. For information, see [Setup Steps for HTTPS Connections to CodeCommit Repositories on Linux, macOS, or Unix with the AWS CLI Credential Helper](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-unixes.html) or [Setup Steps for HTTPS Connections to CodeCommit Repositories on Windows with the AWS CLI Credential Helper](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-https-windows.html) 
 
-1. The following example shows how to connect to an AWS CodeCommit repository and push a commit to it\.<a name="clone-repo"></a><a name="getting-started-clone-repo"></a>
+1. The following example shows how to connect to an CodeCommit repository and push a commit to it\.<a name="clone-repo"></a><a name="getting-started-clone-repo"></a>
 
 **Example: To clone the project repository and make a change**
 **Note**  
-This procedure shows how to clone the project's code repository to your computer, make a change to the project's `index.html` file, and then push your change to the remote repository\. In this procedure, we assume that your project's code is stored in an AWS CodeCommit repository and that you're using a Git client from the command line\. For other types of code repositories or tools, see the provider's documentation for how to clone the repository, change the file, and then push the code\.
+This procedure shows how to clone the project's code repository to your computer, make a change to the project's `index.html` file, and then push your change to the remote repository\. In this procedure, we assume that your project's code is stored in an CodeCommit repository and that you're using a Git client from the command line\. For other types of code repositories or tools, see the provider's documentation for how to clone the repository, change the file, and then push the code\.
 
 1. If you used the AWS CodeStar console to create an AWS Cloud9 development environment for the project, open the development environment, and then skip to step 3 in this procedure\. To open the development environment, see [Open an AWS Cloud9 Environment for a Project](setting-up-ide-cloud9.md#setting-up-ide-cloud9-open)\.
 
-   With your project open in the AWS CodeStar console, on the navigation bar, choose the **Project** gear icon, and then choose the **Connect tools** button\. In **Clone repository URL**, choose the protocol for the connection type you have set up for AWS CodeCommit, and then copy the link\. For example, if you followed the steps in the previous procedure to set up Git credentials for AWS CodeCommit, choose **HTTPS**\.
+   With your project open in the AWS CodeStar console, on the navigation bar, choose the **Project** gear icon, and then choose the **Connect tools** button\. In **Clone repository URL**, choose the protocol for the connection type you have set up for CodeCommit, and then copy the link\. For example, if you followed the steps in the previous procedure to set up Git credentials for CodeCommit, choose **HTTPS**\.
 
-1. On your local computer, open a terminal or command line window and change directories to a temporary directory\. Run the git clone command to clone the repository to your computer\. Paste the link you copied\. For example, for AWS CodeCommit using HTTPS:
+1. On your local computer, open a terminal or command line window and change directories to a temporary directory\. Run the git clone command to clone the repository to your computer\. Paste the link you copied\. For example, for CodeCommit using HTTPS:
 
    ```
    git clone https://git-codecommit.us-east-2.amazonaws.com/v1/repos/my-first-projec
    ```
 
-   The first time you connect, you are prompted for the user name and password for the repository\. For AWS CodeCommit, enter the Git credentials user name and password you downloaded in the previous procedure\.
+   The first time you connect, you are prompted for the user name and password for the repository\. For CodeCommit, enter the Git credentials user name and password you downloaded in the previous procedure\.
 
 1. Navigate to the clone directory on your computer and browse the contents\. 
 
@@ -281,8 +269,8 @@ For other issues, see [Troubleshooting AWS CodeStar](troubleshooting.md)\.
 
 Every AWS CodeStar project is already configured with three AWS CodeStar roles\. Each role provides its own level of access to the project and its resources:
 + **Owner**: Can add and remove team members, change the project dashboard, and delete the project\.
-+ **Contributor**: Can change the project dashboard and contribute code if the code is stored in AWS CodeCommit, but cannot add or remove team members or delete the project\. This is the role you should choose for most team members in an AWS CodeStar project\.
-+ **Viewer**: Can view the project dashboard, project code if the code is stored in AWS CodeCommit, and the state of the project, but cannot move, add, or remove tiles from the project dashboard\.
++ **Contributor**: Can change the project dashboard and contribute code if the code is stored in CodeCommit, but cannot add or remove team members or delete the project\. This is the role you should choose for most team members in an AWS CodeStar project\.
++ **Viewer**: Can view the project dashboard, project code if the code is stored in CodeCommit, and the state of the project, but cannot move, add, or remove tiles from the project dashboard\.
 
 **Important**  
 If your project uses resources outside of AWS \(for example, a GitHub repository or issues in Atlassian JIRA\), access to those resources is controlled by the resource provider, not AWS CodeStar\. For more information, see the resource provider's documentation\.  
@@ -306,7 +294,7 @@ For more information about teams and project roles, see [Working with AWS CodeSt
 **Note**  
 Users who have already been added to another AWS CodeStar project appear in the **AWS CodeStar users from other projects** list\.
 
-     On the **Add team member** tab, in **Project role**, choose the AWS CodeStar role \(Owner, Contributor, or Viewer\) for this user\. This is an AWS CodeStar project\-level role that can only be changed by an owner of the project\. When applied to an IAM user, the role provides all permissions required to access AWS CodeStar project resources\. It applies policies required for creating and managing Git credentials for code stored in AWS CodeCommit in IAM or uploading Amazon EC2 SSH keys for the user in IAM\. 
+     On the **Add team member** tab, in **Project role**, choose the AWS CodeStar role \(Owner, Contributor, or Viewer\) for this user\. This is an AWS CodeStar project\-level role that can only be changed by an owner of the project\. When applied to an IAM user, the role provides all permissions required to access AWS CodeStar project resources\. It applies policies required for creating and managing Git credentials for code stored in CodeCommit in IAM or uploading Amazon EC2 SSH keys for the user in IAM\. 
 **Important**  
 You cannot provide or change the display name or email information for an IAM user unless you are signed in to the console as that user\. For more information, see [Manage Display Information for Your AWS CodeStar User Profile ](how-to-manage-user-pref.md)\.
 
@@ -321,7 +309,7 @@ For ease of management, at least one user should be assigned the **Owner** role 
 
 1. Send the new team member the following information:
    + Connection information for your AWS CodeStar project\.
-   + If the source code is stored in AWS CodeCommit, [instructions for setting up access with Git credentials](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) to the AWS CodeCommit repository from their local computers\.
+   + If the source code is stored in CodeCommit, [instructions for setting up access with Git credentials](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html) to the CodeCommit repository from their local computers\.
    + Information about how the user can manage their display name, email address, and public Amazon EC2 SSH key, as described in [Working with Your AWS CodeStar User Profile ](working-with-user-info.md)\.
    + One\-time password and connection information, if the user is new to AWS and you created an IAM user for that person\. The password expires the first time the user signs in\. The user must choose a new password\.
 

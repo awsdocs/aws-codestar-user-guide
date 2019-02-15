@@ -19,13 +19,11 @@ Use the AWS CodeStar console to create a project\.<a name="adh-create-project"><
 
 1. Sign in to the AWS Management Console, and then open the AWS CodeStar console at [https://console\.aws\.amazon\.com/codestar/](https://console.aws.amazon.com/codestar/)\.
 
-   Make sure that you are signed in to the AWS Region where you want to create the project and its resources\. For example, to create a project in US East \(Ohio\), make sure you have selected that AWS Region\. For information about AWS Regions where AWS CodeStar is available, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#codestar_region) in the *AWS General Reference* \.  
-![\[Choosing the region where you want to create the project in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-region.png)
+   Make sure that you are signed in to the AWS Region where you want to create the project and its resources\. For example, to create a project in US East \(Ohio\), make sure you have selected that AWS Region\. For information about AWS Regions where AWS CodeStar is available, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#codestar_region) in the *AWS General Reference* \.
 
 1. On the **AWS CodeStar** page, choose **Create a new project**\. \(If you are the first user to create a project, choose **Start a project**\.\)
 
-1. On the **Choose a project template** page, choose the project type from the list of AWS CodeStar project templates\. You can use the filter bar to narrow your choices\. For example, for a web application project written in Node\.js to be deployed to Amazon EC2 instances, select the **Web application**, **Node\.js**, and **Amazon EC2** check boxes\. Then choose from the templates available for that set of options\.  
-![\[Using the filter bar to help choose the project template\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-create-new1.png)
+1. On the **Choose a project template** page, choose the project type from the list of AWS CodeStar project templates\. You can use the filter bar to narrow your choices\. For example, for a web application project written in Node\.js to be deployed to Amazon EC2 instances, select the **Web application**, **Node\.js**, and **Amazon EC2** check boxes\. Then choose from the templates available for that set of options\.
 
    For more information, see [AWS CodeStar Project Templates](templates.md)\.
 
@@ -35,8 +33,7 @@ Use the AWS CodeStar console to create a project\.<a name="adh-create-project"><
 
    For information about the limits on project names and project IDs, see [Limits in AWS CodeStar](limits.md)\.
 **Note**  
-Project IDs must be unique for your AWS account in an AWS Region\.   
-![\[Providing a name and ID for your project in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-create-new2.png)
+Project IDs must be unique for your AWS account in an AWS Region\. 
 
 1. Choose the repository provider, **AWS CodeCommit** or **GitHub**\. 
 
@@ -64,8 +61,7 @@ To get permissions to authorize a GitHub organization that is in the list, but d
 **Note**  
 Depending on your GitHub account type, GitHub might not allow you to create a private repository\. For more information, see [GitHub Pricing](https://github.com/pricing) on the GitHub website\.
 
-   1. \(Optional\) For **Repository description**, enter a description for the GitHub repository\.  
-![\[Choosing GitHub repository settings for your project in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-create-project3.png)
+   1. \(Optional\) For **Repository description**, enter a description for the GitHub repository\.
 
 1. Choose **Next**\.
 
@@ -81,8 +77,7 @@ For more information, see [What Is Amazon VPC?](https://docs.aws.amazon.com/vpc/
 
 1. In **Choose an Amazon EC2 Key Pair**, choose the Amazon EC2 key pair you created in [Step 4: Create an Amazon EC2 Key Pair for AWS CodeStar Projects](setting-up.md#setting-up-create-ec2-key)\. Select **I acknowledge that I have access to the private key file for this key pair**, and then choose **Create project**\.
 
-1. It might take a few minutes to create the project \(including the repository\)\. After your project has a repository, you can use the **Set up tools** page to configure access to it, or you can choose **Skip** and configure access later\. After your project has been created, you can use the links on the **Welcome** tile to configure other items, such as your [user profile in AWS CodeStar](working-with-user-info.md)\.   
-![\[The Welcome tile displayed after you create a project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-welcome-tile.png)
+1. It might take a few minutes to create the project \(including the repository\)\. After your project has a repository, you can use the **Set up tools** page to configure access to it, or you can choose **Skip** and configure access later\. After your project has been created, you can use the links on the **Welcome** tile to configure other items, such as your [user profile in AWS CodeStar](working-with-user-info.md)\. 
 
 While your project is being created, you can [add team members](how-to-add-team-member.md) or [configure access](setting-up-ide.md) to your project repository from the command line or your favorite IDE\. 
 
@@ -94,15 +89,15 @@ When you use the console to create a project, the toolchain template is created 
 
 A complete toolchain requires the following recommended resources:
 
-1. An AWS CodeCommit or GitHub repository that contains your source code\.
+1. An CodeCommit or GitHub repository that contains your source code\.
 
-1. An AWS CodePipeline pipeline that is configured to listen to changes to your repository\.
+1. An CodePipeline pipeline that is configured to listen to changes to your repository\.
 
-   1. When you use AWS CodeBuild to run unit or integration tests, we recommend that you add a build stage to your pipeline to create build artifacts\.
+   1. When you use CodeBuild to run unit or integration tests, we recommend that you add a build stage to your pipeline to create build artifacts\.
 
-   1. We recommend that you add a deployment stage to your pipeline that uses AWS CodeDeploy or AWS CloudFormation to deploy your build artifact and source code to your runtime infrastructure\.
+   1. We recommend that you add a deployment stage to your pipeline that uses CodeDeploy or AWS CloudFormation to deploy your build artifact and source code to your runtime infrastructure\.
 **Note**  
-Because AWS CodePipeline requires at least two stages in a pipeline, and the first stage must be the source stage, add either a build or deploy stage as the second stage\.
+Because CodePipeline requires at least two stages in a pipeline, and the first stage must be the source stage, add either a build or deploy stage as the second stage\.
 
 AWS CodeStar toolchains are defined as a [CloudFormation template](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-guide.html)\. 
 
@@ -113,7 +108,7 @@ For a tutorial that walks through this task and sets up sample resources, see [T
 When you create a project, you provide the following parameters in an input file\. If the following are not provided, AWS CodeStar creates an empty project\.
 + **Source code**\. If this parameter is included in your request, then you must also include a toolchain template\.
   + Your source code must include the application code required to run your project\.
-  + Your source code must include any required configuration files, such as a buildspec\.yml for an AWS CodeBuild project or an appspec\.yml for an AWS CodeDeploy deployment\.
+  + Your source code must include any required configuration files, such as a buildspec\.yml for an CodeBuild project or an appspec\.yml for an CodeDeploy deployment\.
   + You can include optional items in your source code such as a README or a template\.yml for non\-toolchain AWS resources\.
 + **Toolchain template**\. Your toolchain template provisions the AWS resources and IAM roles to be managed for your project\.
 + **Source locations**\. If you specify source code and a toolchain template for your project, you must provide a location\. Upload your source files and your toolchain template to the Amazon S3 bucket\. AWS CodeStar retrieves the files and uses them to create the project\.
@@ -187,12 +182,12 @@ You must have a unique project ID when you create a project\. You receive an err
        + *S3*: Optional\. The Amazon S3 location of your source code\.
          + *bucket\-name*: The bucket that contains your source code\.
          + *bucket\-key*: The bucket prefix and object key that points to the \.zip file that contains your source code \(for example, `src.zip`\)\.
-     + *destination*: Optional\. The destination locations where your source code is to be populated when the project is created\. The supported destinations for your source code are AWS CodeCommit and GitHub\.
+     + *destination*: Optional\. The destination locations where your source code is to be populated when the project is created\. The supported destinations for your source code are CodeCommit and GitHub\.
 
        You can provide only one of these two options:
-       + *codeCommit*: The only required attribute is the name of the AWS CodeCommit repository that should contain your source code\. This repository should be in your toolchain template\.
+       + *codeCommit*: The only required attribute is the name of the CodeCommit repository that should contain your source code\. This repository should be in your toolchain template\.
 **Note**  
-For AWS CodeCommit, you must provide the name of the repository that you defined in your toolchain stack\. AWS CodeStar initializes this repository with the source code you provided in Amazon S3\.
+For CodeCommit, you must provide the name of the repository that you defined in your toolchain stack\. AWS CodeStar initializes this repository with the source code you provided in Amazon S3\.
        + *gitHub*: This object represents information required to create the GitHub repository and seed it with source code\. If you choose a GitHub repository, the following values are required\.
 **Note**  
 For GitHub, you cannot specify an existing GitHub repository\. AWS CodeStar creates this for you and populates this repository with the source code you uploaded to Amazon S3\. AWS CodeStar uses the following information to create your repository in GitHub\.

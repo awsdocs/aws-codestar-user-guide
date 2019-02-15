@@ -638,9 +638,9 @@ For AWS CodeStar projects created after December 6, 2018 PDT, CodeStar creates a
 }
 ```
 
-### AWS CodeBuild Worker Role Policy \(Before December 6, 2018 PDT\)<a name="adh-policy-acb-worker-existing"></a>
+### CodeBuild Worker Role Policy \(Before December 6, 2018 PDT\)<a name="adh-policy-acb-worker-existing"></a>
 
-If your CodeStar project was created before December 6, 2018 PDT, CodeStar created an inline policy for an AWS CodeBuild worker role\. The following policy statement is an example\.
+If your CodeStar project was created before December 6, 2018 PDT, CodeStar created an inline policy for an CodeBuild worker role\. The following policy statement is an example\.
 
 ```
 {
@@ -692,9 +692,9 @@ If your CodeStar project was created before December 6, 2018 PDT, CodeStar creat
 }
 ```
 
-### AWS CodePipeline Worker Role Policy \(Before December 6, 2018 PDT\)<a name="adh-policy-acp-worker-existing"></a>
+### CodePipeline Worker Role Policy \(Before December 6, 2018 PDT\)<a name="adh-policy-acp-worker-existing"></a>
 
-If your CodeStar project was created before December 6, 2018 PDT, CodeStar created an inline policy for an AWS CodePipeline worker role\. The following policy statement is an example\.
+If your CodeStar project was created before December 6, 2018 PDT, CodeStar created an inline policy for an CodePipeline worker role\. The following policy statement is an example\.
 
 ```
 {

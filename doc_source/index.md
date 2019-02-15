@@ -1,7 +1,7 @@
 # AWS CodeStar User Guide
 
 -----
-*****Copyright &copy; 2018 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -19,6 +19,7 @@ Amazon's trademarks and trade dress may not be used in
 + [Getting Started with AWS CodeStar](getting-started.md)
    + [Tutorial: Creating and Managing a Serverless Project in AWS CodeStar](sam-tutorial.md)
    + [Tutorial: Create a Project in AWS CodeStar with the AWS CLI](cli-tutorial.md)
+   + [Tutorial: Create an Alexa Skill Project in AWS CodeStar](alexa-tutorial.md)
 + [AWS CodeStar Project Templates](templates.md)
 + [AWS CodeStar Best Practices](best-practices.md)
 + [Working with Projects in AWS CodeStar](working-with-projects.md)

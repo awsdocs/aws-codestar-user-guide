@@ -16,7 +16,6 @@ As a best practice, add a manual approval stage in front of your new production 
 
 1. Choose **Add Action**\.
 
-1. In the AWS CodePipeline pane, choose **Save pipeline change**, and then choose **Save change**\. View your updated pipeline\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codestar-approval-prod-pipeline.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+1. In the AWS CodePipeline pane, choose **Save pipeline change**, and then choose **Save change**\. View your updated pipeline\.
 
 1. To submit your changes and start a pipeline build, choose **Release change**, and then choose **Release**\.

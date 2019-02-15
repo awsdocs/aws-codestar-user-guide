@@ -26,7 +26,7 @@ The following information might help you troubleshoot common issues in AWS CodeS
 + A project with that ID already exists in your AWS account, possibly in a different region\.
 + The IAM user you used to sign in to the AWS Management Console does not have the permissions required to create a project\.
 + The AWS CodeStar service role is missing one or more required permissions\.
-+ You have reached the maximum limit for one or more resources for a project \(such as the limit on customer managed policies in IAM, Amazon S3 buckets, or pipelines in AWS CodePipeline\)\.
++ You have reached the maximum limit for one or more resources for a project \(such as the limit on customer managed policies in IAM, Amazon S3 buckets, or pipelines in CodePipeline\)\.
 
 Before you create a project, verify that you have the `AWSCodeStarFullAccess` policy applied to your IAM user\. For more information, see [AWS CodeStar Access Permissions Reference](access-permissions.md)\.
 
@@ -53,15 +53,15 @@ Project resources that might remain include:
 + One or more project buckets in Amazon S3\. Unlike other project resources, project buckets in Amazon S3 are not deleted when the **Delete associated AWS resources along with AWS CodeStar project** check box is selected\.
 
   Open the Amazon S3 console at [https://console\.aws\.amazon\.com/s3/](https://console.aws.amazon.com/s3/)\.
-+ A source repository for your project in AWS CodeCommit\.
++ A source repository for your project in CodeCommit\.
 
-  Open the AWS CodeCommit console at [https://console\.aws\.amazon\.com/codecommit/](https://console.aws.amazon.com/codecommit/)\.
-+ A pipeline for your project in AWS CodePipeline\.
+  Open the CodeCommit console at [https://console\.aws\.amazon\.com/codecommit/](https://console.aws.amazon.com/codecommit/)\.
++ A pipeline for your project in CodePipeline\.
 
-  Open the AWS CodePipeline console at [https://console\.aws\.amazon\.com/codepipeline/](https://console.aws.amazon.com/codepipeline/)\.
-+ An application and associated deployment groups in AWS CodeDeploy\.
+  Open the CodePipeline console at [https://console\.aws\.amazon\.com/codepipeline/](https://console.aws.amazon.com/codepipeline/)\.
++ An application and associated deployment groups in CodeDeploy\.
 
-  Open the AWS CodeDeploy console at [https://console\.aws\.amazon\.com/codedeploy/](https://console.aws.amazon.com/codedeploy/)\.
+  Open the CodeDeploy console at [https://console\.aws\.amazon\.com/codedeploy/](https://console.aws.amazon.com/codedeploy/)\.
 + An application and associated environments in AWS Elastic Beanstalk\.
 
   Open the Elastic Beanstalk console at [https://console\.aws\.amazon\.com/elasticbeanstalk/](https://console.aws.amazon.com/elasticbeanstalk/)\.

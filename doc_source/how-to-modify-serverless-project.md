@@ -2,7 +2,10 @@
 
 AWS CodeDeploy supports function version deployments for AWS Lambda functions in your AWS CodeStar serverless projects\. An AWS Lambda deployment shifts incoming traffic from an existing Lambda function to an updated Lambda function version\. You might want to test an updated Lambda function by deploying a separate version and then rolling back the deployment to the first version if needed\.
 
-Use the steps in this section to modify your AWS CodeStar project template and update your CodeStarWorker role’s IAM permissions\. This task starts an automated response in AWS CloudFormation that creates aliased AWS Lambda functions and then instructs AWS CodeDeploy to shift traffic to an updated environment\.
+Use the steps in this section to modify your AWS CodeStar project template and update your CodeStarWorker roles IAM permissions\. This task starts an automated response in AWS CloudFormation that creates aliased AWS Lambda functions and then instructs AWS CodeDeploy to shift traffic to an updated environment\.
+
+**Note**  
+Complete these steps only if you created your CodeStar project before December 12, 2018\.
 
 AWS CodeDeploy has three deployment options that allow you to shift traffic to versions of your AWS Lambda function in your application:
 + **Canary: **Traffic is shifted in two increments\. You can choose from predefined canary options that specify the percentage of traffic shifted to your updated Lambda function version in the first increment and the interval, in minutes, before the remaining traffic is shifted in the second increment\.
@@ -192,14 +195,10 @@ This starts your pipeline\. If you commit the changes before you update IAM perm
 
    For more information about publishing aliased Lambda functions in SAM, see the [AWS Serverless Application Model \(SAM\)](https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md) template reference\. For more information about event hooks and resources in the AWS CodeDeploy AppSpec file, see [AppSpec 'resources' Section \(AWS Lambda Deployments Only\)](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-resources.html) and [AppSpec 'hooks' Section for an AWS Lambda Deployment](https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda)\.
 
-1. After successful completion of your pipeline, the resources are created in your AWS CloudFormation stack\. On the **Project** page, in the **Project Resources** list, view the AWS CodeDeploy application, the AWS CodeDeploy deployment group, and the AWS CodeDeploy service role resources created for your project\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codedeploy-codestar-resources.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codedeploy-codestar-CDservicerole.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+1. After successful completion of your pipeline, the resources are created in your AWS CloudFormation stack\. On the **Project** page, in the **Project Resources** list, view the AWS CodeDeploy application, the AWS CodeDeploy deployment group, and the AWS CodeDeploy service role resources created for your project\.
 
-1. To create a new version, make a change to the Lambda function in your repository\. The new deployment starts and shifts traffic according to the deployment type indicated in the SAM template\. To view the status of the traffic that is being shifted to the new version, on the **Project** page, in the **Project Resources** list, choose the link to the AWS CodeDeploy deployment\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codedeploy-shifting-status.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+1. To create a new version, make a change to the Lambda function in your repository\. The new deployment starts and shifts traffic according to the deployment type indicated in the SAM template\. To view the status of the traffic that is being shifted to the new version, on the **Project** page, in the **Project Resources** list, choose the link to the AWS CodeDeploy deployment\.
 
-1. To view details about each revision, under **Revisions**, choose the link to the AWS CodeDeploy deployment group\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-codedeploy-revisions-CDgroup.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+1. To view details about each revision, under **Revisions**, choose the link to the AWS CodeDeploy deployment group\.
 
 1. In your local working directory, you can make changes to your AWS Lambda function and commit the change to your project repository\. AWS CloudFormation supports AWS CodeDeploy in managing the next revision in the same way\. For more information about redeploying, stopping, or rolling back a Lambda deployment, see [Deployments on an AWS Lambda Compute Platform](https://docs.aws.amazon.com/codedeploy/latest/userguide/deployment-steps.html#deployment-steps-lambda)\.

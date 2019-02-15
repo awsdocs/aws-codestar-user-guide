@@ -20,7 +20,7 @@ You can use AWS CodeStar to create projects in two ways, depending on your exper
 An AWS CodeStar project provides a single point of management\. You can use the **Create project** wizard in the console to set up a sample project\. You can then use it as a collaboration platform for managing permissions and resources for your team\. For more information, see [What Is AWS CodeStar?](welcome.md)\. When you use the console to create a project, your source code is provided as sample code, and your CI/CD toolchain resources are created for you 
 
 When you create a project in the console, AWS CodeStar provisions the following resources:
-+ A code repository in GitHub or AWS CodeCommit\.
++ A code repository in GitHub or CodeCommit\.
 + In the project repository, a `README.md` file that provides details of files and directories\.
 + In the project repository, a `template.yml` file that stores the deﬁnition for your application's runtime stack\. You use this file to add or modify project resources that are not toolchain resources, such as AWS resources used for notifications, database support, monitoring, and tracing\.
 + AWS services and resources created in connection with your pipeline, such as the Amazon S3 artifact bucket, Amazon CloudWatch Events, and related service roles\.
@@ -36,9 +36,9 @@ When you create a project in the console, AWS CodeStar provisions the following 
   + Execution roles for Lambda defined in the application stack, which you can modify\.
 + Before December 6, 2018 PDT:
   + An AWS CloudFormation IAM role for creating project resources with support for a limited set of AWS CloudFormation resources\.
-  + An IAM role for creating an AWS CodePipeline resource\.
-  + An IAM role for creating an AWS CodeBuild resource\.
-  + An IAM role for creating an AWS CodeDeploy resource, if applicable to your project type\.
+  + An IAM role for creating an CodePipeline resource\.
+  + An IAM role for creating an CodeBuild resource\.
+  + An IAM role for creating an CodeDeploy resource, if applicable to your project type\.
   + An IAM role for creating the Amazon EC2 webapp, if applicable to your project type\.
   + An IAM role for creating a CloudWatch Events resource\.
   + An execution role for Lambda that is dynamically modified to include a partial set of resources\.
@@ -63,9 +63,9 @@ Each template configures one of the following application types:
   Choose this template if you want a project for an HTML website\. The AWS CodeStar project templates in this category support development in HTML5\.
 + **Alexa skill: **
 
-  Choose this template if you want a project for an AWS Lambda function based on an Alexa skills blueprint for Amazon Alexa\. When you configure your skill in the Alexa Developer Portal, the function returns an Amazon Resource Name \(ARN\) that you can use as a service endpoint\. For more information, see [Creating an AWS Lambda Function for a Custom Skill](https://developer.amazon.com/docs/custom-skills/host-a-custom-skill-as-an-aws-lambda-function.html)\.
+  Choose this template if you want a project for an Alexa skill with an AWS Lambda function\. When you create the skill project, CodeStar returns an Amazon Resource Name \(ARN\) that you can use as a service endpoint\. For more information, see [Host a Custom Skill as an AWS Lambda Function](https://developer.amazon.com/docs/custom-skills/host-a-custom-skill-as-an-aws-lambda-function.html)\.
 **Note**  
-Lambda functions for Alexa skills are supported in the US East \(N\. Virginia\), EU \(Ireland\), and Canada \(Central\) Regions only\.
+Lambda functions for Alexa skills are supported in the US East \(N\. Virginia\), US West \(Oregon\), EU \(Ireland\), and Asia Pacific \(Tokyo\) regions only\.
 + **Config rule:**
 
    Choose this template if you want a project for an AWS Config rule that lets you automate rules across AWS resources in your account\. The function returns an ARN that you can use as a service endpoint for your rule\.
@@ -87,10 +87,13 @@ You can update your project by modifying:
 + Sample code and programming language resources for your application\.
 + Resources that make up the infrastructure where your application is stored and deployed \(operating systems, support applications and services, deployment parameters, and the cloud compute platform\)\. You can modify application resources in the `template.yml` file\. This is the AWS CloudFormation file that models your application's runtime environment\.
 
+**Note**  
+If you are working with an Alexa Skills CodeStar project, you cannot make changes to the skill outside of the CodeStar source repository \(CodeCommit or GitHub\)\. If you edit the skill in the Alexa developer portal, the change might not be visible in the source repository and the two versions will be out of sync\.
+
 ### Change Application Source Code and Push Changes<a name="update-project-application"></a>
 
 To modify sample source code, scripts, and other application source files, edit files in your source repository by:
-+ Using the Edit mode in AWS CodeCommit or GitHub\.
++ Using the Edit mode in CodeCommit or GitHub\.
 + Opening the project in an IDE, such as AWS Cloud9\.
 +  Cloning the repository locally and then committing and pushing your changes\. For information, see [Step 5: Commit a Change](getting-started.md#getting-started-commit)\.
 

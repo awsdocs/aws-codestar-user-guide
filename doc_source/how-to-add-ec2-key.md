@@ -28,8 +28,7 @@ Although you cannot generate a public\-private key pair in the console, you can 
 1. On the **Team members** page, find the name of your IAM user \(the team member that has your IAM name in parentheses and **\[You\]** in brackets next to the display name\), and then choose **Add Public SSH key**\.  
 ![\[Adding an SSH public key to your user in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-sshkey.png)
 
-1. In **Manage your public SSH key**, paste the public key, and then choose **Save**\.  
-![\[Pasting the public key value in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-sshkey-manage.png)
+1. In **Manage your public SSH key**, paste the public key, and then choose **Save**\.
 **Note**  
 You can change your public key by deleting the old key in this field and pasting in a new one\. You can delete a public key by deleting the contents of this field, and then choosing **Save**\.
 
