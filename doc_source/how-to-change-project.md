@@ -9,7 +9,7 @@ The following table lists the supported changes to default AWS resources in an A
 
 | Change | Notes | 
 | --- | --- | 
-| Add a stage to AWS CodePipeline\. | See [Add a Stage to AWS CodePipeline](#how-to-change-project-codepipeline)\. | 
+| Add a stage to AWS CodePipeline\. | See [Add a Stage to AWS CodePipeline](how-to-change-project-codepipeline.md)\. | 
 | Change Elastic Beanstalk environment settings\. | See [Change AWS Elastic Beanstalk Environment Settings](#how-to-change-project-beanstalk)\. | 
 | Change an AWS Lambda function's code or settings, its IAM role, or its API in Amazon API Gateway\. | See [Change an AWS Lambda Function in Source Code](#how-to-change-project-lambda)\. | 
 | Add a resource to an AWS Lambda project and expand permissions to create and access the new resource\. | See [Add a Resource to a Project](#customize-project-template)\. | 
@@ -137,6 +137,7 @@ The following table lists the supported changes to default AWS resources in an A
 | Modify your EC2 project to add an endpoint\. |  | 
 | Modify your Elastic Beanstalk project to add an endpoint\. |  | 
 | Edit your project to add a Prod stage and endpoint\. | See [Add a Prod Stage and Endpoint to a Project](#customize-ec2-multi-endpoints)\. | 
+| Securely use SSM parameters in an AWS CodeStar project\. | See [Securely Use SSM Parameters in an AWS CodeStar Project](ssm-parameters.md)\. | 
 
 The following changes are not supported\.
 + Switch to a different deployment target \(for example, deploy to AWS Elastic Beanstalk instead of AWS CodeDeploy\)\.
@@ -144,14 +145,6 @@ The following changes are not supported\.
 + Change the CodeCommit repository name \(for an AWS CodeStar project connected to CodeCommit\)\.
 + For an AWS CodeStar project connected to GitHub, disconnect the GitHub repository, and then reconnect the repository to that project, or connect any other repository to that project\. You can use the CodePipeline console \(not the AWS CodeStar console\) to disconnect and reconnect to GitHub in a pipeline's **Source** stage\. However, if you reconnect the **Source** stage to a different GitHub repository, in the AWS CodeStar dashboard for the project, the information in the **Application endpoints**, **Commit history**, and **GitHub Issues** tiles might be wrong or out of date\. Disconnecting the GitHub repository does not remove that repository's information from the commit history and GitHub issues tiles in the AWS CodeStar project dashboard\. To remove this information, use the GitHub website to disable access to GitHub from the AWS CodeStar project\. To revoke access, on the GitHub website, use the **Authorized OAuth Apps** section of the settings page for your GitHub account profile\.
 + Disconnect the CodeCommit repository \(for an AWS CodeStar project connected to CodeCommit\) and then reconnect the repository to that project, or connect any other repository to that project\.
-
-## Add a Stage to AWS CodePipeline<a name="how-to-change-project-codepipeline"></a>
-
-You can add a new stage to a pipeline that AWS CodeStar creates in a project\. For more information, see [Edit a Pipeline in AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/pipelines-edit.html) in the *AWS CodePipeline User Guide*\.
-
-**Note**  
-If the new stage depends on any AWS resources that AWS CodeStar did not create, the pipeline might break\. This is because the IAM role that AWS CodeStar created for AWS CodePipeline might not have access to those resources by default\.   
-To attempt to give AWS CodePipeline access to AWS resources that AWS CodeStar did not create, you might want to change the IAM role that AWS CodeStar created\. This is not supported because AWS CodeStar might remove your IAM role changes when it performs regular update checks on the project\.
 
 ## Change AWS Elastic Beanstalk Environment Settings<a name="how-to-change-project-beanstalk"></a>
 

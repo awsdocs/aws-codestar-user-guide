@@ -30,6 +30,8 @@ Amazon's trademarks and trade dress may not be used in
       + [Use Visual Studio with AWS CodeStar](setting-up-ide-vs.md)
    + [Customize an AWS CodeStar Dashboard](how-to-customize.md)
    + [Change AWS Resources in an AWS CodeStar Project](how-to-change-project.md)
+      + [Add a Stage to AWS CodePipeline](how-to-change-project-codepipeline.md)
+      + [Securely Use SSM Parameters in an AWS CodeStar Project](ssm-parameters.md)
    + [Shift Traffic for an AWS Lambda Project](how-to-modify-serverless-project.md)
    + [Working with Project Tags in AWS CodeStar](working-with-project-tags.md)
    + [Delete an AWS CodeStar Project](how-to-delete-project.md)

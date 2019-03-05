@@ -437,8 +437,8 @@ For AWS CodeStar projects created after December 6, 2018 PDT, CodeStar creates a
                 "s3:GetObjectVersion"
             ],
             "Resource": [
-                "arn:aws:s3:::aws-codestar-us-east-1-account-id-project-id-pipe",
-                "arn:aws:s3:::aws-codestar-us-east-1-account-id-project-id-pipe/*"
+                "arn:aws:s3:::aws-codestar-region-id-account-id-project-id-pipe",
+                "arn:aws:s3:::aws-codestar-region-id-account-id-project-id-pipe/*"
             ],
             "Effect": "Allow"
         },
@@ -503,8 +503,7 @@ For AWS CodeStar projects created after December 6, 2018 PDT, CodeStar creates a
                 "states:*",
                 "waf:*",
                 "waf-regional:*",
-                "workspaces:*",
-                "ssm:*"
+                "workspaces:*"
             ],
             "Resource": "*",
             "Effect": "Allow"
@@ -513,7 +512,10 @@ For AWS CodeStar projects created after December 6, 2018 PDT, CodeStar creates a
             "Action": [
                 "iam:PassRole"
             ],
-            "Resource": "arn:aws:iam::account-id:role/CodeStar-project-id*",
+            "Resource": [
+                "arn:aws:iam::account-id:role/CodeStar-project-id*",
+                "arn:aws:iam::account-id:role/CodeStarWorker-project-id-CodeDeploy"
+            ],
             "Effect": "Allow"
         },
         {
@@ -521,8 +523,8 @@ For AWS CodeStar projects created after December 6, 2018 PDT, CodeStar creates a
                 "cloudformation:CreateChangeSet"
             ],
             "Resource": [
-                "arn:aws:cloudformation:us-east-1:aws:transform/Serverless-2016-10-31",
-                "arn:aws:cloudformation:us-east-1:aws:transform/CodeStarGamma"
+                "arn:aws:cloudformation:region-id:aws:transform/Serverless-2016-10-31",
+                "arn:aws:cloudformation:region-id:aws:transform/CodeStar"
             ],
             "Effect": "Allow"
         },
@@ -536,17 +538,13 @@ For AWS CodeStar projects created after December 6, 2018 PDT, CodeStar creates a
                 "iam:DeleteUser",
                 "iam:DeleteUserPolicy",
                 "iam:AttachUserPolicy",
-                "iam:DetachUserPolicy"
+                "iam:DetachUserPolicy",
+                "iam:CreateServiceLinkedRole"
             ],
             "Resource": "*",
             "Effect": "Allow"
         },
         {
-            "Condition": {
-                "StringEquals": {
-                    "iam:PermissionsBoundary": "arn:aws:iam::account-id:policy/CodeStar_project-id_PermissionsBoundary"
-                }
-            },
             "Action": [
                 "iam:CreateRole",
                 "iam:CreateUser",
@@ -554,7 +552,12 @@ For AWS CodeStar projects created after December 6, 2018 PDT, CodeStar creates a
                 "iam:PutRolePermissionsBoundary"
             ],
             "Resource": "*",
-            "Effect": "Allow"
+            "Effect": "Allow",
+            "Condition": {
+                "StringEquals": {
+                    "iam:PermissionsBoundary": "arn:aws:iam::account-id:policy/CodeStar_project-id_PermissionsBoundary"
+                }
+            }
         },
         {
             "Action": [
@@ -569,6 +572,18 @@ For AWS CodeStar projects created after December 6, 2018 PDT, CodeStar creates a
             ],
             "Resource": "*",
             "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "ssm:GetParameter*"
+            ],
+            "Resource": "*",
+            "Effect": "Allow",
+            "Condition": {
+                "StringEquals": {
+                    "ssm:ResourceTag/awscodestar:projectArn": "arn:aws:codestar:region-id:account-id:project/project-id"
+                }
+            }
         }
     ]
 }
