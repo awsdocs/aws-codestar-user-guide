@@ -17,6 +17,7 @@ The following information might help you troubleshoot common issues in AWS CodeS
 + [Project extensions: Can't connect to JIRA](#troubleshooting-jira)
 + [GitHub: Can't access a repository's commit history, issues, or code](#troubleshooting-github-access)
 + [AWS CloudFormation: Stack Creation Rolled Back for Missing Permissions](#troubleshooting-cloudformation-stack-creation-permissions)
++ [AWS CloudFormation is not authorized to perform iam:PassRole on Lambda execution role](#troubleshooting-cloudformation-not-authorized)
 
 ## Project creation failure: A project was not created<a name="troubleshooting-pc1"></a>
 
@@ -184,4 +185,31 @@ After you add a resource to the `template.yml` file, view the AWS CloudFormation
 
 To troubleshoot, view the failure status in the AWS CodeStar dashboard view for your project's pipeline\.
 
-Next, choose the **CloudFormation** link in your pipeline's Deploy stage to troubleshoot the failure in the AWS CloudFormation console\. To view stack creation details, expand the **Events** list for your project and view any failure messages\. The message indicates which permission is missing\. Correct the policy and then retry the stack creation\.
+Next, choose the **CloudFormation** link in your pipeline's Deploy stage to troubleshoot the failure in the AWS CloudFormation console\. To view stack creation details, expand the **Events** list for your project and view any failure messages\. The message indicates which permission is missing\. Correct the AWS CloudFormation worker role policy and then execute your pipeline again\.
+
+## AWS CloudFormation is not authorized to perform iam:PassRole on Lambda execution role<a name="troubleshooting-cloudformation-not-authorized"></a>
+
+ If you have a project created before December 6, 2018 PDT that creates Lambda functions, you might see a AWS CloudFormation error like this:
+
+```
+User: arn:aws:sts::id:assumed-role/CodeStarWorker-project-id-CloudFormation/AWSCloudFormation is not authorized to perform: iam:PassRole on resource: arn:aws:iam::id:role/CodeStarWorker-project-id-Lambda (Service: AWSLambdaInternal; Status Code: 403; Error Code: AccessDeniedException; Request ID: id)
+```
+
+This error occurs because your AWS CloudFormation worker role does not have permission to pass a role for provisioning your new Lambda function\.
+
+To fix this error, you will need to update your AWS CloudFormation worker role policy with the following snippet\.
+
+```
+{
+        "Action":[ "iam:PassRole" ],
+        "Resource": [
+           "arn:aws:iam::account-id:role/CodeStarWorker-project-id-Lambda",
+           ],
+        
+        "Effect": "Allow"    
+}
+```
+
+After you update the policy, execute your pipeline again\.
+
+Alternatively, you can use a custom role for your Lambda function by adding a permissions boundary to your project, as described in [Add an IAM Permissions Boundary to Existing Projects](access-permissions-proj.md#access-permissions-proj-pb-add)
