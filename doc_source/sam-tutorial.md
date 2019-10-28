@@ -232,10 +232,11 @@ In this step, you use your local workstation to add logic to the web service\. S
        Type: AWS::Serverless::Function
        Properties:
          Handler: hello.handler
-         Runtime: python2.7
+         Runtime: python3.7
          Role:
-           Fn::ImportValue:
-             !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
+           Fn::GetAtt:
+             - LambdaExecutionRole
+             - Arn
          Events:
            GetEvent:
              Type: Api
