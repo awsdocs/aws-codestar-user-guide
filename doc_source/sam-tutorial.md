@@ -337,25 +337,33 @@ In this step, you use your local workstation to add a test that AWS CodeStar run
 
    ```
    version: 0.2
-   
+
    phases:
-   
-     install:
-       commands:
-         - pip install pytest
-   
-     pre_build:
-       commands:
-         - pytest
-   
-     build:
-       commands:
-         - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.yml
-   
+      install:
+         runtime-versions:
+            python: 3.7
+
+         commands:
+            - pip install pytest
+
+      pre_build:
+         commands:
+            - pytest
+
+      build:
+         commands:
+            # Use AWS SAM to package the application by using AWS CloudFormation
+            - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.yml
+
+            # Do not remove this statement. This command is required for AWS CodeStar projects.
+            # Update the AWS Partition, AWS Region, account ID and project ID in the project ARN on template-configuration.json file so AWS CloudFormation can tag project resources.
+            - sed -i.bak 's/\$PARTITION\$/'${PARTITION}'/g;s/\$AWS_REGION\$/'${AWS_REGION}'/g;s/\$ACCOUNT_ID\$/'${ACCOUNT_ID}'/g;s/\$PROJECT_ID\$/'${PROJECT_ID}'/g' template-configuration.json
+
    artifacts:
-     type: zip
-     files:
-       - template-export.yml
+      type: zip
+      files:
+         - template-export.yml
+         - template-configuration.json
    ```
 
    This build specification instructs CodeBuild to install pytest, the Python test framework, into its build environment\. CodeBuild uses pytest to run the unit test\. The rest of the build specification is the same as before\.
