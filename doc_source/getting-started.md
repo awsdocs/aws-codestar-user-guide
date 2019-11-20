@@ -82,7 +82,7 @@ To get permissions to authorize a GitHub organization that is in the list, but d
 
    1. Choose **Public repository** or **Private repository**\.
 **Note**  
-Depending on your GitHub account type, GitHub might not allow you to create a private repository\. For more information, see [GitHub Pricing](https://github.com/pricing) on the GitHub website\.
+Depending on your GitHub account type, GitHub might not allow you to create a private repository\. For more information, see [GitHub Pricing](https://github.com/pricing) on the GitHub website\. Also, if you want to use AWS Cloud9 as your development environment, you must choose a public repository\.
 
    1. \(Optional\) For **Repository description**, enter a description for the GitHub repository\.
 
@@ -123,10 +123,10 @@ You can change where each tile appears on your dashboard by dragging and droppin
 
 In your new project, you see the following tiles:
 + The **Welcome** tile contains links to actions you might want to perform\. Unlike other tiles, you cannot move this tile to another location, or add it back after closing it\. 
-+ The **Continuous deployment** tile displays a summary view of the continuous delivery pipeline for your project\. The pipeline deploys the web application code when there is a change in your repository\. Because your project is new, the pipeline immediately starts deploying the sample code\. You can see the processing and completion of each stage as your web application is deployed\. For a deployment stage, choose **Endpoint** to view a link to the endpoint\. \(If you chose the project template suggested at the start of this tutorial, the endpoint is an Amazon EC2 instance\.\)  
++ The **Continuous deployment** tile displays a summary view of the continuous delivery pipeline for your project\. The pipeline deploys the web application code when there is a change in your repository\. Because your project is new, the pipeline immediately starts deploying the sample code\. You can see the processing and completion of each stage as your web application is deployed\.     
 
   You can also see if a stage has a problem or requires approval\. To see details about the state of the pipeline, its stages and actions, or to add or edit a stage, choose **CodePipeline details**\.
-+ The **Application endpoints** tile displays links to the endpoints where you can view your software\. This is the same link you saw in the **Continuous deployment** tile\. Choose the link to view your application or service\.
++ The **Application endpoints** tile displays links to the endpoints where you can view your software\.    Choose the link to view your application or service\.
 + The **Commit history** tile displays the recent commit history of the repository\. When you first create a project, the most recent commit is the one made by AWS CodeStar\. This commit started running the sample code through the pipeline\. When you make another commit, it appears in the history, too\. That code change starts running through the pipeline automatically\. To view the commits of a different branch, use the branch selector button\. To view all commits or details about the commits or repository, choose **CodeCommit details** \(if the code is stored in CodeCommit\) or **Open in GitHub** \(if the source code is stored in GitHub\)\.
 + The **Application activity** tile displays Amazon CloudWatch metrics for your project\. For example, it displays the CPU utilization of any Amazon EC2 instances deployed to by AWS Elastic Beanstalk or CodeDeploy resources in your pipeline\. In projects that use AWS Lambda, it displays invocation and error metrics for the Lambda function\. This information is displayed by the hour\. If you used the suggested AWS CodeStar project template for this tutorial, you should see a noticeable spike in activity as your application is first deployed to those instances\. You can refresh monitoring to see changes in your instance health, which can help you identify problems or the need for more resources\. 
 **Note**  
@@ -239,12 +239,12 @@ This procedure shows how to clone the project's code repository to your computer
 
    The first time you connect, you are prompted for the user name and password for the repository\. For CodeCommit, enter the Git credentials user name and password you downloaded in the previous procedure\.
 
-1. Navigate to the clone directory on your computer and browse the contents\. 
+1. Navigate to the cloned directory on your computer and browse the contents\. 
 
-1. Open the `index.html` file and make a change to the file\. For example, change the header text from `<H1>Congratulations!</H1>` to the following:
+1. Open the `index.html` file \(in the public folder\)  and make a change to the file\.  For example, add a paragraph after the `<H2>` tag such as:
 
    ```
-   <H1>I did it!</H1> 
+   <P>Hello, world!</P> 
    ```
 
    Save the file\.

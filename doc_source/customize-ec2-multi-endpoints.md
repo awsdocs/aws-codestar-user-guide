@@ -24,11 +24,26 @@ The `Stage` parameter is applied to all named resources with the project ID refe
 RoleName: !Sub 'CodeStar-${ProjectId}-WebApp${Stage}'
 ```
 
-**Prerequisite:**
+## Prerequisites<a name="prereq"></a>
 
 Use the template options in the AWS CodeStar console to create a project\. 
 
+Make sure your IAM user has the following permissions:
++ `iam:PassRole` on the project AWS CloudFormation role\.
++ `iam:PassRole` on the project toolchain role\.
++ `cloudformation:DescribeStacks`
++ `cloudformation:ListChangeSets`
+
+For Elastic Beanstalk or Amazon EC2 projects only:
++ `codedeploy:CreateApplication`
++ `codedeploy:CreateDeploymentGroup`
++ `codedeploy:GetApplication`
++ `codedeploy:GetDeploymentConfig`
++ `codedeploy:GetDeploymentGroup`
++ `elasticloadbalancing:DescribeTargetGroups`
+
 **Topics**
++ [Prerequisites](#prereq)
 + [Step 1: Create an Application and Deployment Group in CodeDeploy \(Amazon EC2 Projects Only\)](#customize-ec2-multi-endpoints-newdeployment)
 + [Step 2: Add a New Pipeline Stage for the Prod Stage](#customize-ec2-multi-endpoints-newstage)
 + [Step 3: Add a Manual Approval Stage](#customize-ec2-multi-endpoints-approval)

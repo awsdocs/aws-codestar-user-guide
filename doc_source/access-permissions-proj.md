@@ -52,7 +52,7 @@ For AWS CodeStar projects created before December 6, 2018 PDT AWS CodeStar creat
 
 ## IAM Policy for the Execution Role<a name="access-permissions-proj-policy-execution"></a>
 
-For projects created after December 6, 2018 PDT, AWS CodeStar creates a generic execution role for the sample project in your application stack\. The role is scoped down to project resources using the permissions boundary policy\. As you expand on the sample project, you can create additional IAM roles, and the AWS CloudFormation role policy requires that these roles be scoped down using the permission boundary to avoid escalation of privileges\. For more information, see [Add an IAM Role to a Project](how-to-change-project.md#add-iam-role)\.
+For projects created after December 6, 2018 PDT, AWS CodeStar creates a generic execution role for the sample project in your application stack\. The role is scoped down to project resources using the permissions boundary policy\. As you expand on the sample project, you can create additional IAM roles, and the AWS CloudFormation role policy requires that these roles be scoped down using the permission boundary to avoid escalation of privileges\. For more information, see [Add an IAM Role to a Project](add-iam-role.md)\.
 
 For Lambda projects created before December 6, 2018 PDT, AWS CodeStar creates a Lambda execution role that has an inline policy attached with permissions to act on the resources in the project AWS SAM stack\. As new resources are added to the SAM template, AWS CodeStar attempts to update the Lambda execution role policy to include permissions to the new resource if they are one of the supported resource types\.
 
@@ -138,4 +138,4 @@ If you have an AWS CodeStar project that was created before December 6, 2018 PDT
 
 1. Push a change through your project pipeline so that AWS CodeStar updates the permissions boundary with appropriate permissions\.
 
-For more information, see [Add an IAM Role to a Project](how-to-change-project.md#add-iam-role)\.
+For more information, see [Add an IAM Role to a Project](add-iam-role.md)\.

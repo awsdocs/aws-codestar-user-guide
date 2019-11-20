@@ -103,9 +103,9 @@ Instead of manually modifying an infrastructure resource, use AWS CloudFormation
 
 You can modify or add an application resource, such as a Lambda function, in your runtime stack by editing the `template.yml` file in your project repository\. You can add any resource that is available as an AWS CloudFormation resource\.
 
-To change the code or settings of an AWS Lambda function, see [Add a Resource to a Project](how-to-change-project.md#customize-project-template)\.
+To change the code or settings of an AWS Lambda function, see [Add a Resource to a Project](customize-project-template.md)\.
 
-Modify the `template.yml` file in your project's repository to add the type of AWS CloudFormation resources that are application resources\. When you add an application resource to the `Resources` section of the `template.yml` file, AWS CloudFormation and AWS CodeStar create the resource for you\. For a list of AWS CloudFormation resources and their required properties, see [AWS Resource Types Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)\. For more information, see this example in [Step 1: Edit the CloudFormation Worker Role in IAM](how-to-change-project.md#customize-project-template-sqs-2)\.
+Modify the `template.yml` file in your project's repository to add the type of AWS CloudFormation resources that are application resources\. When you add an application resource to the `Resources` section of the `template.yml` file, AWS CloudFormation and AWS CodeStar create the resource for you\. For a list of AWS CloudFormation resources and their required properties, see [AWS Resource Types Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)\. For more information, see this example in [Step 1: Edit the CloudFormation Worker Role in IAM](customize-project-template.md#customize-project-template-sqs-2)\.
 
 AWS CodeStar allows you to implement best practices by configuring and modeling your application's runtime environment\.
 
@@ -113,7 +113,7 @@ AWS CodeStar allows you to implement best practices by configuring and modeling 
 
  When you use AWS CloudFormation to add runtime application resources, such as a Lambda function, the AWS CloudFormation worker role can use the permissions it already has\. For some runtime application resources, you must manually adjust the AWS CloudFormation worker role's permissions before you edit the `template.yml` file\.
 
-For an example of changing the AWS CloudFormation worker role's permissions, see [Step 5: Add Resource Permissions with an Inline Policy](how-to-change-project.md#customize-project-template-sqs-5)\.
+For an example of changing the AWS CloudFormation worker role's permissions, see [Step 5: Add Resource Permissions with an Inline Policy](customize-project-template.md#customize-project-template-sqs-5)\.
 
 ### <a name="update-project-toolchain-template"></a>
 

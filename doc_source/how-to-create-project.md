@@ -59,7 +59,7 @@ To get permissions to authorize a GitHub organization that is in the list, but d
 
    1. Choose **Public repository** or **Private repository**\.
 **Note**  
-Depending on your GitHub account type, GitHub might not allow you to create a private repository\. For more information, see [GitHub Pricing](https://github.com/pricing) on the GitHub website\.
+Depending on your GitHub account type, GitHub might not allow you to create a private repository\. For more information, see [GitHub Pricing](https://github.com/pricing) on the GitHub website\. Also, if you want to use AWS Cloud9 as your development environment, you must choose a public repository\.
 
    1. \(Optional\) For **Repository description**, enter a description for the GitHub repository\.
 

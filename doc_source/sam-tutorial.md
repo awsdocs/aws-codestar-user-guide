@@ -69,8 +69,7 @@ You must sign in to the AWS Management Console using credentials associated with
    + For **Programming languages**, select **Python**\.
    + For **AWS services**, select **AWS Lambda**\.
 
-1. Choose the box that contains your selections\.  
-![\[Choosing the AWS SAM project in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-create.png)
+1. Choose the box that contains your selections\.
 
 1. For **Project name**, enter a name for the project \(for example, **My SAM Project**\)\. If you use a name different from the example, be sure to use it throughout this tutorial\.
 
@@ -107,8 +106,9 @@ In this step, you explore four of the project's AWS resources to understand how 
    + `buildspec.yml`, which CodePipeline instructs CodeBuild to use during the build phase, to package the web service using AWS SAM\.
    + `index.py`, which contains the logic for the Lambda function\. This function simply outputs the string `Hello World` and a timestamp, in ISO format\.
    + `README.md`, which contains general information about the repository\.
+   + `template-configuation.json`, which contains the project ARN with placeholders used for tagging resources with the project ID
    + `template.yml`, which AWS SAM uses to package the web service and create the API in API Gateway\.  
-![\[The project source code files in CodeCommit\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-cc.png)
+![\[The project source code files in CodeCommit\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-sam-tutorial-source-code-files.png)
 
    To view the contents of a file, choose it from the list\.
 
@@ -129,7 +129,7 @@ For information about using the CodePipeline console, see the [AWS CodePipeline 
 
 1. Open your project in the AWS CodeStar console and from the navigation bar, choose **Project**\.
 
-1.  Open the **Project Details** and **Project Resources** lists\.
+1.  Review the **Project Details** and **Project Resources** lists\.
 
 **To explore the function in Lambda**
 
@@ -147,7 +147,7 @@ For information about using the Lambda console, see the [AWS Lambda Developer Gu
 
 1. In **Project Resources**, in the **ARN** column, choose the link for the Amazon API Gateway API\.
 
-   Settings for the API are displayed in the API Gateway console\.
+   Resources for the API are displayed in the API Gateway console\.
 
 For information about using the API Gateway console, see the [API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/)\.
 
@@ -180,20 +180,17 @@ On the new tab that opens in your web browser, the web service displays the foll
 
 In this step, you set up your local workstation to edit the source code in the AWS CodeStar project\. Your local workstation can be a physical or virtual computer running macOS, Windows, or Linux\.
 
-1. With your project still open from the previous step, do one of the following:
-   + If **You must connect to your project's repository before you can start working on the code** is displayed, choose **Connect Tools**\.
-   + In the side navigation pane, choose **Project**, and then choose **Connect tools**\.  
-![\[The AWS CodeStar Project page showing the Connect tools button\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/acs-sam-project-connect-page.png)
+1. With your project still open from the previous step:
+   + In the side navigation pane, choose **Project**, and then choose **Connect tools**\.
+   + Choose the **Command line tools** tile\.
 
-1. Choose the **Command line tools** tile\.
-
-   If you have Visual Studio or Eclipse installed, choose the **Visual Studio** or **Eclipse** tile instead, follow the instructions, and then skip to [Step 5: Add Logic to the Web Service](#sam-tutorial-add-logic)\.
+     If you have Visual Studio or Eclipse installed, choose the **Visual Studio** or **Eclipse** tile instead, follow the instructions, and then skip to [Step 5: Add Logic to the Web Service](#sam-tutorial-add-logic)\.
+   + Under **Clone repository URL**, choose HTTPS\. 
+**Note**  
+We recommend that you choose HTTPS instead of SSH because HTTPS has fewer setup tasks\. If you must use SSH, choose **SSH**, follow the instructions, and then skip to [Step 5: Add Logic to the Web Service](#sam-tutorial-add-logic)\.
+   + Choose **See instructions**\.
 
 1. On **Connect to your tools**, for **Operating System**, choose the operating system running on your local workstation\.
-
-1. For **Connection Method**, choose **HTTPS**\.
-
-   We recommend that you choose HTTPS instead of SSH because HTTPS has fewer setup tasks\. If you must use SSH, choose **SSH**, follow the instructions, and then skip to [Step 5: Add Logic to the Web Service](#sam-tutorial-add-logic)\.
 
 1. Follow the instructions to complete the following tasks:
 
@@ -202,6 +199,8 @@ In this step, you set up your local workstation to edit the source code in the A
    1. Use the IAM console to generate Git credentials for your IAM user\.
 
    1. Clone the project's CodeCommit repository onto your local workstation\.
+
+1. In the left navigation, choose **Dashboard** to return to your project dashboard\.
 
 ## Step 5: Add Logic to the Web Service<a name="sam-tutorial-add-logic"></a>
 
@@ -223,7 +222,7 @@ In this step, you use your local workstation to add logic to the web service\. S
        'headers': {'Content-Type': 'application/json'}}
    ```
 
-   The preceding code outputs the string `Hello` and string the caller sends to the function\.
+   The preceding code outputs the string `Hello` and the string the caller sends to the function\.
 
 1. In the same directory, open the `template.yml` file\. Add the following code to the end of the file, and then save the file: 
 
@@ -235,8 +234,8 @@ In this step, you use your local workstation to add logic to the web service\. S
          Runtime: python3.7
          Role:
            Fn::GetAtt:
-             - LambdaExecutionRole
-             - Arn
+           - LambdaExecutionRole
+           - Arn
          Events:
            GetEvent:
              Type: Api
@@ -259,7 +258,7 @@ If you are using Visual Studio or Eclipse instead of the command line, the instr
 **Note**  
 You might be prompted for the user name and password IAM generated for you earlier\. To keep from being prompted each time you interact with the remote repository, consider installing and configuring a Git credential manager\. For example, on macOS or Linux, you can run git config credential\.helper 'cache \-\-timeout 900' in the terminal to be prompted no sooner than every 15 minutes\. Or you can run git config credential\.helper 'store \-\-file \~/\.git\-credentials' to never be prompted again\. Git stores your credentials in clear text in a plain file in your home directory\. For more information, see [Git Tools \- Credential Storage](https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage) on the Git website\.
 
-After AWS CodeStar detects the push, it instructs CodePipeline to use CodeBuild and AWS SAM to rebuild and redeploy the web service\. 
+After AWS CodeStar detects the push, it instructs CodePipeline to use CodeBuild and AWS SAM to rebuild and redeploy the web service\. You can watch the deployment progress on the project dashboard\.
 
 AWS SAM gives the new function the name **awscodestar\-my\-sam\-project\-lambda\-Hello\-*RANDOM\_ID***, where:
 + **my\-sam\-project** is the ID of the project\.
@@ -337,28 +336,31 @@ In this step, you use your local workstation to add a test that AWS CodeStar run
 
    ```
    version: 0.2
-
+   
    phases:
       install:
          runtime-versions:
             python: 3.7
-
+   
          commands:
             - pip install pytest
-
+            # Upgrade AWS CLI to the latest version
+            - pip install --upgrade awscli
+   
+   
       pre_build:
          commands:
             - pytest
-
+   
       build:
          commands:
             # Use AWS SAM to package the application by using AWS CloudFormation
             - aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.yml
-
+   
             # Do not remove this statement. This command is required for AWS CodeStar projects.
             # Update the AWS Partition, AWS Region, account ID and project ID in the project ARN on template-configuration.json file so AWS CloudFormation can tag project resources.
             - sed -i.bak 's/\$PARTITION\$/'${PARTITION}'/g;s/\$AWS_REGION\$/'${AWS_REGION}'/g;s/\$ACCOUNT_ID\$/'${ACCOUNT_ID}'/g;s/\$PROJECT_ID\$/'${PROJECT_ID}'/g' template-configuration.json
-
+   
    artifacts:
       type: zip
       files:
