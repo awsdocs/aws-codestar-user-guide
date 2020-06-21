@@ -106,7 +106,7 @@ In this step, you explore four of the project's AWS resources to understand how 
    + `buildspec.yml`, which CodePipeline instructs CodeBuild to use during the build phase, to package the web service using AWS SAM\.
    + `index.py`, which contains the logic for the Lambda function\. This function simply outputs the string `Hello World` and a timestamp, in ISO format\.
    + `README.md`, which contains general information about the repository\.
-   + `template-configuation.json`, which contains the project ARN with placeholders used for tagging resources with the project ID
+   + `template-configuration.json`, which contains the project ARN with placeholders used for tagging resources with the project ID
    + `template.yml`, which AWS SAM uses to package the web service and create the API in API Gateway\.  
 ![\[The project source code files in CodeCommit\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-sam-tutorial-source-code-files.png)
 
