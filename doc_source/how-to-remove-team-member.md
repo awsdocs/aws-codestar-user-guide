@@ -21,11 +21,11 @@ You can use the AWS CodeStar console to remove team members from your project te
 
 1. Open the AWS CodeStar console at [https://console\.aws\.amazon\.com/codestar/](https://console.aws.amazon.com/codestar/)\.
 
-   Choose the project\.
+1. Choose **Projects** from the navigation pane and choose your project\.
 
-1. In the navigation bar for the project, choose **Team**\.
+1. In the side navigation pane for the project, choose **Team**\.
 
-1. On the **Team members** page, find the name of the team member you want to remove, and then choose **Remove**\.
+1. On the **Team members** page, choose the team member and choose **Remove**\.
 
 ## Remove Team Members \(AWS CLI\)<a name="how-to-remove-team-member-cli"></a>
 

@@ -4,12 +4,12 @@ Many customers store secrets, such as credentials, in [Systems Manager Parameter
 
 In order to use SSM parameters in a AWS CodeStar project, you must manually tag the parameters with the AWS CodeStar project ARN\. You must also provide appropriate permissions to the AWS CodeStar toolchain worker role to access the parameters that you've tagged\.
 
-## Before You Begin<a name="w5aac15c22c21b7"></a>
+## Before You Begin<a name="w19aac15c20c21b7"></a>
 + [Create a new](https://docs.aws.amazon.com/systems-manager/latest/userguide/param-create-console.html) or identify an existing Systems Manager parameter that contains the information you want to access\.
 + Identify which AWS CodeStar project you want to use, or [create a new project](how-to-create-project.md)\.
 + Make a note of the CodeStar project ARN\. It looks like this: `arn:aws:codestar:region-id:account-id:project/project-id`\.
 
-## Tag a Parameter with the AWS CodeStar Project ARN<a name="w5aac15c22c21b9"></a>
+## Tag a Parameter with the AWS CodeStar Project ARN<a name="w19aac15c20c21b9"></a>
 
 See [Tagging Systems Manager Parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-tag.html) for step by step instructions\.
 
@@ -21,7 +21,7 @@ See [Tagging Systems Manager Parameters](https://docs.aws.amazon.com/systems-man
 
 Now you can reference the SSM parameter in your template\.yml file\. If you want to use it with a toolchain worker role, you will need to grant additional permissions\.
 
-## Grant Permissions to Use Tagged Parameters in your AWS CodeStar Project Toolchain<a name="w5aac15c22c21c11"></a>
+## Grant Permissions to Use Tagged Parameters in your AWS CodeStar Project Toolchain<a name="w19aac15c20c21c11"></a>
 
 **Note**  
 These steps are applicable only to projects created after December 6, 2018 PDT\.

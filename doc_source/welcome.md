@@ -2,10 +2,6 @@
 
 AWS CodeStar is a cloud\-based service for creating, managing, and working with software development projects on AWS\. You can quickly develop, build, and deploy applications on AWS with an AWS CodeStar project\. An AWS CodeStar project creates and integrates AWS services for your project development toolchain\. Depending on your choice of AWS CodeStar project template, that toolchain might include source control, build, deployment, virtual servers or serverless resources, and more\. AWS CodeStar also manages the permissions required for project users \(called team members\)\. By adding users as team members to an AWS CodeStar project, project owners can quickly and simply grant each team member role\-appropriate access to a project and its resources\.
 
- The following video provides a brief introduction to AWS CodeStar\. 
-
-[![AWS Videos](http://img.youtube.com/vi/https://www.youtube.com/embed/UJwKsqPC-44/0.jpg)](http://www.youtube.com/watch?v=https://www.youtube.com/embed/UJwKsqPC-44)
-
 **Topics**
 + [What Can I Do with AWS CodeStar?](#welcome-introducing)
 + [How Do I Get Started with AWS CodeStar?](#welcome-get-started)

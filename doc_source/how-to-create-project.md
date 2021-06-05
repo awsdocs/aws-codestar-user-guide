@@ -21,15 +21,17 @@ Use the AWS CodeStar console to create a project\.<a name="adh-create-project"><
 
    Make sure that you are signed in to the AWS Region where you want to create the project and its resources\. For example, to create a project in US East \(Ohio\), make sure you have selected that AWS Region\. For information about AWS Regions where AWS CodeStar is available, see [Regions and Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#codestar_region) in the *AWS General Reference* \.
 
-1. On the **AWS CodeStar** page, choose **Create a new project**\. \(If you are the first user to create a project, choose **Start a project**\.\)
+1. On the **AWS CodeStar** page, choose **Create project**\.
 
 1. On the **Choose a project template** page, choose the project type from the list of AWS CodeStar project templates\. You can use the filter bar to narrow your choices\. For example, for a web application project written in Node\.js to be deployed to Amazon EC2 instances, select the **Web application**, **Node\.js**, and **Amazon EC2** check boxes\. Then choose from the templates available for that set of options\.
 
    For more information, see [AWS CodeStar Project Templates](templates.md)\.
 
-1. In **Project name**, enter a name for the project, such as *My First Project*\. The ID for the project is derived from this project name, but is limited to 15 characters\. 
+1. Choose **Next**\.
 
-   For example, the default ID for a project named *My First Project* is *my\-first\-projec*\. This project ID is the basis for the names of all resources associated with the project\. AWS CodeStar uses this project ID as part of the URL for your code repository and for the names of related security access roles and policies in IAM\. After the project is created, the project ID cannot be changed\. To edit the project ID before you create the project, choose **Edit**\. 
+1. In **Project name**, enter a name for the project, such as *My First Project*\. In **Project ID**, the ID for the project is derived from this project name, but is limited to 15 characters\. 
+
+   For example, the default ID for a project named *My First Project* is *my\-first\-projec*\. This project ID is the basis for the names of all resources associated with the project\. AWS CodeStar uses this project ID as part of the URL for your code repository and for the names of related security access roles and policies in IAM\. After the project is created, the project ID cannot be changed\. To edit the project ID before you create the project, in **Project ID**, enter the ID you want to use\. 
 
    For information about the limits on project names and project IDs, see [Limits in AWS CodeStar](limits.md)\.
 **Note**  
@@ -37,47 +39,65 @@ Project IDs must be unique for your AWS account in an AWS Region\.
 
 1. Choose the repository provider, **AWS CodeCommit** or **GitHub**\. 
 
-1. If you chose **AWS CodeCommit**, for **Repository name**, accept the default AWS CodeCommit repository name, or enter a different one\. Then skip ahead to step 8\.
+1. If you chose **AWS CodeCommit**, for **Repository name**, accept the default AWS CodeCommit repository name, or enter a different one\. Then skip ahead to step 9\.
 
-1. If you chose **GitHub**, choose **Connect with GitHub**\. 
+1. If you chose **GitHub**, you need to choose or create a connection resource\. If you have an existing connection, choose it in the search field\. Otherwise, create a new connection now\. Choose **Connect to GitHub**\.
 
-   1. If the **Sign in to GitHub** page is displayed, enter your GitHub user name or email address and password, and then choose **Sign in**\.
+   The **Create a connection** page displays\.
 **Note**  
-You must have a GitHub account to complete this page\. For more information, see [Join GitHub](https://github.com/join) on the GitHub website\.
+To create a connection, you must have a GitHub account\. If you are creating a connection for an organization, you must be the organization owner\.  
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/create-proj-github-connection-create.png)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Image NOT FOUND\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
 
-   1. If the **Two\-factor authentication** page is displayed, for **Authentication code**, enter the code that GitHub sends you, and then choose **Verify**\.
+   1. Under **Create GitHub App connection**, in **Connection name**, enter a name for your connection\. Choose **Connect to GitHub**\.
 
-   1. On the **Authorize AWS CodeStar** page, choose **Authorize**\.
+      The **Connect to GitHub** page displays and shows the **GitHub Apps** field\.
+
+   1. Under **GitHub Apps**, choose an app installation or choose **Install a new app** to create one\.
 **Note**  
-When you choose **Authorize**, you allow AWS CodeStar to create a GitHub repository for your personal GitHub account, or for any GitHub organization where you have permissions\. \(A green check in **Organization access** is used to indicate permissions\.\)  
-To add a GitHub organization to the **Organization access** list, follow the instructions in [Inviting Users to Join Your Organization](https://help.github.com/articles/inviting-users-to-join-your-organization/) on the GitHub Help website\. After you join the organization, refresh the **Authorize AWS CodeStar** page to see the organization in the list\.   
-To get permissions to authorize a GitHub organization that is in the list, but does not have a green check, choose **Grant**\. If you see **Request** instead, choose it, and then follow the instructions in [Approving OAuth Apps for Your Organization](https://help.github.com/articles/approving-oauth-apps-for-your-organization/) on the GitHub Help website\. Refresh the **Authorize AWS CodeStar** page to see the **Grant** button\.
+You install one app for all of your connections to a particular provider\. If you have already installed the AWS Connector for GitHub app, choose it and skip this step\.
 
-   1. For **Owner**, choose the GitHub organization or your personal GitHub account\.
+   1. On the **Install AWS Connector for GitHub** page, choose the account where you want to install the app\.
+**Note**  
+If you previously installed the app, you can choose **Configure** to proceed to a modification page for your app installation, or you can use the back button to return to the console\.
+
+   1. If the **Confirm password to continue** page is displayed, enter your GitHub password, and then choose **Sign in**\.
+
+   1. On the **Install AWS Connector for GitHub** page, keep the defaults, and choose **Install**\.
+
+   1. On the **Connect to GitHub** page, the installation ID for your new installation appears in **GitHub Apps**\.
+
+      After the connection is created, in the CodeStar create project page, the message **Ready to connect** displays\.
+**Note**  
+You can view your connection under **Settings** in the **Developer Tools** console\. For more information, see [Getting started with connections](https://docs.aws.amazon.com/dtconsole/latest/userguide/getting-started-connections.html)\.  
+![\[Console screenshot showing the completed connection set up for a GitHub repository.\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/create-proj-github-connections.png)![\[Console screenshot showing the completed connection set up for a GitHub repository.\]](http://docs.aws.amazon.com/codestar/latest/userguide/)![\[Console screenshot showing the completed connection set up for a GitHub repository.\]](http://docs.aws.amazon.com/codestar/latest/userguide/)
+
+   1. For **Repository owner**, choose the GitHub organization or your personal GitHub account\.
 
    1. For **Repository name**, accept the default GitHub repository name, or enter a different one\.
 
-   1. Choose **Public repository** or **Private repository**\.
+   1. Choose **Public** or **Private**\.
 **Note**  
-Depending on your GitHub account type, GitHub might not allow you to create a private repository\. For more information, see [GitHub Pricing](https://github.com/pricing) on the GitHub website\. Also, if you want to use AWS Cloud9 as your development environment, you must choose a public repository\.
+To use AWS Cloud9 as your development environment, you must choose **Public**\.
 
    1. \(Optional\) For **Repository description**, enter a description for the GitHub repository\.
 
-1. Choose **Next**\.
-
-1. Review the resources and configuration details\. Choose **Edit Amazon EC2 Configuration** \(where available\) if your project is deployed to Amazon EC2 instances and you want to make changes\. For example, you can choose from available instance types for your project\. 
+1. If your project is deployed to Amazon EC2 instances and you want to make changes, configure your Amazon EC2 instances in **Amazon EC2 Configuration**\. For example, you can choose from available instance types for your project\. 
 **Note**  
 Different Amazon EC2 instance types provide different levels of computing power and might have different associated costs\. For more information, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/) and [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing/)\.  
 If you have more than one virtual private cloud \(VPC\) or multiple subnets created in Amazon Virtual Private Cloud, you can also choose the VPC and subnet to use\. However, if you choose an Amazon EC2 instance type that is not supported on dedicated instances, you cannot choose a VPC whose instance tenancy is set to **Dedicated**\.   
 For more information, see [What Is Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Introduction.html) and [Dedicated Instance Basics](https://docs.aws.amazon.com/vpc/latest/userguide/dedicated-instance.html#dedicated-howitworks)\.
 
-1. Leave the **AWS CodeStar would like permission to administer AWS resources on your behalf** check box selected\. Otherwise, you cannot create a project\. For more information about the service role, see [AWS CodeStar Service Role Policy and Permissions](access-permissions-service-role.md)\.
+   In **Key pair**, choose the Amazon EC2 key pair you created in [Step 4: Create an Amazon EC2 Key Pair for AWS CodeStar Projects](setting-up.md#setting-up-create-ec2-key)\. Select **I acknowledge that I have access to the private key file**\.
 
-   Choose **Next** or **Create project**\. \(The displayed choice depends on your project template\.\) 
+1. Choose **Next**\.
 
-1. In **Choose an Amazon EC2 Key Pair**, choose the Amazon EC2 key pair you created in [Step 4: Create an Amazon EC2 Key Pair for AWS CodeStar Projects](setting-up.md#setting-up-create-ec2-key)\. Select **I acknowledge that I have access to the private key file for this key pair**, and then choose **Create project**\.
+1. Review the resources and configuration details\.
 
-1. It might take a few minutes to create the project \(including the repository\)\. After your project has a repository, you can use the **Set up tools** page to configure access to it, or you can choose **Skip** and configure access later\. After your project has been created, you can use the links on the **Welcome** tile to configure other items, such as your [user profile in AWS CodeStar](working-with-user-info.md)\. 
+1. Choose **Next** or **Create project**\. \(The displayed choice depends on your project template\.\) 
+
+   It might take a few minutes to create the project, including the repository\. 
+
+1. After your project has a repository, you can use the **Repository** page to configure access to it\. Use the links in **Next steps** to configure an IDE, set up issue tracking, or add team members to your project\.
 
 While your project is being created, you can [add team members](how-to-add-team-member.md) or [configure access](setting-up-ide.md) to your project repository from the command line or your favorite IDE\. 
 
@@ -197,7 +217,9 @@ For GitHub, you cannot specify an existing GitHub repository\. AWS CodeStar crea
          + *owner*: Required\. The GitHub user name for the owner of your repository\. If the repository should be owned by a GitHub organization, provide the organization name\.
          + *privateRepository*: Required\. Whether you want this repository to be private or public\. Valid values are true or false\.
          + *issuesEnabled*: Required\. Whether you want to enable issues in GitHub with this repository\. Valid values are true or false\.
-         + *token*: Required\. This is a personal access token AWS CodeStar uses to access your GitHub account\. This token must contain the following scopes: **repo**, **user**, and **admin:repo\_hook**\. To retrieve a personal access token from GitHub, see [Creating a Personal Access Token for the Command Line](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) on the GitHub website\.
+         + *token*: Optional\. This is a personal access token AWS CodeStar uses to access your GitHub account\. This token must contain the following scopes: **repo**, **user**, and **admin:repo\_hook**\. To retrieve a personal access token from GitHub, see [Creating a Personal Access Token for the Command Line](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) on the GitHub website\.
+**Note**  
+If you use the CLI to create a project with a GitHub source repository, AWS CodeStar uses your token to access the repository through OAuth apps\. If you use the console to create a project with a GitHub source repository, AWS CodeStar uses a connection resource, which accesses the repository with GitHub apps\.
        + *toolchain*: Information about the CI/CD toolchain to be set up when the project is created\. This includes the location where you uploaded the toolchain template\. The template creates the AWS CloudFormation stack that contains your toolchain resources\. This also includes any parameter overrides for AWS CloudFormation to reference and the role to be used to create the stack\. AWS CodeStar retrieves the template and uses AWS CloudFormation to run the template\.
          + *source*: Required\. The location of your toolchain template\. Amazon S3 is the only supported source location\.
            + *S3*: Optional\. The Amazon S3 location where you uploaded your toolchain template\.
@@ -206,7 +228,7 @@ For GitHub, you cannot specify an existing GitHub repository\. AWS CodeStar crea
          + *stackParameters*: Optional\. Contains key\-value pairs to be passed to AWS CloudFormation\. These are the parameters, if any, your toolchain template is set up to reference\.
          + *role*: Optional\. The role used to create your toolchain resources in your account\. The role is required as follows:
            + If the role is not provided, AWS CodeStar uses the default service role created for your account if the toolchain is an AWS CodeStar quickstart template\. If the service role doesn't exist in your account, you can create one\. For information, see [Step 2: Create the AWS CodeStar Service Role](setting-up.md#setting-up-create-service-role)\.
-           + You must provide the role must if you are uploading and using your own custom toolchain template\. You can create a role based on the AWS CodeStar service role and policy statement\. For an example of this policy statement, see [AWS CodeStar Service Role Policy](adh-policy-examples.md#adh-policy-service-role) \.
+           + You must provide the role must if you are uploading and using your own custom toolchain template\. You can create a role based on the AWS CodeStar service role and policy statement\. For an example of this policy statement, see [ AWSCodeStarServiceRole Policy](security_iam_id-based-policy-examples.md#security_iam_id-based-policy-examples-service-role) \.
        + *tags*: Optional\. The tags attached to your AWS CodeStar project\.
 **Note**  
 These tags are not attached to the resources contained in the project\.

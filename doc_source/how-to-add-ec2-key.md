@@ -23,14 +23,15 @@ Although you cannot generate a public\-private key pair in the console, you can 
 
    Choose a project where you are a team member\.
 
-1. In the navigation bar for the project, choose **Team**\.
+1. In the navigation pane, choose **Team**\.
 
-1. On the **Team members** page, find the name of your IAM user \(the team member that has your IAM name in parentheses and **\[You\]** in brackets next to the display name\), and then choose **Add Public SSH key**\.  
-![\[Adding an SSH public key to your user in AWS CodeStar\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-sshkey.png)
+1. On the **Team members** page, find the name of your IAM user, and then choose **Edit**\.
 
-1. In **Manage your public SSH key**, paste the public key, and then choose **Save**\.
+1. On the **Edit team member** page, under **Remote access**, enable **Allow SSH access to project instances**\.
+
+1. In the **SSH Public Key** box, paste the public key, and then choose **Edit team member**\.
 **Note**  
-You can change your public key by deleting the old key in this field and pasting in a new one\. You can delete a public key by deleting the contents of this field, and then choosing **Save**\.
+You can change your public key by deleting the old key in this field and pasting in a new one\. You can delete a public key by deleting the contents of this field, and then choosing **Edit team member**\.
 
    When you change or delete a public key, you are changing your user profile\. It is not a per\-project change\. Because your key is associated with your profile, it changes \(or is deleted\) in all projects where you have been granted remote access\.
 
@@ -77,7 +78,7 @@ Make sure that you have created an Amazon EC2 key pair\. Add your public key to 
 
 1. Follow the instructions in the **Connect To Your Instance** dialog box\.
 
-   For the user name, use `ubuntu` for projects based on the ASP\.NET Core project template, because those instances use Ubuntu\. For all other projects, use `ec2-user` for the user name, because those instances use Amazon Linux\. If you use the wrong user name, you cannot connect to the instance\.
+   For the user name, use `ec2-user`\. If you use the wrong user name, you cannot connect to the instance\.
 
 For more information, see the following resources in the *Amazon EC2 User Guide for Linux Instances*\.
 + [Connecting to Your Linux Instance Using SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html)

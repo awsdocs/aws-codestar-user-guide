@@ -5,7 +5,7 @@ If you have the owner role in an AWS CodeStar project or have the `AWSCodeStarFu
 Benefits of AWS CodeStar roles and team membership include:
 + You do not have to manually configure permissions in IAM for your team members\. 
 + You can easily change a team member's level of access to a project\.
-+ Users can access project dashboards in the AWS CodeStar console only if they are team members\. 
++ Users can access projects in the AWS CodeStar console only if they are team members\.
 + User access to a project is defined by role\. 
 
 For more information about teams and AWS CodeStar roles, see [Working with AWS CodeStar Teams](working-with-teams.md) and [Working with Your AWS CodeStar User Profile ](working-with-user-info.md)\.
@@ -16,7 +16,7 @@ To add a team member to a project, you must either have the AWS CodeStar owner r
 Adding a team member does not affect that member's access to resources that are outside of AWS \(for example, a GitHub repository or issues in Atlassian JIRA\)\. Those access permissions are controlled by the resource provider, not AWS CodeStar\. For more information, see the resource provider's documentation\.  
 Anyone who has access to an AWS CodeStar project can  use the AWS CodeStar console to access resources that are outside of AWS but related to that project\.  
 Adding a team member to a project does not automatically allow that member to participate in any related AWS Cloud9 development environments for the project\. To allow a team member to participate in a shared environment, see [Share an AWS Cloud9 Environment with a Project Team Member](setting-up-ide-cloud9.md#setting-up-ide-cloud9-share)\.  
-Granting federated user access to a project involves manually attaching the AWS CodeStar owner, contributor, or viewer managed policy to the role assumed by the federated user\. For more information, see [Federated User Access to AWS CodeStar](access-permissions-federated.md)\.
+Granting federated user access to a project involves manually attaching the AWS CodeStar owner, contributor, or viewer managed policy to the role assumed by the federated user\. For more information, see [Federated User Access to AWS CodeStar](security_iam_service-with-iam.md#security_iam_service-with-iam-roles-federated)\.
 
 **Topics**
 + [Add a Team Member \(Console\)](#how-to-add-team-member-console)
@@ -30,27 +30,23 @@ You can use the AWS CodeStar console to add a team member to your project\. If a
 
 1. Open the AWS CodeStar console at [https://console\.aws\.amazon\.com/codestar/](https://console.aws.amazon.com/codestar/)\.
 
-   Choose the project\.
+1. Choose **Projects** from the navigation pane and choose your project\.
 
-1. In the navigation bar for the project, choose **Team**\.
+1. In the side navigation pane for the project, choose **Team**\.
 
 1. On the **Team members** page, choose **Add team member**\.
 
 1. In **Choose user**, do one of the following: 
    + If an IAM user already exists for the person you want to add, choose the IAM user name from the list\. 
 **Note**  
-Users who have already been added to another AWS CodeStar project appear in the **AWS CodeStar users from other projects** list\.
+Users who have already been added to another AWS CodeStar project appear in the **Existing AWS CodeStar users** list\.
 
-     On the **Add team member** tab, in **Project role**, choose the AWS CodeStar role \(Owner, Contributor, or Viewer\) for this user\. This is an AWS CodeStar project\-level role that can only be changed by an owner of the project\. When applied to an IAM user, the role provides all permissions required to access AWS CodeStar project resources\. It applies policies required for creating and managing Git credentials for code stored in CodeCommit in IAM or uploading Amazon EC2 SSH keys for the user in IAM\. 
+     In **Project role**, choose the AWS CodeStar role \(Owner, Contributor, or Viewer\) for this user\. This is an AWS CodeStar project\-level role that can only be changed by an owner of the project\. When applied to an IAM user, the role provides all permissions required to access AWS CodeStar project resources\. It applies policies required for creating and managing Git credentials for code stored in CodeCommit in IAM or uploading Amazon EC2 SSH keys for the user in IAM\. 
 **Important**  
 You cannot provide or change the display name or email information for an IAM user unless you are signed in to the console as that user\. For more information, see [Manage Display Information for Your AWS CodeStar User Profile ](how-to-manage-user-pref.md)\.
 
-     Choose **Add**\.  
-![\[Adding an existing IAM user to the team for a project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-add.png)
-   + If an IAM user does not exist for the person you want to add to the project, choose **Create new IAM user**\. Enter the IAM user name, AWS CodeStar display name, email address, and project role you want to apply to this new user, and then choose **Create**\.   
-![\[Creating a new IAM user to add to the team for a project\]](http://docs.aws.amazon.com/codestar/latest/userguide/images/adh-team-add-new.png)
-
-     You are redirected to the IAM console to confirm user creation\. Choose **Create user**, save the password information for that new user, and then choose **Close** to return to the AWS CodeStar console\. The user is added to the project with the role you chose\.
+     Choose **Add team member**\.
+   + If an IAM user does not exist for the person you want to add to the project, choose **Create new IAM user**\. You will be redirected to the IAM console where you can create a new IAM user, see [Creating IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console) in the *IAM user guide* for more information\. After you create your IAM user, return to the AWS CodeStar console, refresh the list of users, and choose the IAM user you created from the dropdown list\. Enter the AWS CodeStardisplay name, email address, and project role you want to apply to this new user, and then choose **Add team member**\. 
 **Note**  
 For ease of management, at least one user should be assigned the Owner role for the project\.
 

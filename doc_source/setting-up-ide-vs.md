@@ -3,6 +3,7 @@
 You can use Visual Studio to make code changes and develop software in an AWS CodeStar project\. 
 
 **Note**  
+Visual Studio for Mac does not support the AWS Toolkit so it cannot be used with AWS CodeStar\.  
 The information in this topic applies only to AWS CodeStar projects that store their source code in CodeCommit\. If your AWS CodeStar project stores its source code in GitHub, you can use a tool such as the GitHub Extension for Visual Studio\. For more information, see the [Overview](https://visualstudio.github.com/index.html) page on the GitHub Extension for Visual Studio website and [Getting Started with GitHub for Visual Studio](https://github.com/github/VisualStudio/blob/master/docs/getting-started/index.md) on the GitHub website\.
 
 To use Visual Studio to edit code in the source repository for an AWS CodeStar project, you must install a version of the AWS Toolkit for Visual Studio that supports AWS CodeStar\. You must be a member of the AWS CodeStar project team with the owner or contributor role\.

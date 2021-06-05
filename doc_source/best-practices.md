@@ -9,11 +9,14 @@ AWS CodeStar is integrated with a number of products and services\. The followin
 
 ## Security Best Practices for AWS CodeStar Resources<a name="best-practices-security"></a>
 
+
+
 You should regularly apply patches and review security best practices for the dependencies used by your application\. Use these security best practices to update your sample code and maintain your project in a production environment:
 + Track ongoing security announcements and updates for your framework\.
 + Before you deploy your project, follow the best practices developed for your framework\.
 + Review dependencies for your framework on a regular basis and update as needed\.
 + Each AWS CodeStar template contains configuration instructions for your programming language\. See the `README.md` file in your project's source repository\.
++ As a best practice for isolating project resources, manage least\-privilege access to AWS resources using a *multi\-account strategy* as introduced in [Security in AWS CodeStar](security.md)\.
 
 ## Best Practices for Setting Versions for Dependencies<a name="best-practices-dependencies"></a>
 

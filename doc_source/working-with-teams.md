@@ -23,7 +23,7 @@ If your project uses resources outside of AWS \(for example, a GitHub repository
 Anyone who has access to an AWS CodeStar project can use the AWS CodeStar console to access resources that are outside of AWS but related to the project\.  
 AWS CodeStar does not automatically allow project team members to participate in any related AWS Cloud9 development environments for a project\. To allow a team member to participate in a shared environment, see [Share an AWS Cloud9 Environment with a Project Team Member](setting-up-ide-cloud9.md#setting-up-ide-cloud9-share)\.
 
-An IAM policy is associated with each project role\. This policy is customized for your project to reflect its resources\. For more information about these policies, see [AWS CodeStar Access Permissions Reference](access-permissions.md)\.
+An IAM policy is associated with each project role\. This policy is customized for your project to reflect its resources\. For more information about these policies, see [AWS CodeStar Identity\-Based Policy Examples](security_iam_id-based-policy-examples.md)\.
 
 The following diagram shows the relationship between each role and an AWS CodeStar project\.
 

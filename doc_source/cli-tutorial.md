@@ -105,7 +105,7 @@ You must also upload your `toolchain.yml` file and place it in Amazon S3\. You s
      adding: tests/test.js (deflated 64%)
    ```
 
-1. Call the cp command and include the files as parameters\.
+1. Use the cp command and include the files as parameters\.
 
    The following commands upload the \.zip file and `toolchain.yml` to Amazon S3\.
 
@@ -127,6 +127,8 @@ You must also upload your `toolchain.yml` file and place it in Amazon S3\. You s
 ## Step 5: Create a Project in AWS CodeStar<a name="cli-tutorial-create-project"></a>
 
 Use these steps to create your project\.
+
+
 
 **Important**  
 Make sure you configure the preferred AWS Region in AWS CLI\. Your project is created in the AWS Region configured in the AWS CLI\.

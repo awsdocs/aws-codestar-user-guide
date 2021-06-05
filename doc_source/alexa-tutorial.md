@@ -1,6 +1,6 @@
 # Tutorial: Create an Alexa Skill Project in AWS CodeStar<a name="alexa-tutorial"></a>
 
-AWS CodeStar is a cloud‑based development service on Amazon Web Services \(AWS\) that provides the tools you need to quickly develop, build, and deploy applications on AWS\. With AWS CodeStar, you can set up your entire continuous delivery toolchain in minutes, allowing you to start releasing code faster\. The Alexa skill project templates on AWS CodeStar enable you to create a simple Hello World Alexa skill from your AWS account with just a few clicks\. The templates also create a basic deployment pipeline that gets you started with a continuous integration \(CI\) workflow for skill development\.
+AWS CodeStar is a cloud‑based development service on AWS that provides the tools you need to quickly develop, build, and deploy applications on AWS\. With AWS CodeStar, you can set up your entire continuous delivery toolchain in minutes, allowing you to start releasing code faster\. The Alexa skill project templates on AWS CodeStar enable you to create a simple Hello World Alexa skill from your AWS account with just a few clicks\. The templates also create a basic deployment pipeline that gets you started with a continuous integration \(CI\) workflow for skill development\.
 
 The main benefits of creating Alexa skills from AWS CodeStar are that you can get started with skill development in AWS and connect your Amazon developer account to the project to deploy skills to the development stage directly from AWS\. You also get a ready to use deployment \(CI\) pipeline with a repository with all the source code for the project\. You can configure this repository with your preferred IDE to create skills with tools you are familiar with\.
 
@@ -31,17 +31,17 @@ In this tutorial, you create a skill using Node\.js running on AWS Lambda\. Most
    + US East \(N\. Virginia\)
    + US West \(Oregon\)
 
-1. Choose **Create a new project**\. If **Create a new project** is not displayed, choose **Start a project**\.
+1. Choose **Create project**\.
 
 1. On the **Choose a project template** page:
 
-   1. For **Application category**, choose **Alexa Skill**\.
+   1. For **Application type**, choose **Alexa Skill**\.
 
-   1. For **Programming languages**, choose **Node\.js**\.
+   1. For **Programming language**, choose **Node\.js**\.
 
-   1. Choose the box that contains your selections\.
+1. Choose the box that contains your selections\.
 
-1. For **Project name**, enter a name for the project \(for example, *My Alexa Skill*\)\. If you use a different name, be sure to use it throughout this tutorial\. AWS CodeStar chooses a related identifier for this project for the **Project ID** \(for example, **my\-alexa\-skill**\)\. If you see a different project ID, be sure to use it throughout this tutorial\. 
+1. For **Project name**, enter a name for the project \(for example, **My Alexa Skill**\)\. If you use a different name, be sure to use it throughout this tutorial\. AWS CodeStar chooses a related identifier for this project for the **Project ID** \(for example, **my\-alexa\-skill**\)\. If you see a different project ID, be sure to use it throughout this tutorial\. 
 
 1. Choose **AWS CodeCommit** for the repository in this tutorial and do not change the **Repository name** value\.
 
@@ -53,19 +53,15 @@ In this tutorial, you create a skill using Node\.js running on AWS Lambda\. Most
 
 1. Choose **Next**\.
 
-1. Leave **AWS CodeStar would like permission to administer AWS resources on your behalf** selected, and then choose **Create Project**\.
-
 1. \(Optional\) If this is your first time using AWS CodeStar in this AWS Region, enter the display name and email address you want AWS CodeStar to use for your IAM user\. Choose **Next**\.
 
-1. On **Pick how you want to edit your code**, choose **Skip**\. You can set up your local workstation to edit the project's code later\. 
-
-1. Wait while AWS CodeStar creates the project\. This might take several minutes\. Do not continue until you see the welcome banner\.
+1. Wait while AWS CodeStar creates the project\. This might take several minutes\. Do not continue until you see the **Project provisioned** banner\.
 
 ## Step 2: Test your skill in the Alexa Simulator<a name="alexa-tutorial-step2"></a>
 
 In the first step, AWS CodeStar created a skill for you and deployed it to the Alexa skill development stage\. Next, you test the skill in the Alexa Simulator\. 
 
-1. In the **Application endpoints** tile on the right side of the AWS CodeStar console, choose **Alexa simulator**\. A new tab opens in the Alexa Simulator\.
+1. In your project in the AWS CodeStar console, choose **View application**\. A new tab opens in the Alexa Simulator\.
 
 1. Sign in with your Amazon developer credentials for the account you connected to your project in Step 1\.
 
@@ -81,13 +77,13 @@ For more information about the Alexa Simulator, see [Test Your Skill in the Deve
 
 ## Step 3: Explore your project resources<a name="alexa-tutorial-step3"></a>
 
-As part of creating the project, AWS CodeStar also created AWS resources on your behalf\. These resources include a project repository using CodeCommit, a deployment pipeline using CodePipeline and an AWS Lambda function\. You can access these resources from the left navigation bar\. For example, choosing **Code** opens the project CodeCommit repository\. You can view the pipeline deployment status in the **Continuous deployment** tile on the project dashboard \(choose **Dashboard** from the left navigation bar, if necessary\)\. You can view a complete list of AWS resources created as part of your project by choosing **Project** in the left navigation bar\. This list includes links to each resource\.
+As part of creating the project, AWS CodeStar also created AWS resources on your behalf\. These resources include a project repository using CodeCommit, a deployment pipeline using CodePipeline and an AWS Lambda function\. You can access these resources from the navigation bar\. For example, choosing **Repository** shows details about the CodeCommit repository\. You can view the pipeline deployment status in the **Pipeline** page\. You can view a complete list of AWS resources created as part of your project by choosing **Overview** in the navigation bar\. This list includes links to each resource\.
 
 ## Step 4: Make a change in your skill's response<a name="alexa-tutorial-step4"></a>
 
 In this step, you make a minor change to your skill's response to understand the iteration cycle\.
 
-1. Choose **Code** from the left navigation bar\. The code section of your repository opens in a new tab\. This repository contains the build specification \(buildspec\.yml\), AWS CloudFormation application stack \(template\.yml\), readme file, and your skill's source code in the [skill package format \(project structure\)](https://developer.amazon.com/docs/smapi/skill-package-api-reference.html#skill-package-format)\.
+1. In the navigation bar, choose **Repository**\. Choose the link under **Repository name** and your project's repository opens in a new tab or window\. This repository contains the build specification \(buildspec\.yml\), AWS CloudFormation application stack \(template\.yml\), readme file, and your skill's source code in the [skill package format \(project structure\)](https://developer.amazon.com/docs/smapi/skill-package-api-reference.html#skill-package-format)\.
 
 1. Navigate to the file lambda > custom > index\.js \(in case of Node\.js\.\)\. This file contains your request handling code, which uses the [ASK SDK](https://developer.amazon.com/docs/quick-reference/use-sdks-quick-reference.html)\.
 
@@ -99,7 +95,7 @@ In this step, you make a minor change to your skill's response to understand the
 
 1. Choose **Commit changes** to commit the changes to the repository\.
 
-1. Return to the project dashboard in AWS CodeStar and check the **Continuous deployment** tile\. You should now see the pipeline deploying\.
+1. Return to the project in AWS CodeStar and check the **Pipeline** page\. You should now see the pipeline deploying\.
 
 1. When the pipeline finishes deployment, test your skill again in the Alexa Simulator\. Your skill should now respond with `Hello. How are you?`
 
@@ -109,13 +105,9 @@ Earlier you made a small change to the source code directly from the CodeCommit 
 
 1. Navigate to the project dashboard in AWS CodeStar, if necessary\.
 
-1. In the left navigation bar, choose **Project**, then choose **Connect tools**\.
+1. In the navigation bar, choose **IDE**\.
 
-1. Choose **Command line tools**\.
-
-1. In **Clone repository URL**, choose **HTTPS**\.
-
-1. Choose **See instructions**\.
+1. In **Access your project code**, **View instructions** underneath **Command line interface**\.
 
 1. Follow the instructions to complete the following tasks:
 
@@ -125,7 +117,7 @@ Earlier you made a small change to the source code directly from the CodeCommit 
 
    1. Configure the AWS CLI with your IAM user access key and secret key\. For information, see [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)\.
 
-   1. Clone the project's CodeCommit repository onto your local workstation\. For more information, see [Connect to an AWS CodeCommit Repository](https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-connect.html)\.
+   1. Clone the project's CodeCommit repository onto your local workstation\. For more information, see [Connect to a CodeCommit Repository](https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-connect.html)\.
 
 ## Next Steps<a name="alexa-tutorial-next"></a>
 

@@ -16,7 +16,7 @@ Create an AWS account by going to [https://aws\.amazon\.com/](https://aws.amazon
 
 ## Step 2: Create the AWS CodeStar Service Role<a name="setting-up-create-service-role"></a>
 
-Create a [service role](access-permissions-service-role.md) that is used to create and manage AWS resources and IAM permissions\. You only need to create the service role once\. 
+Create a [service role](security_iam_service-with-iam.md#security_iam_service-with-iam-roles-service) that is used to give AWS CodeStar permission to administer AWS resources and IAM permissions on your behalf\. You only need to create the service role once\. 
 
 **Important**  
 You must be signed in as an IAM administrative user \(or root account\) to create a service role\. For more information, see [Creating Your First IAM User and Group](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html)\.
@@ -33,9 +33,11 @@ You must be signed in as an IAM administrative user \(or root account\) to creat
 
 ## Step 3: Configure the User's IAM Permissions<a name="setting-up-user"></a>
 
-You can use AWS CodeStar as an IAM user, a federated user, the root user, or an assumed role\. If you choose an IAM user, AWS CodeStar helps you configure user access by managing IAM permissions for you\. For information about what AWS CodeStar can do for IAM users versus federated users, see [AWS CodeStar Access Permissions Reference](access-permissions.md)\. 
+You can use AWS CodeStar as an IAM user, a federated user, the root user, or an assumed role\. If you choose an IAM user, AWS CodeStar helps you configure user access by managing IAM permissions for you\. For information about what AWS CodeStar can do for IAM users versus federated users, see [AWS CodeStar IAM Roles](security_iam_service-with-iam.md#security_iam_service-with-iam-roles)\. 
 
 If you have not set up any IAM users, see [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html)\.
+
+
 
 ### Configure Permissions for IAM Users<a name="setting-up-create-iam-user"></a>
 
@@ -53,17 +55,17 @@ Complete these steps to set up IAM user permissions\.
 
 To use AWS CodeStar as a federated user, the federated user must have IAM permissions that allow the user to use AWS CodeStar APIs and access any resources used in the projects \(such as Amazon EC2 or AWS Lambda\)\. 
 
-If you have not set up any federated users, see [Federated User Access to AWS CodeStar](access-permissions-federated.md)\.
+If you have not set up any federated users, see [Federated User Access to AWS CodeStar](security_iam_service-with-iam.md#security_iam_service-with-iam-roles-federated)\.
 
 Complete these steps to set up federated user permissions:
 
-1. Sign in to the IAMconsole as a root user, an IAM administrator user in the account, or an IAM user or federated user with the associated **AdministratorAccess** managed policy or equivalent\. Attach the **`AWSCodeStarFullAccess`** managed policy to the federated user role that is used to create the project\. See [Attach the `AWSCodeStarFullAccess` Managed Policy to the Federated User's Role](access-permissions-federated.md#access-permissions-federated-attach-FullAccess)\. 
+1. Sign in to the IAMconsole as a root user, an IAM administrator user in the account, or an IAM user or federated user with the associated **AdministratorAccess** managed policy or equivalent\. Attach the **`AWSCodeStarFullAccess`** managed policy to the federated user role that is used to create the project\. See [Attach the AWSCodeStarFullAccess Managed Policy to the Federated User's Role](security_iam_service-with-iam.md#security_iam_service-with-iam-roles-federated-attach-FullAccess)\. 
 
 1. Sign in to the AWS CodeStar console as the IAM user with `AWSCodeStarFullAccess` attached who will create the project, and then create your project as described in [Step 1: Create an AWS CodeStar Project](getting-started.md#getting-started-create)\. AWS CodeStar creates Owner, Contributor, and Viewer managed policies for the project\. As the federated user project creator, your project Owner permissions are not applied automatically\. You might not be able to access all project resources\. 
 
-1. To give yourself access to all project resources, sign in to the console either as a root user, an IAM administrator user in the account, or an IAM user or federated user with the associated **AdministratorAccess** managed policy or equivalent\. Attach your project's AWS CodeStar owner managed policy to the role you assume as a federated user\. This allows you to manage and view all of the resources created for your project\. For information, see [Attach Your Project's AWS CodeStar Viewer/Contributor/Owner Managed Policy to the Federated User's Role](access-permissions-federated.md#access-permissions-federated-attach-CodeStar)\.
+1. To give yourself access to all project resources, sign in to the console either as a root user, an IAM administrator user in the account, or an IAM user or federated user with the associated **AdministratorAccess** managed policy or equivalent\. Attach your project's AWS CodeStar owner managed policy to the role you assume as a federated user\. This allows you to manage and view all of the resources created for your project\. For information, see [Attach Your Project's AWS CodeStar Viewer/Contributor/Owner Managed Policy to the Federated User's Role](security_iam_service-with-iam.md#security_iam_service-with-iam-roles-federated-attach-CodeStar)\.
 
-1. Sign in to the console as a root user, an IAM administrator user in the account, or an IAM user or federated user with the associated **AdministratorAccess** managed policy or equivalent\. Grant federated users access to your project by attaching the appropriate AWS CodeStar owner, contributor, or viewer managed policy to the user's role\. For information, see [Attach Your Project's AWS CodeStar Viewer/Contributor/Owner Managed Policy to the Federated User's Role](access-permissions-federated.md#access-permissions-federated-attach-CodeStar)\.
+1. Sign in to the console as a root user, an IAM administrator user in the account, or an IAM user or federated user with the associated **AdministratorAccess** managed policy or equivalent\. Grant federated users access to your project by attaching the appropriate AWS CodeStar owner, contributor, or viewer managed policy to the user's role\. For information, see [Attach Your Project's AWS CodeStar Viewer/Contributor/Owner Managed Policy to the Federated User's Role](security_iam_service-with-iam.md#security_iam_service-with-iam-roles-federated-attach-CodeStar)\.
 
 ## Step 4: Create an Amazon EC2 Key Pair for AWS CodeStar Projects<a name="setting-up-create-ec2-key"></a>
 

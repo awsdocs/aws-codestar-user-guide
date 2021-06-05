@@ -20,29 +20,15 @@ To use AWS Cloud9, you need:
 
 Follow these steps to create an AWS Cloud9 development environment for a AWS CodeStar project\. 
 
-### Existing AWS CodeStar Project<a name="existing-project"></a>
+1. Follow the steps in [Create a Project](how-to-create-project.md) if you want to create a new project\.
 
-Open the project in the AWS CodeStar console\. On the side navigation bar, choose **IDE**\. Choose **Create new environment**, and then use the following steps\.
-
+1. Open the project in the AWS CodeStar console\. On the navigation bar, choose **IDE**\. Choose **Create environment**, and then use the following steps\.
 **Important**  
-If the project's source code is stored in GitHub, you won't see **IDE** on the side navigation bar\. However, you can use the AWS Cloud9 console to create a development environment, open the new environment, and then connect it to the project's GitHub repository\. Skip the following steps and see [Use GitHub with AWS Cloud9](#setting-up-ide-cloud9-github)\.  
-If the project is in an AWS Region where AWS Cloud9 isn't supported, you won't see **IDE** on the side navigation bar\. However, you can use the AWS Cloud9 console to create a development environment, open the new environment, and then connect it to the project's AWS CodeCommit repository\. Skip the following steps and see [Creating an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/create-environment.html), [Opening an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/open-environment.html), and the [AWS CodeCommit Sample](http://docs.aws.amazon.com/cloud9/latest/user-guide/sample-codecommit.html) in the *AWS Cloud9 User Guide*\. For the list of supported AWS Regions, see [AWS Cloud9](https://docs.aws.amazon.com/general/latest/gr/rande.html#cloud9_region) in the *Amazon Web Services General Reference*\.
+If the project is in an AWS Region where AWS Cloud9 isn't supported, you won't see AWS Cloud9 options in the **IDE** tab on the navigation bar\. However, you can use the AWS Cloud9 console to create a development environment, open the new environment, and then connect it to the project's AWS CodeCommit repository\. Skip the following steps and see [Creating an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/create-environment.html), [Opening an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/open-environment.html), and the [AWS CodeCommit Sample](http://docs.aws.amazon.com/cloud9/latest/user-guide/sample-codecommit.html) in the *AWS Cloud9 User Guide*\. For the list of supported AWS Regions, see [AWS Cloud9](https://docs.aws.amazon.com/general/latest/gr/rande.html#cloud9_region) in the *Amazon Web Services General Reference*\.
 
-### New AWS CodeStar Project<a name="new-project"></a>
+On **Create AWS Cloud9 environment**, customize the project defaults\.
 
-Follow the steps in [Create a Project](how-to-create-project.md)\. On **Set up tools**, for **Pick how you want to edit your code**, choose **Cloud9**\. Choose **Next**, and then use the following steps\.
-
-**Important**  
-If you choose to store the project's source code in GitHub, on **Set up tools**, you see **Connect to your source repository** instead of **Pick how you want to edit your code**\. There is no AWS Cloud9 option\. However, after AWS CodeStar creates the project, you can use the AWS Cloud9 console to create and open a development environment and then connect it to the project's GitHub repository\. Skip the following steps and see [Use GitHub with AWS Cloud9](#setting-up-ide-cloud9-github)\.  
-If the project is in an AWS Region where AWS Cloud9 is not supported, on **Set up tools**, you won't see an option to choose AWS Cloud9\. However, you can use the AWS Cloud9 console to create and open a development environment and then connect it to the project's AWS CodeCommit repository\. Skip the following steps and see [Creating an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/create-environment.html), [Opening an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/open-environment.html), and the [AWS CodeCommit Sample](http://docs.aws.amazon.com/cloud9/latest/user-guide/sample-codecommit.html) in the *AWS Cloud9 User Guide*\. For the list of supported AWS Regions, see [AWS Cloud9](https://docs.aws.amazon.com/general/latest/gr/rande.html#cloud9_region) in the *Amazon Web Services General Reference*\.
-
-On **Set up your AWS Cloud9 environment**, customize the project defaults\.
-
-1. To change the default type of Amazon EC2 instance to host the environment, for **Pick an instance type for the IDE \(not your overall project\)**, choose the instance type\.
-
-1. To change the default environment name and add a description, expand **Environment name and description**, and then make your changes\.
-**Note**  
-Environment names must be unique per user\.
+1. To change the default type of Amazon EC2 instance to host the environment, for **Instance type**, choose the instance type\.
 
 1.  AWS Cloud9 uses Amazon Virtual Private Cloud \(Amazon VPC\) in your AWS account to communicate with the instance\. Depending on how Amazon VPC is set up in your AWS account, do one of the following\.  
 ****    
@@ -50,9 +36,13 @@ Environment names must be unique per user\.
 
    For more information, see [Amazon VPC Settings for AWS Cloud9 Development Environments](http://docs.aws.amazon.com/cloud9/latest/user-guide/vpc-settings.html) in the *AWS Cloud9 User Guide*\.
 
-1. To change the default time period after which AWS Cloud9 shuts down the environment when it has not been used, expand **Cost\-saving options**, and then change the setting\.
+1. Enter an **Environment name** and optionally add an **Environment description**\.
+**Note**  
+Environment names must be unique per user\.
 
-1. Choose **Next**\.
+1. To change the default time period after which AWS Cloud9 shuts down the environment when it has not been used, expand **Cost\-saving settings**, and then change the setting\.
+
+1. Choose **Create environment**\.
 
 To open the environment, see [Open an AWS Cloud9 Environment for a Project](#setting-up-ide-cloud9-open)\.
 
@@ -62,9 +52,9 @@ You can use these steps to create more than one environment for a project\. For 
 
 Follow these steps to open an AWS Cloud9 development environment that you created for an AWS CodeStar project\.
 
-1. With the project open in the AWS CodeStar console, on the side navigation bar, choose **IDE**\.
+1. With the project open in the AWS CodeStar console, on the navigation bar, choose **IDE**\.
 **Important**  
-If the project's source code is stored in GitHub, you won't see **IDE** on the side navigation bar\. However, you can use the AWS Cloud9 console to open an existing environment\. Skip the rest of this procedure and see [Opening an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/open-environment.html) in the *AWS Cloud9 User Guide* and [Use GitHub with AWS Cloud9](#setting-up-ide-cloud9-github)\.
+If the project's source code is stored in GitHub, you won't see **IDE** on the navigation bar\. However, you can use the AWS Cloud9 console to open an existing environment\. Skip the rest of this procedure and see [Opening an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/open-environment.html) in the *AWS Cloud9 User Guide* and [Use GitHub with AWS Cloud9](#setting-up-ide-cloud9-github)\.
 
 1. For **Your AWS Cloud9 environments** or **Shared AWS Cloud9 environments**, choose **Open IDE** for the environment you want to open\.
 
@@ -76,10 +66,10 @@ After you create an AWS Cloud9 development environment for an AWS CodeStar proje
 
 Adding a team member to a project doesn't automatically allow that member to participate in any related AWS Cloud9 development environments for the project\. To invite a project team member to access an environment for a project, you need to determine the correct environment member access role, apply AWS managed policies to the user, and invite the user to your environment\. For more information, see [About Environment Member Access Roles](http://docs.aws.amazon.com/cloud9/latest/user-guide/share-environment.html#share-environment-member-roles) and [Invite an IAM User to Your Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/share-environment.html#share-environment-invite-user) in the *AWS Cloud9 User Guide*\. 
 
-When you invite a project team member to access an environment for a project, the AWS CodeStar console displays the environment to that team member\. The environment is displayed in the **Shared Cloud9 environments** list on the **IDE** tab in the AWS CodeStar console for the project\. To display this list, have the team member open the project in the console, and then choose **IDE** in the side navigation bar\.
+When you invite a project team member to access an environment for a project, the AWS CodeStar console displays the environment to that team member\. The environment is displayed in the **Shared environments** list on the **IDE** tab in the AWS CodeStar console for the project\. To display this list, have the team member open the project in the console, and then choose **IDE** in the navigation bar\.
 
 **Important**  
-If the project's source code is stored in GitHub, you won't see **IDE** on the side navigation bar\. However, you can use the AWS Cloud9 console to invite other users across your AWS account, including project team members, to access an environment\. To do this, see [Use GitHub with AWS Cloud9](#setting-up-ide-cloud9-github) in this guide, and see [About Environment Member Access Roles](http://docs.aws.amazon.com/cloud9/latest/user-guide/share-environment.html#share-environment-member-roles) and [Invite an IAM User to Your Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/share-environment.html#share-environment-invite-user) in the *AWS Cloud9 User Guide*\.
+If the project's source code is stored in GitHub, you won't see **IDE** on the navigation bar\. However, you can use the AWS Cloud9 console to invite other users across your AWS account, including project team members, to access an environment\. To do this, see [Use GitHub with AWS Cloud9](#setting-up-ide-cloud9-github) in this guide, and see [About Environment Member Access Roles](http://docs.aws.amazon.com/cloud9/latest/user-guide/share-environment.html#share-environment-member-roles) and [Invite an IAM User to Your Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/share-environment.html#share-environment-invite-user) in the *AWS Cloud9 User Guide*\.
 
 You can also invite a user who is not a project team member to access an environment\. For example, you might want a user to work on a project's code but have no other access to that project\. To invite this type of user, see [About Environment Member Access Roles](http://docs.aws.amazon.com/cloud9/latest/user-guide/share-environment.html#share-environment-member-roles) and [Invite an IAM User to Your Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/share-environment.html#share-environment-invite-user)in the *AWS Cloud9 User Guide*\. When you invite a user who is not a project team member to access an environment for a project, that user can use the AWS Cloud9 console to access the environment\. For more information, see [Open an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/open-environment.html) in the *AWS Cloud9 User Guide*\.
 
@@ -87,13 +77,13 @@ You can also invite a user who is not a project team member to access an environ
 
 When you delete a project and all its AWS resources from AWS CodeStar, all related AWS Cloud9 development environments that were created with the AWS CodeStar console are also deleted and cannot be recovered\. You can delete a development environment from a project without deleting the project\.
 
-1. With the project open in the AWS CodeStar console, in the side navigation bar, choose **IDE**\.
+1. With the project open in the AWS CodeStar console, in the navigation bar, choose **IDE**\.
 **Important**  
-If the project's source code is stored in GitHub, you won't see **IDE** on the side navigation bar\. However, you can use the AWS Cloud9 console to delete a development environment\. Skip the rest of this procedure and see [Deleting an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/delete-environment.html) in the *AWS Cloud9 User Guide*\.
+If the project's source code is stored in GitHub, you won't see **IDE** on the navigation bar\. However, you can use the AWS Cloud9 console to delete a development environment\. Skip the rest of this procedure and see [Deleting an Environment](http://docs.aws.amazon.com/cloud9/latest/user-guide/delete-environment.html) in the *AWS Cloud9 User Guide*\.
 
-1. On the tile for the environment you want to delete, choose the ellipses \(**…**\)\.
+1. Choose the environment you want to delete in **Cloud9 environments** and choose **Delete**
 
-1. Enter the name for the development environment, and then choose **Delete**\.
+1. Enter **delete** to confirm deletion for the development environment, and then choose **Delete**\.
 **Warning**  
 You cannot recover a development environment after it has been deleted\. All uncommitted code changes in the environment are lost\. 
 

@@ -18,6 +18,7 @@ The following information might help you troubleshoot common issues in AWS CodeS
 + [GitHub: Can't access a repository's commit history, issues, or code](#troubleshooting-github-access)
 + [AWS CloudFormation: Stack Creation Rolled Back for Missing Permissions](#troubleshooting-cloudformation-stack-creation-permissions)
 + [AWS CloudFormation is not authorized to perform iam:PassRole on Lambda execution role](#troubleshooting-cloudformation-not-authorized)
++ [Unable to create the connection for a GitHub repository](#w19aac32c39)
 
 ## Project creation failure: A project was not created<a name="troubleshooting-pc1"></a>
 
@@ -29,7 +30,7 @@ The following information might help you troubleshoot common issues in AWS CodeS
 + The AWS CodeStar service role is missing one or more required permissions\.
 + You have reached the maximum limit for one or more resources for a project \(such as the limit on customer managed policies in IAM, Amazon S3 buckets, or pipelines in CodePipeline\)\.
 
-Before you create a project, verify that you have the `AWSCodeStarFullAccess` policy applied to your IAM user\. For more information, see [AWS CodeStar Access Permissions Reference](access-permissions.md)\.
+Before you create a project, verify that you have the `AWSCodeStarFullAccess` policy applied to your IAM user\. For more information, see [ AWSCodeStarFullAccess Policy](security_iam_id-based-policy-examples.md#security_iam_id-based-policy-examples-full-access)\.
 
 When you create a project, make sure that the ID is unique and meets the AWS CodeStar requirements\. Be sure you selected the **AWS CodeStar would like permission to administer AWS resources on your behalf** check box\. 
 
@@ -46,7 +47,7 @@ To troubleshoot other issues, open the AWS CloudFormation console, choose the st
 
 ## Project deletion: An AWS CodeStar project was deleted, but resources still exist<a name="troubleshooting-pd1"></a>
 
-**Problem:** An AWS CodeStar project was deleted, but resources created for that project still exist\. By default, AWS CodeStar deletes project resources when the project is deleted\. Some resources, such as Amazon S3 buckets, are retained even if the user selects the **Delete associated resources along with AWS CodeStar project** check box, because the buckets might contain data\.
+**Problem:** An AWS CodeStar project was deleted, but resources created for that project still exist\. By default, AWS CodeStar deletes project resources when the project is deleted\. Some resources, such as Amazon S3 buckets, are retained even if the user selects the **Delete resources** check box, because the buckets might contain data\.
 
 **Possible fixes:** Open the [AWS CloudFormation console](https://console.aws.amazon.com//cloudformation) and find one or more of the AWS CloudFormation stacks used to create the project\. The stack names start with `awscodestar-` and are followed by the project ID\. The stacks might be under the **Deleted** filter view\. Review the events associated with the stack to discover the resources created for the project\. Open the console for each of those resources in the AWS Region where you created the AWS CodeStar project, and then manually delete the resources\. 
 
@@ -100,9 +101,9 @@ For more information, see [Limitations on IAM Entities and Objects](https://docs
 
 **Problem:** A federated user is unable to see projects in the AWS CodeStar console\.
 
-**Possible fixes:** If you are signed in as a federated user, make sure you have the appropriate managed policy attached to the role you assume to sign in\. For more information, see [Attach Your Project's AWS CodeStar Viewer/Contributor/Owner Managed Policy to the Federated User's Role](access-permissions-federated.md#access-permissions-federated-attach-CodeStar)\.
+**Possible fixes:** If you are signed in as a federated user, make sure you have the appropriate managed policy attached to the role you assume to sign in\. For more information, see [Attach Your Project's AWS CodeStar Viewer/Contributor/Owner Managed Policy to the Federated User's Role](security_iam_service-with-iam.md#security_iam_service-with-iam-roles-federated-attach-CodeStar)\.
 
-Add federated users to your AWS Cloud9 environment by manually attaching policies\. See [Attach an AWS Cloud9 Managed Policy to the Federated User's Role](access-permissions-federated.md#access-permissions-federated-attach-Cloud9)\.
+Add federated users to your AWS Cloud9 environment by manually attaching policies\. See [Attach an AWS Cloud9 Managed Policy to the Federated User's Role](security_iam_service-with-iam.md#security_iam_service-with-iam-roles-federated-attach-Cloud9)\.
 
 ## Access failure: A federated user cannot access or create an AWS Cloud9 environment<a name="troubleshooting-federated2"></a>
 
@@ -110,7 +111,7 @@ Add federated users to your AWS Cloud9 environment by manually attaching policie
 
 **Possible fixes:** If you are signed in as a federated user, make sure you have the appropriate managed policy attached to the federated user's role\.
 
-You add federated users to your AWS Cloud9 environment by manually attaching policies to the federated user's role\. See [Attach an AWS Cloud9 Managed Policy to the Federated User's Role](access-permissions-federated.md#access-permissions-federated-attach-Cloud9)\.
+You add federated users to your AWS Cloud9 environment by manually attaching policies to the federated user's role\. See [Attach an AWS Cloud9 Managed Policy to the Federated User's Role](security_iam_service-with-iam.md#security_iam_service-with-iam-roles-federated-attach-Cloud9)\.
 
 ## Access failure: A federated user can create an AWS CodeStar project, but cannot view project resources<a name="troubleshooting-federated3"></a>
 
@@ -212,4 +213,12 @@ To fix this error, you will need to update your AWS CloudFormation worker role p
 
 After you update the policy, execute your pipeline again\.
 
-Alternatively, you can use a custom role for your Lambda function by adding a permissions boundary to your project, as described in [Add an IAM Permissions Boundary to Existing Projects](access-permissions-proj.md#access-permissions-proj-pb-add)
+Alternatively, you can use a custom role for your Lambda function by adding a permissions boundary to your project, as described in [Add an IAM Permissions Boundary to Existing Projects](security_iam-proj.md#security_iam-proj-pb-add)
+
+## Unable to create the connection for a GitHub repository<a name="w19aac32c39"></a>
+
+**Problem:** 
+
+Because a connection to a GitHub repository uses the AWS Connector for GitHub, you need organization owner permissions or admin permissions to the repository to create the connection\.
+
+**Possible fixes:** For information about permission levels for a GitHub repository, see [https://docs\.github\.com/en/free\-pro\-team@latest/github/setting\-up\-and\-managing\-organizations\-and\-teams/permission\-levels\-for\-an\-organization](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-organizations-and-teams/permission-levels-for-an-organization)\.

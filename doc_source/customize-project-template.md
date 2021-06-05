@@ -21,7 +21,13 @@ After you determine which resources you must add to your project, these are the 
 
 1. [Step 5: Add Resource Permissions with an Inline Policy](#customize-project-template-sqs-5)
 
+
+
 Use the steps in this section to modify your AWS CodeStar project template to add a resource and then expand the project's CloudFormation worker role's permissions in IAM\. In this example, the [AWS::SQS::Queue](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-queues.html) resource is added to the `template.yml` file\. The change starts an automated response in AWS CloudFormation that adds an Amazon Simple Queue Service queue to your project\.
+
+
+
+
 
 ## Step 1: Edit the CloudFormation Worker Role in IAM<a name="customize-project-template-sqs-2"></a>
 

@@ -75,6 +75,8 @@ Your service role is named `CodeStarWorkerCloudFormationRolePolicy`\.
 
 1. In the **JSON** field, add the following policy statements within the `Statement` element\. Replace the *region* and *id* placeholders with your region and account ID\.
 
+    
+
    ```
    {
      "Action": [

@@ -21,6 +21,8 @@ These are the high\-level steps to follow to customize your template\.
 
 1. [Step 4: Monitor the AWS CloudFormation Stack Update for Tracing ](#customize-project-xray-stack-update) 
 
+
+
 ## Step 1: Edit the Worker Role in IAM for Tracing<a name="customize-project-xray-edit-worker"></a>
 
 You must be signed in as an administrator to perform steps 1 and 4\. This step shows an example of editing permissions for a Lambda project\.

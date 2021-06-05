@@ -19,6 +19,8 @@ You can use AWS CodeStar to create projects in two ways, depending on your exper
 
 An AWS CodeStar project provides a single point of management\. You can use the **Create project** wizard in the console to set up a sample project\. You can then use it as a collaboration platform for managing permissions and resources for your team\. For more information, see [What Is AWS CodeStar?](welcome.md)\. When you use the console to create a project, your source code is provided as sample code, and your CI/CD toolchain resources are created for you 
 
+
+
 When you create a project in the console, AWS CodeStar provisions the following resources:
 + A code repository in GitHub or CodeCommit\.
 + In the project repository, a `README.md` file that provides details of files and directories\.
@@ -30,7 +32,7 @@ When you create a project in the console, AWS CodeStar provisions the following 
   + An Amazon EC2 instance\. 
   + An AWS Elastic Beanstalk environment\. 
 + Starting December 6, 2018 PDT:
-  + A permissions boundary, which is a specialized IAM policy for controlling access to project resources\. The permissions boundary is attached by default to roles in the sample project\. For more information, see [IAM Permissions Boundary for Worker Roles](access-permissions-proj.md#access-permissions-proj-pb-worker)\.
+  + A permissions boundary, which is a specialized IAM policy for controlling access to project resources\. The permissions boundary is attached by default to roles in the sample project\. For more information, see [IAM Permissions Boundary for Worker Roles](security_iam-proj.md#security_iam-proj-pb-worker)\.
   + An AWS CloudFormation IAM role for creating project resources using AWS CloudFormation that includes permissions for all AWS CloudFormation supported resources, including IAM roles\.
   + A toolchain IAM role\.
   + Execution roles for Lambda defined in the application stack, which you can modify\.
@@ -43,11 +45,20 @@ When you create a project in the console, AWS CodeStar provisions the following 
   + An IAM role for creating a CloudWatch Events resource\.
   + An execution role for Lambda that is dynamically modified to include a partial set of resources\.
 
-The project also includes an interactive dashboard that shows status, links to team management, links to setup instructions for IDEs or your repository, and a commit history of source code changes in the repository\. You can also select tools for connecting to external issue tracking tools, such as Jira\.
+The project includes detail pages that show status and contain links to team management, links to setup instructions for IDEs or your repository, and a commit history of source code changes in the repository\. You can also select tools for connecting to external issue tracking tools, such as Jira\.
 
 ## Get Started: Choose a Project Template<a name="templates-choose-template"></a>
 
-When you choose an AWS CodeStar project in the console, you are choosing from a set of preconfigured options with sample code and resources to get you started quickly\. These options are called *project templates*\. Each AWS CodeStar project template consists of an application type, programming language, and compute platform\. The combination you select determines the project template\.
+When you choose an AWS CodeStar project in the console, you are choosing from a set of preconfigured options with sample code and resources to get you started quickly\. These options are called *project templates*\. Each AWS CodeStar project template consists of a programming language, application type, and compute platform\. The combination you select determines the project template\.
+
+### Choose a Template Compute Platform<a name="templates-choose-template-platform"></a>
+
+Each template configures one of the following compute platform types:
++ When you choose an AWS Elastic Beanstalk project, you deploy to an AWS Elastic Beanstalk environment on Amazon Elastic Compute Cloud instances in the cloud\.
++ When you choose an Amazon EC2 project, AWS CodeStar creates Linux EC2 instances to host your application in the cloud\. Your project team members can access the instances, and your team uses the key pair you provide to SSH into your Amazon EC2 instances\. AWS CodeStar also has a managed SSH that uses team member permissions to manage key pair connections\.
++ When you choose AWS Lambda, AWS CodeStar creates a serverless environment accessed through Amazon API Gateway, with no instances or servers to maintain\.
+
+
 
 ### Choose a Template Application Type<a name="templates-choose-template-application"></a>
 
@@ -70,18 +81,17 @@ Lambda functions for Alexa skills are supported in the US East \(N\. Virginia\),
 
    Choose this template if you want a project for an AWS Config rule that lets you automate rules across AWS resources in your account\. The function returns an ARN that you can use as a service endpoint for your rule\.
 
+
+
 ### Choose a Template Programming Language<a name="templates-choose-template-language"></a>
 
 When you choose a project template, you select a programming language, such as Ruby, Java, ASP\.NET, PHP, Node\.js, and more\.
 
-### Choose a Template Compute Platform<a name="templates-choose-template-platform"></a>
 
-Each template configures one of the following compute platform types:
-+ When you choose an AWS Elastic Beanstalk project, you deploy to an AWS Elastic Beanstalk environment on Amazon Elastic Compute Cloud instances in the cloud\.
-+ When you choose an Amazon EC2 project, AWS CodeStar creates Linux EC2 instances to host your application in the cloud\. Your project team members can access the instances, and your team uses the key pair you provide to SSH into your Amazon EC2 instances\. AWS CodeStar also has a managed SSH that uses team member permissions to manage key pair connections\.
-+ When you choose AWS Lambda, AWS CodeStar creates a serverless environment accessed through Amazon API Gateway, with no instances or servers to maintain\.
 
 ## How to Make Changes to Your AWS CodeStar Project<a name="update-project"></a>
+
+
 
 You can update your project by modifying: 
 + Sample code and programming language resources for your application\.
@@ -96,6 +106,10 @@ To modify sample source code, scripts, and other application source files, edit 
 + Using the Edit mode in CodeCommit or GitHub\.
 + Opening the project in an IDE, such as AWS Cloud9\.
 +  Cloning the repository locally and then committing and pushing your changes\. For information, see [Step 5: Commit a Change](getting-started.md#getting-started-commit)\.
+
+
+
+
 
 ### Change Application Resources with the Template\.yml File<a name="update-project-application-template"></a>
 
@@ -118,3 +132,4 @@ For an example of changing the AWS CloudFormation worker role's permissions, see
 ### <a name="update-project-toolchain-template"></a>
 
 #### <a name="update-project-toolchain-permissions"></a>
+

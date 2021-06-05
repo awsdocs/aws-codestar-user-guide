@@ -1,7 +1,7 @@
 # AWS CodeStar User Guide
 
 -----
-*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -20,6 +20,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Tutorial: Creating and Managing a Serverless Project in AWS CodeStar](sam-tutorial.md)
    + [Tutorial: Create a Project in AWS CodeStar with the AWS CLI](cli-tutorial.md)
    + [Tutorial: Create an Alexa Skill Project in AWS CodeStar](alexa-tutorial.md)
+   + [Tutorial: Create a Project with a GitHub Source Repository](console-tutorial.md)
 + [AWS CodeStar Project Templates](templates.md)
 + [AWS CodeStar Best Practices](best-practices.md)
 + [Working with Projects in AWS CodeStar](working-with-projects.md)
@@ -28,7 +29,6 @@ Amazon's trademarks and trade dress may not be used in
       + [Use AWS Cloud9 with AWS CodeStar](setting-up-ide-cloud9.md)
       + [Use Eclipse with AWS CodeStar](setting-up-ide-ec.md)
       + [Use Visual Studio with AWS CodeStar](setting-up-ide-vs.md)
-   + [Customize an AWS CodeStar Dashboard](how-to-customize.md)
    + [Change AWS Resources in an AWS CodeStar Project](how-to-change-project.md)
       + [Add a Stage to AWS CodePipeline](how-to-change-project-codepipeline.md)
       + [Change AWS Elastic Beanstalk Environment Settings](how-to-change-project-beanstalk.md)
@@ -50,15 +50,18 @@ Amazon's trademarks and trade dress may not be used in
 + [Working with Your AWS CodeStar User Profile](working-with-user-info.md)
    + [Manage Display Information for Your AWS CodeStar User Profile](how-to-manage-user-pref.md)
    + [Add a Public Key to Your AWS CodeStar User Profile](how-to-add-ec2-key.md)
-+ [AWS CodeStar Access Permissions Reference](access-permissions.md)
-   + [AWS CodeStar Project-Level Policies and Permissions](access-permissions-proj.md)
-   + [AWS CodeStar Service Role Policy and Permissions](access-permissions-service-role.md)
-   + [Action and Resource Syntax](access-permissions-syntax.md)
-   + [AWS CodeStar Policy Examples](adh-policy-examples.md)
-   + [IAM User Access to AWS CodeStar](access-permissions-user.md)
-   + [Federated User Access to AWS CodeStar](access-permissions-federated.md)
-+ [Logging AWS CodeStar API Calls with AWS CloudTrail](logging-using-cloudtrail.md)
++ [Security in AWS CodeStar](security.md)
+   + [Data Protection in AWS CodeStar](data-protection.md)
+   + [Identity and Access Management for AWS CodeStar](security-iam.md)
+      + [How AWS CodeStar Works with IAM](security_iam_service-with-iam.md)
+      + [AWS CodeStar Project-Level Policies and Permissions](security_iam-proj.md)
+      + [AWS CodeStar Identity-Based Policy Examples](security_iam_id-based-policy-examples.md)
+      + [Troubleshooting AWS CodeStar Identity and Access](security_iam_troubleshoot.md)
+   + [Logging AWS CodeStar API Calls with AWS CloudTrail](logging-using-cloudtrail.md)
+   + [Compliance Validation for AWS CodeStar](codestar-compliance.md)
+   + [Resilience in AWS CodeStar](disaster-recovery-resiliency.md)
+   + [Infrastructure Security in AWS CodeStar](infrastructure-security.md)
 + [Limits in AWS CodeStar](limits.md)
 + [Troubleshooting AWS CodeStar](troubleshooting.md)
 + [AWS CodeStar User Guide Release Notes](history.md)
-+ [AWS Glossary](glossary.md)
++ [AWS glossary](glossary.md)
