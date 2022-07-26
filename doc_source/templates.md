@@ -105,7 +105,7 @@ If you are working with an Alexa Skills AWS CodeStar project, you cannot make ch
 To modify sample source code, scripts, and other application source files, edit files in your source repository by:
 + Using the Edit mode in CodeCommit or GitHub\.
 + Opening the project in an IDE, such as AWS Cloud9\.
-+  Cloning the repository locally and then committing and pushing your changes\. For information, see [Step 5: Commit a Change](getting-started.md#getting-started-commit)\.
++  Cloning the repository locally and then committing and pushing your changes\. For information, see [Step 4: Commit a Change](getting-started.md#getting-started-commit)\.
 
 
 

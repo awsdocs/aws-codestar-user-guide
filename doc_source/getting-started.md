@@ -17,10 +17,10 @@ If you haven't already, first complete the steps in [Setting Up AWS CodeStar](se
 + [Step 1: Create an AWS CodeStar Project](#getting-started-create)
 + [Step 2: Add display information for your AWS CodeStar User Profile](#getting-started-add-owner)
 + [Step 3: View Your Project](#getting-started-view)
-+ [Step 5: Commit a Change](#getting-started-commit)
-+ [Step 6: Add More Team Members](#getting-started-add-team-member)
-+ [Step 7: Clean Up](#getting-started-clean)
-+ [Step 8: Get Your Project Ready for a Production Environment](#getting-started-production-ready)
++ [Step 4: Commit a Change](#getting-started-commit)
++ [Step 5: Add More Team Members](#getting-started-add-team-member)
++ [Step 6: Clean Up](#getting-started-clean)
++ [Step 7: Get Your Project Ready for a Production Environment](#getting-started-production-ready)
 + [Next Steps](#getting-started-next-steps)
 + [Tutorial: Creating and Managing a Serverless Project in AWS CodeStar](sam-tutorial.md)
 + [Tutorial: Create a Project in AWS CodeStar with the AWS CLI](cli-tutorial.md)
@@ -149,7 +149,7 @@ In your new project, the navigation bar contains the following pages:
 
 The navigation pane on the left side of the console is where you can navigate between your **Project**, **Team**, and **Settings** pages\.
 
-## Step 5: Commit a Change<a name="getting-started-commit"></a>
+## Step 4: Commit a Change<a name="getting-started-commit"></a>
 
 First, take a look at the sample application that was included in your project\. See what the application looks like by choosing **View application** from anywhere in your project navigation\. Your sample web application will be displayed in a new window or browser tab\. This is the project sample that AWS CodeStar built and deployed\. 
 
@@ -252,7 +252,7 @@ For the **Build** stage, see [Troubleshooting AWS CodeBuild](https://docs.aws.am
 For the **Deploy** stage, see [Troubleshooting AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html) in the *AWS CloudFormation User Guide*\.
 For other issues, see [Troubleshooting AWS CodeStar](troubleshooting.md)\.
 
-## Step 6: Add More Team Members<a name="getting-started-add-team-member"></a>
+## Step 5: Add More Team Members<a name="getting-started-add-team-member"></a>
 
 Every AWS CodeStar project is already configured with three AWS CodeStar roles\. Each role provides its own level of access to the project and its resources:
 + **Owner**: Can add and remove team members, change the project dashboard, and delete the project\.
@@ -296,7 +296,7 @@ For ease of management, at least one user should be assigned the Owner role for 
    + Information about how the user can manage their display name, email address, and public Amazon EC2 SSH key, as described in [Working with Your AWS CodeStar User Profile ](working-with-user-info.md)\.
    + One\-time password and connection information, if the user is new to AWS and you created an IAM user for that person\. The password expires the first time the user signs in\. The user must choose a new password\.
 
-## Step 7: Clean Up<a name="getting-started-clean"></a>
+## Step 6: Clean Up<a name="getting-started-clean"></a>
 
 Congratulations\! You've finished the tutorial\. If you don't want to continue to use this project and its resources, you should delete it to avoid possible continued charges to your AWS account\. <a name="adh-delete-project"></a>
 
@@ -317,7 +317,7 @@ Congratulations\! You've finished the tutorial\. If you don't want to continue t
 If your project uses resources outside of AWS \(for example, a GitHub repository or issues in Atlassian JIRA\), those resources are not deleted, even if you select the check box\.  
 Your project cannot be deleted if any AWS CodeStar managed policies have been manually attached to roles that are not IAM users\. If you have attached your project's managed policies to a federated user's role, you must detach the policy before you can delete the project\. For more information, see [Detach an AWS CodeStar Managed Policy from the Federated User's Role](security_iam_service-with-iam.md#security_iam_service-with-iam-roles-federated-detach-CodeStar)\.
 
-## Step 8: Get Your Project Ready for a Production Environment<a name="getting-started-production-ready"></a>
+## Step 7: Get Your Project Ready for a Production Environment<a name="getting-started-production-ready"></a>
 
 After you have created your project, you are ready to create, test, and deploy code\. Review the following considerations for maintaining your project in a production environment:
 

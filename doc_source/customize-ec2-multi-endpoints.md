@@ -44,12 +44,12 @@ For Elastic Beanstalk or Amazon EC2 projects only:
 
 **Topics**
 + [Prerequisites](#prereq)
-+ [Step 1: Create an Application and Deployment Group in CodeDeploy \(Amazon EC2 Projects Only\)](#customize-ec2-multi-endpoints-newdeployment)
++ [Step 1: Create a new Deployment Group in CodeDeploy \(Amazon EC2 Projects Only\)](#customize-ec2-multi-endpoints-newdeployment)
 + [Step 2: Add a New Pipeline Stage for the Prod Stage](#customize-ec2-multi-endpoints-newstage)
 + [Step 3: Add a Manual Approval Stage](#customize-ec2-multi-endpoints-approval)
 + [Step 4: Push a Change and Monitor the AWS CloudFormation Stack Update](#customize-ec2-multi-endpoints-stack)
 
-## Step 1: Create an Application and Deployment Group in CodeDeploy \(Amazon EC2 Projects Only\)<a name="customize-ec2-multi-endpoints-newdeployment"></a>
+## Step 1: Create a new Deployment Group in CodeDeploy \(Amazon EC2 Projects Only\)<a name="customize-ec2-multi-endpoints-newdeployment"></a>
 
 You choose your CodeDeploy application and then add a new deployment group associated with the new instance\.
 
@@ -58,13 +58,7 @@ If your project is a Lambda or Elastic Beanstalk project, you can skip this step
 
 1. Open the CodeDeploy console at [https://console\.aws\.amazon\.com/codedeploy](https://console.aws.amazon.com/codedeploy)\.
 
-1. Choose **Create application**\.
-
-1. In **Application name**, enter a name for your application that includes the project name and the Prod stage \(for example, <*project\-id*>\-*prod*\)\.
-
-1. In **Compute platform**, choose **EC2/On\-premises**\.
-
-1. Choose **Create application**\.
+1. Choose the CodeDeploy application that was generated for your project when it was created in AWS CodeStar\.
 
 1. Under **Deployment groups**, choose **Create deployment group**\.
 
@@ -171,6 +165,8 @@ The stack name must start with **awscodestar\-<project\_name>\-** exactly, or th
 
 1. In **Change set name**, enter the same change set name as provided in the existing Deploy stage \(for example, **pipeline\-changeset**\)\.
 
+1. In **Input artifacts**, choose the build artifact\.
+
 1. In **Template**, enter the same change template name as provided in the existing Deploy stage \(for example, **<project\-ID>\-BuildArtifact::template\.yml**\)\.
 
 1. In **Template configuration**, enter the same change template configuration file name as provided in the Deploy stage \(for example, **<project\-ID>\-BuildArtifact::template\-configuration\.json**\)\.
@@ -197,11 +193,13 @@ The stack name must start with **awscodestar\-<project\_name>\-** exactly, or th
 **Note**  
 Make sure to paste all of the parameters for the project, not just new parameters or parameters you want to change\.
 
-1. In **Input artifacts**, choose the build artifact\.
-
 1. Choose **Save**\.
 
-1. In the AWS CodePipeline pane, choose **Save pipeline change**, and then choose **Save change**\. View your updated pipeline\.
+1. In the AWS CodePipeline pane, choose **Save pipeline change**, and then choose **Save change**\. 
+**Note**  
+A message might display that notifies you of change\-detection resources being deleted and added\. Acknowledge the message and continue to the next step in this tutorial\.
+
+   View your updated pipeline\.
 
 **To create an ExecuteChangeSet action in your new Prod stage**
 
@@ -219,11 +217,15 @@ Make sure to paste all of the parameters for the project, not just new parameter
 
 1. In **Stack name**, enter the new name for the AWS CloudFormation stack that you entered in the GenerateChangeSet action \(for example, **awscodestar\-<project\-ID>\-infrastructure\-prod**\)\.
 
-1. In **Change set name**, enter the same change set name used in the Deploy stage \(for example,**pipeline\-changeset**\)\.
+1. In **Change set name**, enter the same change set name used in the Deploy stage \(for example, **pipeline\-changeset**\)\.
 
-1. Choose **Save**\.
+1. Choose **Done**\.
 
-1. In the AWS CodePipeline pane, choose **Save pipeline change**, and then choose **Save change**\. View your updated pipeline\.
+1. In the AWS CodePipeline pane, choose **Save pipeline change**, and then choose **Save change**\. 
+**Note**  
+A message might display that notifies you of change\-detection resources being deleted and added\. Acknowledge the message and continue to the next step in this tutorial\.
+
+   View your updated pipeline\.
 
 **To create a CodeDeploy Deploy action in your new Prod stage \(Amazon EC2 projects only\)**
 
@@ -233,13 +235,13 @@ Make sure to paste all of the parameters for the project, not just new parameter
 
 1. In **Action provider**, choose **AWS CodeDeploy**\.
 
-1. In **Application name**, choose the name of the new CodeDeploy application you created in step 2\.
+1. In **Application name**, choose the name of the CodeDeploy application for your project\.
 
 1. In **Deployment group**, choose the name of the new CodeDeploy deployment group you created in step 2\.
 
 1. In **Input artifacts**, choose the same build artifact used in the existing stage\.
 
-1. Choose **Save**\.
+1. Choose **Done**\.
 
 1. In the AWS CodePipeline pane, choose **Save pipeline change**, and then choose **Save change**\. View your updated pipeline\.
 
@@ -267,7 +269,7 @@ As a best practice, add a manual approval stage in front of your new production 
 
 ## Step 4: Push a Change and Monitor the AWS CloudFormation Stack Update<a name="customize-ec2-multi-endpoints-stack"></a>
 
-1. Make a change in your repository to start your pipeline\.
+1. While your pipeline is running, you can use the steps here to follow the stack and endpoint creation for your new stage\.
 
 1. When the pipeline starts the Deploy stage, the AWS CloudFormation stack update starts\. You can choose the AWS CloudFormation stage in your pipeline on your AWS CodeStar dashboard to see the stack update notification\. To view stack creation details, in the console, choose your project from the **Events** list\. 
 

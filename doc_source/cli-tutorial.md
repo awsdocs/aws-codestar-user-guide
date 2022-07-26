@@ -95,14 +95,6 @@ You must also upload your `toolchain.yml` file and place it in Amazon S3\. You s
 
    ```
    cd src; zip -r "../src.zip" *; cd ../
-     adding: README.md (deflated 58%)
-     adding: app.js (deflated 43%)
-     adding: buildspec.yml (deflated 48%)
-     adding: index.js (deflated 45%)
-     adding: package.json (deflated 50%)
-     adding: template.yml (deflated 53%)
-     adding: tests/ (stored 0%)
-     adding: tests/test.js (deflated 64%)
    ```
 
 1. Use the cp command and include the files as parameters\.

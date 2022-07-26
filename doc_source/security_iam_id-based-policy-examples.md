@@ -25,6 +25,7 @@ To learn how to create an IAM identity\-based policy using these example JSON po
 + [Adding a Team Member to a Project](#security_iam_id-based-policy-examples-associate-team-member)
 + [Listing User Profiles Associated with an AWS Account](#security_iam_id-based-policy-examples-list-user-profiles)
 + [Viewing AWS CodeStar Projects Based on Tags](#security_iam_id-based-policy-examples-view-widget-tags)
++ [AWS CodeStarupdates to AWS managed policies](#security-iam-awsmanpol-updates)
 
 ## Policy Best Practices<a name="security_iam_service-with-iam-policy-best-practices"></a>
 
@@ -40,165 +41,208 @@ The `aws-codestar-service-role` policy is attached to the service role that allo
 
 ```
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "ProjectStack",
-      "Effect": "Allow",
-      "Action": [
-        "cloudformation:*Stack*",
-        "cloudformation:*ChangeSet*",
-        "cloudformation:GetTemplate"
-      ],
-      "Resource": [
-        "arn:aws:cloudformation:*:*:stack/awscodestar-*",
-        "arn:aws:cloudformation:*:*:stack/awseb-*",
-        "arn:aws:cloudformation:*:*:stack/aws-cloud9-*",
-        "arn:aws:cloudformation:*:aws:transform/CodeStar*"
-      ]
-    },
-    {
-      "Sid": "ProjectStackTemplate",
-      "Effect": "Allow",
-      "Action": [
-        "cloudformation:GetTemplateSummary",
-        "cloudformation:DescribeChangeSet"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "ProjectQuickstarts",
-      "Effect": "Allow",
-      "Action": [
-        "s3:GetObject"
-      ],
-      "Resource": [
-        "arn:aws:s3:::awscodestar-*/*"
-      ]
-    },
-    {
-      "Sid": "ProjectS3Buckets",
-      "Effect": "Allow",
-      "Action": [
-        "s3:*"
-      ],
-      "Resource": [
-        "arn:aws:s3:::aws-codestar-*",
-        "arn:aws:s3:::aws-codestar-*/*",
-        "arn:aws:s3:::elasticbeanstalk-*",
-        "arn:aws:s3:::elasticbeanstalk-*/*"
-      ]
-    },
-    {
-      "Sid": "ProjectServices",
-      "Effect": "Allow",
-      "Action": [
-        "codestar:*Project",
-        "codestar:*Resource*",
-        "codestar:List*",
-        "codestar:Describe*",
-        "codestar:Get*",
-        "codestar:AssociateTeamMember",
-        "codecommit:*",
-        "codepipeline:*",
-        "codedeploy:*",
-        "codebuild:*",
-        "ec2:RunInstances",
-        "autoscaling:*",
-        "cloudwatch:Put*",
-        "ec2:*",
-        "elasticbeanstalk:*",
-        "elasticloadbalancing:*",
-        "iam:ListRoles",
-        "logs:*",
-        "sns:*",
-        "cloud9:CreateEnvironmentEC2",
-        "cloud9:DeleteEnvironmentEC2",
-        "cloud9:DescribeEnvironment*"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "ProjectWorkerRoles",
-      "Effect": "Allow",
-      "Action": [
-        "iam:AttachRolePolicy",
-        "iam:CreateRole",
-        "iam:DeleteRole",
-        "iam:DeleteRolePolicy",
-        "iam:DetachRolePolicy",
-        "iam:GetRole",
-        "iam:PassRole",
-        "iam:PutRolePolicy",
-        "iam:SetDefaultPolicyVersion",
-        "iam:CreatePolicy",
-        "iam:DeletePolicy",
-        "iam:AddRoleToInstanceProfile",
-        "iam:CreateInstanceProfile",
-        "iam:DeleteInstanceProfile",
-        "iam:RemoveRoleFromInstanceProfile"
-      ],
-      "Resource": [
-        "arn:aws:iam::*:role/CodeStarWorker*",
-        "arn:aws:iam::*:policy/CodeStarWorker*",
-        "arn:aws:iam::*:instance-profile/awscodestar-*"
-      ]
-    },
-    {
-      "Sid": "ProjectTeamMembers",
-      "Effect": "Allow",
-      "Action": [
-        "iam:AttachUserPolicy",
-        "iam:DetachUserPolicy"
-      ],
-      "Resource": "*",
-      "Condition": {
-        "ArnEquals": {
-          "iam:PolicyArn": [
-            "arn:aws:iam::*:policy/CodeStar_*"
-          ]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ProjectEventRules",
+            "Effect": "Allow",
+            "Action": [
+                "events:PutTargets",
+                "events:RemoveTargets",
+                "events:PutRule",
+                "events:DeleteRule",
+                "events:DescribeRule"
+            ],
+            "Resource": [
+                "arn:aws:events:*:*:rule/awscodestar-*"
+            ]
+        },
+        {
+            "Sid": "ProjectStack",
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:*Stack*",
+                "cloudformation:CreateChangeSet",
+                "cloudformation:ExecuteChangeSet",
+                "cloudformation:DeleteChangeSet",
+                "cloudformation:GetTemplate"
+            ],
+            "Resource": [
+                "arn:aws:cloudformation:*:*:stack/awscodestar-*",
+                "arn:aws:cloudformation:*:*:stack/awseb-*",
+                "arn:aws:cloudformation:*:*:stack/aws-cloud9-*",
+                "arn:aws:cloudformation:*:aws:transform/CodeStar*"
+            ]
+        },
+        {
+            "Sid": "ProjectStackTemplate",
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:GetTemplateSummary",
+                "cloudformation:DescribeChangeSet"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "ProjectQuickstarts",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::awscodestar-*/*"
+            ]
+        },
+        {
+            "Sid": "ProjectS3Buckets",
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::aws-codestar-*",
+                "arn:aws:s3:::elasticbeanstalk-*"
+            ]
+        },
+        {
+            "Sid": "ProjectServices",
+            "Effect": "Allow",
+            "Action": [
+                "codestar:*",
+                "codecommit:*",
+                "codepipeline:*",
+                "codedeploy:*",
+                "codebuild:*",
+                "autoscaling:*",
+                "cloudwatch:Put*",
+                "ec2:*",
+                "elasticbeanstalk:*",
+                "elasticloadbalancing:*",
+                "iam:ListRoles",
+                "logs:*",
+                "sns:*",
+                "cloud9:CreateEnvironmentEC2",
+                "cloud9:DeleteEnvironment",
+                "cloud9:DescribeEnvironment*",
+                "cloud9:ListEnvironments"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "ProjectWorkerRoles",
+            "Effect": "Allow",
+            "Action": [
+                "iam:AttachRolePolicy",
+                "iam:CreateRole",
+                "iam:DeleteRole",
+                "iam:DeleteRolePolicy",
+                "iam:DetachRolePolicy",
+                "iam:GetRole",
+                "iam:PassRole",
+                "iam:GetRolePolicy",
+                "iam:PutRolePolicy",
+                "iam:SetDefaultPolicyVersion",
+                "iam:CreatePolicy",
+                "iam:DeletePolicy",
+                "iam:AddRoleToInstanceProfile",
+                "iam:CreateInstanceProfile",
+                "iam:DeleteInstanceProfile",
+                "iam:RemoveRoleFromInstanceProfile"
+            ],
+            "Resource": [
+                "arn:aws:iam::*:role/CodeStarWorker*",
+                "arn:aws:iam::*:policy/CodeStarWorker*",
+                "arn:aws:iam::*:instance-profile/awscodestar-*"
+            ]
+        },
+        {
+            "Sid": "ProjectTeamMembers",
+            "Effect": "Allow",
+            "Action": [
+                "iam:AttachUserPolicy",
+                "iam:DetachUserPolicy"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "ArnEquals": {
+                    "iam:PolicyArn": [
+                        "arn:aws:iam::*:policy/CodeStar_*"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "ProjectRoles",
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreatePolicy",
+                "iam:DeletePolicy",
+                "iam:CreatePolicyVersion",
+                "iam:DeletePolicyVersion",
+                "iam:ListEntitiesForPolicy",
+                "iam:ListPolicyVersions",
+                "iam:GetPolicy",
+                "iam:GetPolicyVersion"
+            ],
+            "Resource": [
+                "arn:aws:iam::*:policy/CodeStar_*"
+            ]
+        },
+        {
+            "Sid": "InspectServiceRole",
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListAttachedRolePolicies"
+            ],
+            "Resource": [
+                "arn:aws:iam::*:role/aws-codestar-service-role",
+                "arn:aws:iam::*:role/service-role/aws-codestar-service-role"
+            ]
+        },
+        {
+            "Sid": "IAMLinkRole",
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateServiceLinkedRole"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:AWSServiceName": "cloud9.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Sid": "DescribeConfigRuleForARN",
+            "Effect": "Allow",
+            "Action": [
+                "config:DescribeConfigRules"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "ProjectCodeStarConnections",
+            "Effect": "Allow",
+            "Action": [
+                "codestar-connections:UseConnection",
+                "codestar-connections:GetConnection"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "ProjectCodeStarConnectionsPassConnections",
+            "Effect": "Allow",
+            "Action": "codestar-connections:PassConnection",
+            "Resource": "*",
+            "Condition": {
+                "StringEqualsIfExists": {
+                    "codestar-connections:PassedToService": "codepipeline.amazonaws.com"
+                }
+            }
         }
-      }
-    },
-    {
-      "Sid": "ProjectRoles",
-      "Effect": "Allow",
-      "Action": [
-        "iam:CreatePolicy",
-        "iam:DeletePolicy",
-        "iam:CreatePolicyVersion",
-        "iam:DeletePolicyVersion",
-        "iam:ListEntitiesForPolicy",
-        "iam:ListPolicyVersions"
-      ],
-      "Resource": [
-        "arn:aws:iam::*:policy/CodeStar_*"
-      ]
-    },
-    {
-      "Sid": "InspectServiceRole",
-      "Effect": "Allow",
-      "Action": [
-        "iam:ListAttachedRolePolicies"
-      ],
-      "Resource": [
-        "arn:aws:iam::*:role/aws-codestar-service-role"
-      ]
-    },
-    {    
-      "Sid": "IAMLinkRole",
-      "Effect": "Allow",
-      "Condition": {
-        "StringLike": {
-          "iam:AWSServiceName": "cloud9.amazonaws.com"
-        }
-      },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
-      "Resource": "arn:aws:iam::*:role/aws-service-role/cloud9.amazonaws.com/AWSServiceRoleForCloud9*"
-    }
-  ]
+    ]
 }
 ```
 
@@ -1140,3 +1184,17 @@ You can use conditions in your identity\-based policy to control access to AWS C
 ```
 
 You can attach this policy to the IAM users in your account\. If a user named `richard-roe` attempts to view an AWS CodeStar project, the project must be tagged `Owner=richard-roe` or `owner=richard-roe`\. Otherwise he is denied access\. The condition tag key `Owner` matches both `Owner` and `owner` because condition key names are not case\-sensitive\. For more information, see [IAM JSON Policy Elements: Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) in the *IAM User Guide*\.
+
+## AWS CodeStarupdates to AWS managed policies<a name="security-iam-awsmanpol-updates"></a>
+
+
+
+View details about updates to AWS managed policies for AWS CodeStar since this service began tracking these changes\. For automatic alerts about changes to this page, subscribe to the RSS feed on the AWS CodeStar [ Document history](https://docs.aws.amazon.com/codestar/latest/userguide/history.html) page\.
+
+
+
+
+| Change | Description | Date | 
+| --- | --- | --- | 
+|  [AWSCodeStarServiceRole Policy](#security_iam_id-based-policy-examples-service-role) – Update the AWSCodeStarServiceRole policy  |   The policy for the AWS CodeStar service role has been updated to correct redundant actions in the policy statement\. The service role policy allows the AWS CodeStar service to perform actions on your behalf\.   | September 23, 2021 | 
+|   AWS CodeStar started tracking changes   |   AWS CodeStar started tracking changes for its AWS managed policies\.   | September 23, 2021 | 

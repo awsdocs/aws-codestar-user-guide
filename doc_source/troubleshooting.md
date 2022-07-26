@@ -18,7 +18,7 @@ The following information might help you troubleshoot common issues in AWS CodeS
 + [GitHub: Can't access a repository's commit history, issues, or code](#troubleshooting-github-access)
 + [AWS CloudFormation: Stack Creation Rolled Back for Missing Permissions](#troubleshooting-cloudformation-stack-creation-permissions)
 + [AWS CloudFormation is not authorized to perform iam:PassRole on Lambda execution role](#troubleshooting-cloudformation-not-authorized)
-+ [Unable to create the connection for a GitHub repository](#w19aac32c39)
++ [Unable to create the connection for a GitHub repository](#w19aac33c39)
 
 ## Project creation failure: A project was not created<a name="troubleshooting-pc1"></a>
 
@@ -215,7 +215,7 @@ After you update the policy, execute your pipeline again\.
 
 Alternatively, you can use a custom role for your Lambda function by adding a permissions boundary to your project, as described in [Add an IAM Permissions Boundary to Existing Projects](security_iam-proj.md#security_iam-proj-pb-add)
 
-## Unable to create the connection for a GitHub repository<a name="w19aac32c39"></a>
+## Unable to create the connection for a GitHub repository<a name="w19aac33c39"></a>
 
 **Problem:** 
 
